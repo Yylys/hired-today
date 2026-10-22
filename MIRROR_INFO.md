@@ -6,4 +6,4 @@ The upstream commit history is available at [Gitee commits](https://gitee.com/an
 
 The project is hosted under the ant-warrior-front-end team on Gitee; this mirror does not claim sole project ownership. The LICENSE file is preserved from the upstream repository.
 
-The tracked 小程序.zip archive, local 小程序/project.private.config.json, and generated JavaScript source maps (`*.js.map`) were omitted from this snapshot because they are not required source files. JPEG-format image assets are also omitted pending explicit confirmation to publish them; all other audited files are included.
+The tracked 小程序.zip archive, local 小程序/project.private.config.json, and generated JavaScript source maps (`*.js.map`) were omitted from this snapshot because they are not required source files. All 12 JPEG-format image assets were added after explicit owner confirmation. The source map files were omitted because they are generated artifacts and are not needed to run the project.
