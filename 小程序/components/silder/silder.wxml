@@ -1,0 +1,13 @@
+<view class="slider-background">
+          <view class="slider" style="padding-left: {{pdLeft}}rpx;padding-right: {{pdRight}}rpx;">
+            <view class="slider-circle" bindtouchstart="touchStart1" bindtouchmove="touchMove1" bindtouchend="touchEnd1">
+            <image class="slider-circle" src="/static/imgs/qq.jpg" mode="aspectFill"/>
+            <span style="font-size: 24rpx;">{{min}}</span>
+            </view>
+            <view class="main-slider"></view>
+            <view class="slider-circle" bindtouchstart="touchStart2" bindtouchmove="touchMove2" bindtouchend="touchEnd2">
+              <image class="slider-circle" src="/static/imgs/qq.jpg" mode="aspectFill"/>
+              <span  style="font-size: 24rpx; ">{{max}}</span>
+              </view>
+          </view>
+        </view>

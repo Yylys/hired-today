@@ -1,0 +1,55 @@
+<!--pages/form/form.wxml-->
+<view class="box" scroll-y="true"  >
+  <view class="contaners">
+    <form catchsubmit="onFormSubmit" catchreset="formReset" class="form">
+      <view style="font-weight: 600;font-size: 32rpx;color: #150B3D;margin-left: 10rpx;">Educational experience</view>
+      <view class="weui-cell__bd">
+        <view class="title">School</view>
+        <input class="weui-input" name="school" value="{{form.school}}" placeholder="Please Enter" placeholder-class="placeholder" />
+      </view>
+
+      <view class="weui-cell__bd" >
+        <view class="title">Degree</view>
+        <input disabled bind:tap="showeducational" class="weui-input" name="degree" value="{{form.schoolName}}" type="text" placeholder="Please Enter" placeholder-class="placeholder" bindblur="onPhoneInput" />
+      </view>
+
+
+      <view class="weui-cell__bd">
+        <view class="title">Major</view>
+        <input class="weui-input" name="major" value="{{form.major}}" placeholder="Please Enter" placeholder-class="placeholder" />
+      </view>
+      <view style="display: flex;">
+        <view class="weui-cell__bd" style="position: relative; margin-right: 30rpx;">
+          <view class="title">Start Time</view>
+          <input disabled bind:tap="showPopup" data-time="start" class="weui-input" name="startDate" value="{{form.startDate}}" type="text" placeholder="Please Choose" placeholder-class="placeholder" />
+          <image bind:tap="showPopup" data-time="start" style="width: 40rpx; height: 40rpx; position:absolute; bottom: 30rpx; right: 30rpx;" src="/static/imgs/me/rl.jpg" />
+        </view>
+        <view class="weui-cell__bd" style="position: relative;">
+          <view class="title">End Time</view>
+          <input disabled bind:tap="showPopup" data-time="end" class="weui-input" name="endDate" value="{{form.endDate}}" type="text" placeholder="Please Choose" placeholder-class="placeholder" />
+          <image bind:tap="showPopup" data-time="end" style="width: 40rpx; height: 40rpx; position:absolute; bottom: 30rpx; right: 30rpx;" src="/static/imgs/me/rl.jpg" />
+        </view>
+      </view>
+      <view class="weui-cell__bd">
+        <view class="title">
+          <view class="weui-cell__bd">
+            <view class="title">Educational Experience</view>
+            <!-- <textarea adjust-position="{{true}}" maxlength="-1" auto-height="{{true}}" class="weui-input" style="padding: 30rpx 20rpx;min-height: 200rpx;" name="content" value="{{form.content}}" placeholder="Please Enter" placeholder-class="placeholder" /> -->
+
+            <van-field cursor-spacing='200' hold-keyboard value="{{ form.content }}" input-class="weui-input2" name="content" type='textarea' autosize="{{ { minHeight: 100} }}" placeholder="Please Enter" />
+
+          </view>
+        </view>
+      </view>
+      <view style="margin: 78rpx auto; width: 60%; padding-bottom: 100rpx;">
+        <van-button formType="submit" type="primary" color="#2623D1" block>Submit</van-button>
+      </view>
+    </form>
+  </view>
+  <van-popup show="{{ show }}" bind:close="onClose" position="bottom">
+    <van-datetime-picker confirm-button-text="confirm" cancel-button-text="cancel"  type="year-month" value="{{ currentDate }}" bind:input="onInput" bind:confirm="onsucces" bind:cancel="onClose" min-date="{{ minDate }}" formatter="{{ formatter }}" />
+  </van-popup>
+  <van-popup show="{{ showeducational }}" bind:close="onClose" position="bottom">
+    <van-picker confirm-button-text="confirm" cancel-button-text="cancel" columns="{{ columns }}" default-index="{{ 1 }}" bind:cancel="onClose" bind:confirm="onConfirm1" show-toolbar title="" />
+  </van-popup>
+</view>

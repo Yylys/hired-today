@@ -1,0 +1,24 @@
+.warp {
+    margin-top: 30rpx;
+    margin-bottom: 20rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left {
+    width: 75rpx;
+    height: 3rpx;
+    background: linear-gradient(to right, rgb(161, 159, 159), #ffffff);
+}
+
+.text {
+    font-size: 26rpx;
+    color: rgb(92, 89, 89);
+}
+
+.right {
+    width: 75rpx;
+    height: 3rpx;
+    background: linear-gradient(to left, rgb(161, 159, 159), #ffffff);
+}

@@ -1,0 +1,32 @@
+<!--pages/login/login.wxml-->
+<view class="bac" style=" background-image: url(/static/imgs/bac.jpg);">
+  <!-- 头部图片 -->
+  <view style="width: 100%;">
+    <image class="logo_icon" src='/static/imgs/log.jpg' mode="aspectFit"></image>
+  </view>
+  <!-- 注册 -->
+  <view class="login">
+
+    <view class="cen">
+      <form catchsubmit="onFormSubmit" catchreset="formReset" class="form">
+        <!-- <view class="box">
+          <input name="nickName" value="{{form.nickName}}" class="ipts" placeholder-style='font-size:14px;' placeholder='Please Enter your name'></input>
+        </view> -->
+        <view class="box">
+          <input name="oldPassword" value="{{form.oldPassword}}" class="ipts" placeholder-style='font-size:14px;' placeholder='Enter your current password'></input>
+        </view>
+        <view class="box">
+          <input name="password" value="{{form.password}}" class="ipts" placeholder-style='font-size:14px;' placeholder='Enter your new password'></input>
+        </view>
+        <view class="box">
+          <input name="checkpass" value="{{form.checkpass}}" class="ipts" placeholder-style='font-size:14px;' placeholder='Confirm your new password'></input>
+        </view>
+        <view class="box" style="margin-top: 60rpx;">
+          <!-- <button class="btn"  bind:tap="login">register</button> -->
+          <van-button class="btn" formType="submit" type="primary" color="#2522D1" block round>Reset</van-button>
+        </view>
+      </form>
+    </view>
+  </view>
+
+</view>

@@ -1,0 +1,19 @@
+{
+  "name": "jiu-se-luwechat",
+  "version": "1.0.0",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vant/weapp": "^1.11.4",
+    "tdesign-miniprogram": "^1.2.8",
+    "weapp-qrcode": "^1.0.0",
+    "wxml2canvas": "^1.0.1",
+    "wxmp-rsa": "^2.1.0"
+  },
+  "description": ""
+}

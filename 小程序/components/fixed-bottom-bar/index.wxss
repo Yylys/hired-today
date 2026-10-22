@@ -1,0 +1,10 @@
+.fixed_bottom_bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    padding: 10rpx 28rpx 20rpx;
+    background-color: #fff;
+    box-shadow: 0rpx -6rpx 12rpx 2rpx rgba(62, 99, 249, 0.1);
+}

@@ -1,0 +1,11 @@
+<!--pages/advantage/advantage.wxml-->
+<view style="width: 670rpx; margin:0 auto;">
+  <view class="title" style="display: flex; justify-content: space-between;">{{title}}
+    <!-- <view style="font-size: 26rpx; font-weight: 300;">{{textAreaValue.length}}/500</view> -->
+  </view>
+  <textarea adjust-position="{{true}}" wx:if="{{personalStrengths!==null}}" auto-height="{{true}}" value="{{personalStrengths}}" class="weui-input"  maxlength="-1" style="padding: 30rpx 20rpx;min-height: 300rpx; max-height: 800rpx; border-radius: 30rpx;" name="need" type="text" placeholder="Please Enter" bindinput="handleInputChange"></textarea>
+  <textarea adjust-position="{{true}}" maxlength="-1"  wx:if="{{content!==null}}" auto-height="{{true}}" value="{{content}}" class="weui-input"  style="padding: 30rpx 20rpx;min-height: 300rpx; max-height: 30vh; border-radius: 30rpx;" name="need" type="text" placeholder="Please Enter" bindinput="handleInputChange"></textarea>
+  <view style=" width: 426rpx; margin:0 auto; margin-top: 100rpx; ">
+    <van-button block color="#2623D1" bind:tap="setdata"> Submit </van-button>
+  </view>
+</view>

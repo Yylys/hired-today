@@ -1,0 +1,119 @@
+.t-tab-bar-item,
+.t-tab-bar-item__icon {
+  height: 54px !important;
+  padding: 0 !important;
+}
+
+.t-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px !important;
+  height: 32px !important;
+}
+
+.t-icon--image {
+  width: 28px !important;
+  height: 28px !important;
+}
+
+.t-tab-bar-item__text {
+  padding-top: 4px;
+  font-size: 14px !important;
+  color: #afb8cb;
+}
+
+.t-tab-bar-item__content--checked .t-icon--image {
+  width: 32px !important;
+  height: 32px !important;
+}
+
+.t-tab-bar-item__content--checked .t-tab-bar-item__text {
+  color: var(--themeColor);
+}
+
+.saoma {
+  margin-top: -40px;
+  z-index: 99999;
+}
+
+.saoma .iconWrap {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.saoma .icon-sm {
+  width: 68px;
+  height: 68px;
+}
+
+.saoma .code-sys {
+  text-align: center;
+  color: #afb8cb;
+  font-size: 14px;
+}
+
+.tabbar-brace {
+  height: 70px;
+}
+
+.couponPopupNamespace .t-popup {
+  background: transparent !important;
+}
+
+.couponPopupNamespace .couponPopup .popupImg_warp {
+  width: 932rpx;
+  height: 850rpx;
+  overflow: hidden;
+}
+
+.couponPopupNamespace .couponPopup .popupImg_warp .pop_img {
+  width: 100%;
+  height: 100%;
+}
+
+.couponPopupNamespace .couponPopup .close_pop {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 87%;
+  width: 44rpx;
+  height: 44rpx;
+}
+
+.couponPopupNamespace .couponPopup .content {
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 25%;
+}
+
+.couponPopupNamespace .couponPopup .content .gxnhd {
+  font-size: 36rpx;
+  color: #ee654f;
+}
+
+.couponPopupNamespace .couponPopup .content .goodsName {
+  box-sizing: border-box;
+  padding: 20rpx 0 40rpx;
+  width: 350rpx;
+  height: 310rpx;
+  font-size: 42rpx;
+  font-weight: 600;
+  color: #f63e2b;
+}
+
+.couponPopupNamespace .couponPopup .content .kxsx_btn {
+  padding: 12rpx 40rpx;
+  color: #f25707;
+  background: linear-gradient(180deg, #fff385 0%, #ffeb3b 100%);
+  border-radius: 100rpx;
+}

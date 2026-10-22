@@ -1,0 +1,8 @@
+//验证是否为正数
+var positiveNumber = function (number) {
+    return Number(number) >= 0;
+};
+
+module.exports = {
+    positiveNumber: positiveNumber,
+};

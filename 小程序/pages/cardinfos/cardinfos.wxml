@@ -1,0 +1,269 @@
+<!--pages/cardinfo/cardinfo.wxml-->
+<view class="del_box">
+  <view style="width: 95%; margin: 0 auto; display: flex; justify-content: space-between;">
+    <view>
+      <image bind:tap="goinfo" data-path="/pages/Feedback/Feedback" class="nav" src="/static/imgs/detail/ts.png" mode="aspectFill" />
+    </view>
+    <view style="display: flex; align-items: center;">
+      <!-- <image class="nav" src="/static/imgs/detail/gz.png" mode="aspectFill" /> -->
+      <image  wx:if="{{getUserInfo.roleKeySet[0]=='candidate' || getUserInfo.roleKeySet[0]=='recruiter'}}" class="nav" bind:tap="save" data-data="{{info}}" src="{{info.isCollection==false ? '/static/imgs/detail/gz.png' : '/static/imgs/detail/sc.jpg'}}" mode="aspectFill" />
+      <button open-type="share" style="padding: 0;">
+        <image class="nav" src="/static/imgs/detail/fx.png" mode="aspectFill" />
+      </button>
+    </view>
+  </view>
+  <view class="avator">
+
+    <image class="ava" src="{{info.publishType==1 ? imgurl + info.headhunterResultDTO.avatar : imgurl + info.enterprise.avatar}}" mode="aspectFill" />
+  </view>
+  <view class="del_btm">
+    <view class="top">
+      <view class="title text_ellipsis">{{info.jobName}}</view>
+      <view class="address">
+        <van-icon color="#2623D1" name="location" />
+        <span style="margin-left: 8rpx;">
+          <!-- {{info.publishType==1 ? info.address : info.enterprise.address}} -->
+          {{info.address}}
+        </span>
+      </view>
+    </view>
+    <!-- 中层卡片 -->
+    <view class="cen">
+      <view class="card">
+        <image class="img" src="/static/imgs/detail/salary.png" mode="aspectFill" />
+        <view>
+          <view class="title">Salary</view>
+          <view class="name" style="white-space: nowrap;">{{info.minSalary/1000}}K-{{info.maxSalary/1000}}K</view>
+        </view>
+      </view>
+      <view class="card">
+        <image class="img" src="/static/imgs/detail/job.png" mode="aspectFill" />
+        <view>
+          <view class="title">Job Type</view>
+          <view class="name ">{{info.dictWork.memberName}}</view>
+        </view>
+      </view>
+      <view class="card">
+        <image class="img" src="/static/imgs/detail/experience.png" mode="aspectFill" />
+        <view>
+          <view class="title">Experience</view>
+          <view class="name">{{info.dictDegree.memberName}}</view>
+        </view>
+      </view>
+      <view class="card">
+        <image class="img" src="/static/imgs/detail/education.png" mode="aspectFill" />
+        <view>
+          <view class="title">Education</view>
+          <view class="name">{{info.dictExperience.memberName}}</view>
+        </view>
+      </view>
+      <view class="card">
+        <image class="img" src="/static/imgs/detail/interview.png" mode="aspectFill" />
+        <view>
+          <view class="title">Interview</view>
+          <view class="name">{{info.interviewCount}} rounds</view>
+        </view>
+      </view>
+      <view class="card">
+        <image class="img" src="/static/imgs/detail/vacancies.png" mode="aspectFill" />
+        <view>
+          <view class="title">Vacancies</view>
+          <view class="name">{{info.recruitsCount}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="btm">
+      <van-tabs color="#2623D1" title-active-color="#2623D1" title-inactive-color="#150B3D" active="{{ active }}" bind:change="onChange">
+        <van-tab title="About the position">
+          <view class="del">
+            <view class="list" wx:if="{{info.recruiter==0 && getUserInfo.roleKeySet[0]!='candidate'}}">
+              <view class="title">Headhunter Commission</view>
+              <view class="card">
+                <view  style="display: flex; align-items: center; margin-right: 0rpx;">
+                <image style="width: 24rpx; height: 24rpx;" src="/static/imgs/money.jpg" mode="aspectFill" />
+                <span style="color:#2623D1;font-size:28rpx">￥{{info.recruiterPrice}}</span>
+              </view>
+              </view>
+              <span class="cards">Note: This position is open to headhunters and comes with a reward. When a headhunter successfully recommends a candidate and completes the match, they will receive the commission.</span>
+            </view>
+            <view class="list">
+              <view class="title">Skill requirements</view>
+              <view class="card">
+                <span wx:for="{{info.skill}}"  class="tag">{{item}}</span>
+              </view>
+            </view>
+            <view class="list">
+              <view class="title">Job description</view>
+              <view class="cards">{{info.content}}</view>
+              <!-- <rich-text nodes="{{info.content}}}}"></rich-text> -->
+            </view>
+          </view>
+        </van-tab>
+        <van-tab title="About the company"  wx:if="{{info.publishType!=1}}">
+          <view class="del">
+            <!-- tab内顶部卡片 -->
+            <view style="box-shadow: 5rpx 1px 5px 5rpx rgba(0, 0, 0, 0.1) ; border-radius: 20rpx 20rpx 20rpx 20rpx;">
+              <view style="width: 95%; margin:28rpx auto 28rpx; ">
+                <view style="display: flex; padding-top: 28rpx;">
+                  <image style="border-radius:8rpx;width: 88rpx; height: 88rpx;margin-right: 20rpx;" src="{{ imgurl + info.enterprise.avatar}}" mode="aspectFill" />
+                  <view style="width: 550rpx; margin-bottom: 20rpx;">
+                    <view style="margin-bottom: 10rpx;font-size: 32rpx;color: #150B3D; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{info.enterprise.name}}</view>
+                    <view style="font-size: 24rpx;color: #514B6B;">{{info.enterprise.industry}}</view>
+                  </view>
+                </view>
+                <view style="margin-bottom: 20rpx; display: flex; flex-wrap: wrap;">
+                  <span wx:for="{{info.enterprise.tag}}" class="tag">{{item.memberName}}</span>
+                </view>
+              </view>
+            </view>
+            <!-- 内容 -->
+            <view class="list">
+              <view class="title">Posted by</view>
+              <view class="cards" style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+                <view wx:for="{{info.enterprise.recruiterList}}" style="display: flex; align-items: center; width: 50%; margin-top: 20rpx;">
+                <view  style="width: 80rpx; height: 80rpx; margin-right: 20rpx;">
+                  <image style="width: 80rpx; height: 80rpx; border-radius: 50%; " src="{{imgurl + item.avatar}}" mode="aspectFill" />
+                </view>
+                  <view>
+                    <view style="color: #8C8998; font-size:24rpx ;">
+                    <span>{{item.name}}</span>
+                      <image style="width: 16rpx; height: 16rpx;" src="{{item.sex==0 ? '/static/imgs/detail/man.jpg' : '/static/imgs/detail/woman.jpg'}}" mode="aspectFill" />
+                    </view>
+                    <view class="line_ellipsis">{{item.position}}</view>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <view class="list">
+              <view class="title">Company Profile</view>
+              <view class="cards">{{info.enterprise.introContent}}</view>
+            </view>
+            <view class="list">
+              <view class="title">Company culture</view>
+              <view class="cards">{{info.enterprise.cultureContent}}</view>
+            </view>
+            <view class="list">
+              <view class="list">
+                <view class="title">Company Gallery</view>
+                <view style="display: flex; justify-content: space-between; padding:20rpx 0;">
+                  <image bindtap="previewImage"  data-item='{{info.enterprise.img}}' wx:if="{{info.enterprise.img[0].cover}}" src="{{imgurl + info.enterprise.img[0].cover}}" style="width: 47%; height: 204rpx;" mode="aspectFill" />
+                  <view wx:if="{{info.enterprise.img[1].cover}}" style="width: 47%; height: 204rpx;position: relative;">
+                    <image src="{{imgurl + info.enterprise.img[1].cover}}" style="width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.5); " mode="aspectFill" />
+                    <view wx:if="{{info.enterprise.img.length>2}}" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);font-weight: 700;font-size: 24rpx;color: #FFFFFF;">+{{info.enterprise.img.length-2}}pictures</view>
+                  </view>
+                </view>
+              </view>
+            </view>
+
+            <!-- <view class="list">
+              <view class="title">Attachments</view>
+              <view style="display: flex; justify-content: space-between;">
+                <image src="/static/imgs/bac1.jpg" style="width: 47%; height: 230rpx;" mode="aspectFill" />
+                <view style="width: 47%; height: 230rpx;position: relative;">
+                  <image src="/static/imgs/bac1.jpg" style="width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.5); " mode="aspectFill" />
+                  <view style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);font-weight: 700;font-size: 24rpx;color: #FFFFFF;">+5 pictures</view>
+                </view>
+              </view>
+            </view> -->
+          </view>
+        </van-tab>
+        <van-tab title="About headhunting" wx:if="{{info.publishType==1}}">
+          <view class="del">
+            <!-- tab内顶部卡片 -->
+            <view style="box-shadow: 5rpx 1px 5px 5rpx rgba(0, 0, 0, 0.1) ; border-radius: 20rpx 20rpx 20rpx 20rpx;">
+              <view style="width: 95%; margin:28rpx auto 28rpx; ">
+                <view style="display: flex; padding-top: 28rpx;">
+                  <image style="border-radius:8rpx;width: 88rpx; height: 88rpx;margin-right: 20rpx;" src="{{ imgurl + info.headhunterResultDTO.avatar}}" mode="aspectFill" />
+                  <view style="width: 550rpx; margin: 20rpx 0; padding-bottom: 10rpx;">
+                    <view style="margin-bottom: 10rpx;font-size: 32rpx;color: #150B3D; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{info.headhunterResultDTO.name}}</view>
+                    <!-- <view style="font-size: 24rpx;color: #514B6B;">{{info.headhunterResultDTO.address}}</view> -->
+                  </view>
+                </view>
+
+              </view>
+            </view>
+            <!-- 内容 -->
+            <view class="list">
+              <view class="title">Industries Of Expertise</view>
+              <view class="cards" style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+                <view style="margin-bottom: 20rpx; display: flex; flex-wrap: wrap;">
+                  <span wx:for="{{info.headhunterResultDTO.infoTag}}" class="tag">{{item}}</span>
+                </view>
+              </view>
+            </view>
+            <view class="list">
+              <view class="title">Skills</view>
+              <view class="cards" style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+                <view style="margin-bottom: 20rpx; display: flex; flex-wrap: wrap;">
+                  <span wx:for="{{info.headhunterResultDTO.skillTag}}" class="tag">{{item}}</span>
+                </view>
+              </view>
+            </view>
+            <view class="list">
+              <view class="title">Service Slogan</view>
+              <view class="cards">{{info.headhunterResultDTO.address}}</view>
+            </view>
+              <view class="list">
+                <view class="title">Headhunting Gallery</view>
+                <view style="display: flex; justify-content: space-between; padding:20rpx 0;">
+                  <image bindtap="previewImage" data-item='{{info.headhunterResultDTO.imageUrl}}' wx:if="{{info.headhunterResultDTO.imageUrl[0].cover}}" src="{{imgurl + info.headhunterResultDTO.imageUrl[0].cover}}" style="width: 47%; height: 204rpx; border-radius: 20rpx;" mode="aspectFill" />
+                  <view wx:if="{{info.headhunterResultDTO.imageUrl[1].cover}}" style="width: 47%; height: 204rpx;position: relative; border-radius: 20rpx;">
+                    <image src="{{imgurl + info.headhunterResultDTO.imageUrl[1].cover}}" style="width: 100%; height: 100%; border-radius: 20rpx;  background-color: rgba(255, 255, 255, 0.5); " mode="aspectFill" />
+                    <view wx:if="{{info.headhunterResultDTO.imageUrl.length>2}}" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);font-weight: 700;font-size: 24rpx;color: #FFFFFF; ">+{{info.headhunterResultDTO.imageUrl.length}}pictures</view>
+                  </view>
+                </view>
+              </view>
+              <view class="list">
+                <view class="title">Attachments</view>
+                <view style="display: flex; justify-content: space-between; padding:20rpx 0;">
+                  <image bindtap="previewImage"  data-item='{{info.headhunterResultDTO.certificateUrl}}' wx:if="{{info.headhunterResultDTO.certificateUrl[0].cover}}" src="{{imgurl + info.headhunterResultDTO.certificateUrl[0].cover}}" style="width: 47%; height: 204rpx;" mode="aspectFill" />
+                  <view wx:if="{{info.headhunterResultDTO.certificateUrl[1].cover}}" style="width: 47%; height: 204rpx;position: relative;">
+                    <image src="{{imgurl + info.headhunterResultDTO.certificateUrl[1].cover}}" style="width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.5); " mode="aspectFill" />
+                    <view wx:if="{{info.headhunterResultDTO.certificateUrl.length>2}}" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);font-weight: 700;font-size: 24rpx;color: #FFFFFF;">+{{info.headhunterResultDTO.certificateUrl.length-2}}pictures</view>
+                  </view>
+                </view>
+              </view>
+            <!-- <view class="list">
+              <view class="title">Attachments</view>
+              <view style="display: flex; justify-content: space-between;">
+                <image src="/static/imgs/bac1.jpg" style="width: 47%; height: 230rpx;" mode="aspectFill" />
+                <view style="width: 47%; height: 230rpx;position: relative;">
+                  <image src="/static/imgs/bac1.jpg" style="width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.5); " mode="aspectFill" />
+                  <view style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);font-weight: 700;font-size: 24rpx;color: #FFFFFF;">+5 pictures</view>
+                </view>
+              </view>
+            </view> -->
+          </view>
+        </van-tab>
+      </van-tabs>
+    </view>
+
+    <view class="btm_btn" wx:if="{{getUserInfo.roleKeySet[0]=='candidate'}}">
+      <button class="custom-button" open-type="getUserInfo" bindgetuserinfo="getUserInfo" style="color:#2623D1;border:1px solid #2623D1;" plain>Save poster</button>
+      <button wx:if="{{info.isDelivery!=true}}" bind:tap="showPopup" class="custom-button" style="background-color:#2623D1 ; color:  white;">Submit your resume</button>
+      <button wx:else disabled class="custom-button" style="background-color:#bdbde9 ; color:  white;">Delivered</button>
+    </view>
+
+    <view class="btm_btns" wx:if="{{getUserInfo.roleKeySet[0]=='recruiter' && info.recruiter==0}}">
+      <button bind:tap="goinfo" data-path="/pages/TalentPool/TalentPool" data-sid="{{info.sid}}" class="custom-button" style="background-color:#2623D1 ; color:  white;">Recommend Talent
+      </button>
+    </view>
+
+
+
+
+  </view>
+  <van-popup round show="{{ show }}" bind:close="onClose">
+    <view style="width: 620rpx;min-height: 738rpx; border-radius: 50rpx;">
+      <view style="width: 100%;background: #F3F3F3; height: 106rpx; line-height: 106rpx; text-align: center;">Attach Message</view>
+      <view style="min-height: 390rpx; width: 92%; margin: 15rpx auto;">
+        <textarea adjust-position="{{true}}"  maxlength="-1" auto-height="{{true}}" style="width: 100%; min-height: 390rpx;"  bindinput="bindTextAreaBlur" placeholder="Explain Why You Are Interested in This Job"></textarea>
+      </view>
+      <view>
+        <button bind:tap="closepop" style="width: 70%; background-color: #2623D1; color: #FFFFFF; border-radius: 50rpx; margin-bottom: 28rpx; font-size: 28rpx;">Confirm</button>
+        <button bind:tap="closepop" style="width: 70%; height: 90%; background-color: #EAEAFF; color: #2623D1; border-radius: 50rpx; font-size: 28rpx;">Submit Directly</button>
+      </view>
+    </view>
+  </van-popup>
+  <share-box wx:if="{{isCanDraw}}" info="{{info}}" isCanDraw="{{isCanDraw}}" bind:initData="createShareImage" bind:close="handleClose" />
+</view>

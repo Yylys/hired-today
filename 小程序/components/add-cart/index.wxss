@@ -1,0 +1,203 @@
+@charset "UTF-8";
+.addCartPopupWrap {
+  box-sizing: border-box;
+  width: 640rpx;
+  padding: 20rpx;
+}
+
+.addCartPopupWrap .good {
+  display: flex;
+}
+
+.addCartPopupWrap .good .rightContent {
+  padding-left: 16rpx;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.addCartPopupWrap .good .title {
+  font-size: 24rpx;
+  color: #000e37;
+}
+
+.addCartPopupWrap .good .sub {
+  margin-top: 8rpx;
+  font-size: 20rpx;
+  color: #8f95a5;
+}
+
+.addCartPopupWrap .good .saled {
+  margin-top: 8rpx;
+  width: max-content;
+  padding: 6rpx 12rpx;
+  background-color: #fff5e5;
+  border-radius: 6rpx;
+  font-size: 16rpx;
+  color: #ff6d20;
+}
+
+.addCartPopupWrap .good .bottom {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+}
+
+.addCartPopupWrap .good .priceWrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  color: #ff3400;
+}
+
+.addCartPopupWrap .good .priceWrap .icon {
+  font-size: 22rpx;
+  font-weight: bold;
+}
+
+.addCartPopupWrap .good .priceWrap .price {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.addCartPopupWrap .good .buttonWrap {
+  display: flex;
+  align-items: center;
+}
+
+.addCartPopupWrap .good .button {
+  box-sizing: border-box;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+}
+
+.addCartPopupWrap .good .reduce {
+  border: 1px solid var(--themeColor);
+}
+
+.addCartPopupWrap .good .num {
+  padding: 0 16rpx;
+  font-weight: bold;
+  color: #000e37;
+}
+
+.addCartPopupWrap .good .add {
+  background: linear-gradient(214deg, #0eb05d 0%, #87c24c 100%);
+}
+
+.addCartPopupWrap .chooseAttrWrap {
+  padding-top: 20rpx;
+}
+
+.addCartPopupWrap .chooseAttrWrap .chooseAttr .title {
+  margin-bottom: 10rpx;
+  font-size: 24rpx;
+  color: #8f95a5;
+}
+
+.addCartPopupWrap .chooseAttrWrap .chooseAttr .values {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.addCartPopupWrap .chooseAttrWrap .chooseAttr .values::after {
+  content: '';
+  width: 156rpx;
+}
+
+.addCartPopupWrap .chooseAttrWrap .chooseAttr .values .item {
+  box-sizing: border-box;
+  margin-bottom: 14rpx;
+  width: 156rpx;
+  padding: 8rpx 14rpx;
+  background: #f9f9f9;
+  border-radius: 8rpx;
+  border: 2rpx solid #f2f2f2;
+  font-size: 24rpx;
+}
+
+.addCartPopupWrap .chooseAttrWrap .chooseAttr .values .item.active {
+  background: #f2fdf6;
+  border: 2rpx solid currentColor;
+  color: var(--themeColor);
+}
+
+.addCartPopupWrap .totalPrice {
+  padding: 40rpx 0 30rpx;
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  color: #606881;
+}
+
+.addCartPopupWrap .totalPrice .priceWrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  color: #ff3400;
+}
+
+.addCartPopupWrap .totalPrice .priceWrap .icon {
+  font-size: 22rpx;
+  font-weight: bold;
+}
+
+.addCartPopupWrap .totalPrice .priceWrap .price {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.addCartPopupWrap .buttonActionWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.addCartPopupWrap .buttonActionWrap .button {
+  width: 228rpx;
+  height: 80rpx;
+  background-color: #ccc;
+  border-radius: 8rpx;
+  color: #fff;
+}
+
+.addCartPopupWrap .buttonActionWrap .button:last-child {
+  margin-left: 40rpx;
+  background: linear-gradient(236deg, #0eb05d 0%, #7ec14d 100%);
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/**点击效果*/
+.tapstate_mark {
+  position: relative;
+}
+
+.tapstate_mark::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.1;
+  background: #000;
+  border-radius: inherit;
+}
+
+/* 单行文本限制 */
+.one-line {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}

@@ -1,0 +1,748 @@
+// 使用默认主题色
+// @import "@assets/css/colors.less";
+
+html,
+body {
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #f6f6f6;
+    min-width: 1400px;
+    height: 100%;
+    font-size: 14px;
+    color: #333;
+}
+
+#app {
+    height: 100%;
+}
+
+.el-textarea textarea,
+.input-tips code {
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+}
+
+em {
+    font-style: normal;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+div,
+nav {
+    box-sizing: border-box;
+}
+
+.pd-safe-bottom {
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+.mb-safe-area {
+    margin-bottom: constant(safe-area-inset-bottom);
+    margin-bottom: env(safe-area-inset-bottom);
+}
+
+.flexs {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flexs-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.line-one {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.line-two {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.el-pagination {
+    justify-content: center;
+}
+
+// 风格
+.style-ui {
+    #left-aside {
+        width: 100px !important;
+
+        .second-nav {
+            transform: translate(-100%);
+        }
+    }
+
+    #app-main {
+        margin-left: 90px;
+    }
+}
+
+.white-content {
+    background: @white;
+    padding: @padding-md;
+    position: relative;
+}
+
+.el-backtop {
+    z-index: 111;
+}
+
+.white-box {
+    margin-bottom: 18px;
+    border-radius: @radius-xs;
+    padding: @padding-mdl;
+    background: @white;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.col-span__center {
+    text-align: center;
+    font-size: @font-size-lg;
+}
+
+// main页面第一块内容
+.sd-one {
+    width: 100%;
+    padding: @padding-xl @padding-lg @padding-md;
+}
+
+.si-one {
+    display: flex;
+    align-items: center;
+
+    p {
+        margin-right: @margin-md;
+    }
+
+    .el-input {
+        width: 300px;
+        flex: none;
+        margin-right: @margin-mdl;
+    }
+}
+
+.table-mb {
+    margin-bottom: @margin-lg;
+}
+
+// 搜索框-背景
+.task-one {
+    margin: 0px 0px 20px;
+    padding: @padding-mdl @padding-md 0;
+    background: #f7f8fa;
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row wrap;
+    padding-right: 100px;
+
+    .task-one__item {
+        flex: none;
+        display: flex;
+        align-items: center;
+        margin-bottom: @margin-mdl;
+    }
+
+    .el-input,
+    .el-select {
+        width: 190px;
+        flex: none;
+        margin-right: @margin-mdl;
+    }
+
+    .el-date-editor {
+        flex: none;
+        margin-right: @margin-mdl;
+    }
+
+    .task-wrap-btn {
+        width: 100%;
+        flex: none;
+        padding-left: 70px;
+        padding-bottom: @padding-mdl;
+    }
+}
+
+// 详情通用样式
+.xq-h3 {
+    text-align: center;
+    padding: @padding-mdl;
+    font-size: 22px;
+    color: #121212;
+    font-weight: 500;
+    line-height: 40px;
+}
+
+.xq-time {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.xq-content {
+    font-size: 14px;
+    line-height: 24px;
+    min-height: 300px;
+    color: #333;
+    display: inline-block;
+
+    p {
+        margin-bottom: 5px;
+
+        img {
+            width: auto;
+            object-fit: cover;
+        }
+    }
+}
+
+// 详情页列表样式
+.right-list {
+    margin-bottom: 24px;
+
+    .right-item {
+        border-bottom: 1px solid #f6f6f6;
+        padding: 10px 0px 10px 14px;
+        overflow: hidden;
+
+        &:hover {
+            background: #f8f8f8;
+        }
+
+        .right-item__title {
+            font-size: 16px;
+            color: #323233;
+            line-height: 30px;
+
+            &:hover {
+                cursor: pointer;
+                color: #111;
+            }
+        }
+
+        .right-item__desc {
+            color: #999;
+            font-size: 12px;
+            line-height: 30px;
+        }
+
+        .right-item__view {
+            width: 76px;
+            text-align: left;
+
+            i {
+                margin-right: 4px;
+            }
+        }
+    }
+}
+
+.help-right__title {
+    font-size: 14px;
+    color: #323233;
+    margin-bottom: 10px;
+}
+
+// 详情类目标题，样式： | 标题
+.help-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 16px;
+    padding: 10px 0px;
+    min-height: 40px;
+
+    &::before {
+        background-color: #4b93fa;
+        content: "";
+        width: 3px;
+        height: 14px;
+        margin-right: 8px;
+    }
+
+    span {
+        font-size: 14px;
+        line-height: 20px;
+        color: #323233;
+        font-weight: 500;
+    }
+}
+
+// 左窄右宽布局
+.help-main {
+    display: flex;
+
+    .help-left {
+        flex: none;
+        padding-right: @padding-md;
+        width: 280px;
+    }
+
+    .help-right {
+        flex: 1;
+    }
+}
+
+// 左宽右窄布局
+.nd-main {
+    display: flex;
+
+    .nd-left {
+        flex: 1;
+        padding-right: @padding-md;
+    }
+
+    .nd-right {
+        flex: none;
+        width: 280px;
+    }
+}
+
+// 操作按钮
+.operation-nav {
+    .el-button {
+        margin-right: @margin-sm;
+        line-height: 22px;
+
+        &+.el-button {
+            margin-left: 0;
+        }
+    }
+}
+
+// 表单
+.el-form {
+    .el-form-item__label {
+        line-height: 36px;
+        height: 36px;
+    }
+
+    .el-form-item__content {
+        line-height: 36px;
+
+        .el-input,
+        .el-textarea,
+        .el-date-editor--datetime .el-input__wrapper {
+            width: 340px;
+        }
+
+        .el-date-editor--timerange.el-input__wrapper {
+            flex-grow: 0;
+            width: 340px;
+        }
+    }
+
+    .el-input__inner,
+    .el-date-editor.el-input,
+    .el-input__wrapper {
+        line-height: 36px !important;
+        height: 36px !important;
+    }
+}
+
+// 表格复选框样式
+.el-table {
+    .cell {
+        padding: 0px @padding-sm;
+    }
+
+    .el-table-column--selection {
+        .cell {
+            display: flex !important;
+        }
+    }
+
+    .el-checkbox__inner {
+        width: 18px;
+        height: 18px;
+
+        &::after {
+            width: 4px;
+            height: 9px;
+            left: 6px;
+            top: 1px;
+        }
+    }
+}
+
+.table-lr {
+    display: flex;
+    align-items: flex-start;
+    overflow: hidden;
+
+    .table-lr__img {
+        width: 60px;
+        height: 60px;
+        border-radius: @radius-xs;
+        overflow: hidden;
+        flex: none;
+    }
+
+    .img-round {
+        border-radius: 50%;
+    }
+
+    .table-lr__right {
+        flex: 1;
+        padding: 2px 0px 0px;
+        margin-left: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 58px;
+        font-size: @font-size-md;
+        color: @gray-7;
+        overflow: hidden;
+
+        .lr-title {
+            color: @gray-8;
+            font-size: @font-size-lg;
+            line-height: 20px;
+            font-weight: 500;
+            flex: 1;
+        }
+
+        .lr-text {
+            font-size: @font-size-sm;
+            color: @gray-7;
+            margin-top: @margin-base;
+            line-height: 16px;
+            font-weight: 500;
+        }
+
+        .lr-user {
+            color: @gray-8;
+            font-size: @font-size-md;
+            font-weight: 500;
+            text-align: left;
+            margin-bottom: 2px;
+            line-height: 20px;
+        }
+
+        .lr-addr {
+            display: flex;
+            align-items: flex-start;
+            overflow: hidden;
+
+            .lr-addr__left {
+                flex: none;
+            }
+
+            .lr-detail {
+                flex: 1;
+            }
+        }
+
+        .lr-price {
+            font-size: 14px;
+            color: @gray-8;
+
+            em {
+                font-size: 13px;
+            }
+        }
+    }
+
+    .img-large {
+        width: 72px;
+        height: 72px;
+    }
+
+    .img-small {
+        width: 50px;
+        height: 50px;
+    }
+
+    .img-mini {
+        width: 40px;
+        height: 40px;
+    }
+
+    .large-right {
+        min-height: 72px;
+    }
+
+    .small-right {
+        min-height: 50px;
+    }
+
+    .mini-right {
+        min-height: 40px;
+    }
+}
+
+// 抽屉样式
+.el-drawer {
+    .el-drawer__header {
+        margin-bottom: 0;
+        border-bottom: @border-gray;
+        padding: 18px @padding-md;
+
+        span {
+            color: @gray-8;
+            font-size: @font-size-lg;
+        }
+    }
+
+    .el-drawer__body {
+        padding: @padding-md;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .el-drawer__close-btn {
+        outline: none;
+
+        &:hover {
+            color: @themes;
+        }
+    }
+
+    .el-drawer__footer {
+        box-shadow: -2px -2px 4px rgba(0, 0, 0, 0.05);
+    }
+}
+
+// 上传图片-查看大图样式
+.fh-box {
+    height: 600px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    .fh-img {
+        max-width: 100%;
+        margin-bottom: 10px;
+        border-radius: @radius-xs;
+        clear: both;
+        float: left;
+    }
+
+    &::-webkit-scrollbar {
+        /*滚动条整体样式*/
+        width: 6px;
+        /*高宽分别对应横竖滚动条的尺寸*/
+        height: 1px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        /*滚动条里面小方块*/
+        border-radius: 10px;
+        background: @gray-4;
+    }
+
+    &::-webkit-scrollbar-track {
+        /*滚动条里面轨道*/
+        border-radius: 10px;
+        background: #f1f1f1;
+    }
+}
+
+// 固定底部
+.foot-btn {
+    position: fixed;
+    height: 64px;
+    z-index: 111;
+    left: 252px;
+    right: 12px;
+    bottom: 0px;
+    box-shadow: rgb(240 240 240) 1px -2px 8px;
+    background: #fff;
+}
+
+// 图片样式及引用图片库显示的样式
+.img-box {
+    background-color: #fafafa;
+    width: 100px;
+    height: 100px;
+    border-radius: 6px;
+    border: 1px solid #ededed;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.img-list {
+    flex: 1;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.img-selects {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    margin-right: @margin-sm;
+    flex: none;
+
+    .img-selects__pic {
+        width: 100px;
+        height: 100px;
+        border-radius: 6px;
+        cursor: pointer;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .img-del {
+        position: absolute;
+        top: -6px;
+        right: -6px;
+        z-index: 11;
+        width: 22px;
+        height: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        overflow: hidden;
+        background-color: @themes;
+        cursor: pointer;
+    }
+}
+
+.input-tips {
+    width: 100%;
+    clear: both;
+    line-height: @line-height-xs;
+    font-size: @font-size-sm;
+    margin-top: 6px;
+    margin-bottom: 0;
+    color: #999;
+
+    code {
+        font-family: @base-font-family;
+        margin: 0 4px;
+        display: inline-block;
+        padding: 1px 5px;
+        font-size: 12px;
+        border-radius: 3px;
+        color: #5e6d82;
+        background-color: #e6effb;
+    }
+}
+
+// 组件
+.cls-flex {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.cls-center {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cls-around {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.cls-between {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cls-end {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.cls-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.cls-position {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+
+.cls-fixed {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+
+.detail-line {
+    align-items: center !important;
+}
+
+/* 全屏背景 */
+.bg-con {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    right: 0;
+}
+
+.editor-title {
+    padding: 24px 16px 12px;
+    border-bottom: 1px solid #f2f4f6;
+}
+
+.editor-title__name {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #333;
+}
+
+.editor-title__sub-text {
+    width: 100%;
+    color: #969799;
+    padding: 8px 0;
+}
+
+.img-btn-con {
+    background-color: #fff;
+    padding: 20px 16px;
+}

@@ -1,0 +1,40 @@
+<!--pages/form/form.wxml-->
+<view class="box">
+  <view class="contaners">
+    <form catchsubmit="onFormSubmit" catchreset="formReset" class="form">
+      <view style="font-weight: 600;font-size: 32rpx;color: #150B3D;margin-left: 10rpx;">Description</view>
+      <view class="weui-cell__bd" style="position: relative; ">
+        <view class="title">Feedback type</view>
+        <input disabled bind:tap="showeducational" class="weui-input" name="degree" value="{{schoolName}}" type="text" placeholder="Please Choose" placeholder-class="placeholder" bindblur="onPhoneInput" />
+        <view class="error-msg">{{phoneError}}</view>
+        <van-icon style="width: 40rpx; height: 40rpx; position:absolute; bottom: 30rpx; right: 30rpx;" name="arrow" />
+      </view>
+      <view class="weui-cell__bd">
+        <view class="title">
+          <view class="weui-cell__bd">
+            <view class="title">Project description</view>
+            <textarea adjust-position="{{true}}"  maxlength="-1" auto-height="{{true}}" class="weui-input" style="padding: 30rpx 20rpx;min-height: 200rpx;" name="content" value="{{form.content}}" placeholder="Please Enter" placeholder-class="placeholder" />
+          </view>
+        </view>
+      </view>
+      <view class="weui-cell__bd">
+        <view style="background-color: #fff; border-radius: 36rpx; padding: 20rpx 20rpx;">
+          <van-uploader image-fit="aspectFill" bind:delete="delimg" file-list="{{ fileList }}" bind:after-read="afterRead" max-count="5">
+            <view style="display: flex; align-items: center; justify-content: center; border: 1rpx dashed #9D97B5; border-radius: 36rpx; width: 620rpx; padding: 60rpx 0; margin-bottom: 20rpx;">
+              <van-icon size="40rpx" name="photo-o" />
+              <span style="color: #150A33; font-size: 24rpx; margin-left: 10rpx;">Upload Image</span>
+            </view>
+          </van-uploader>
+        </view>
+      </view>
+      <view style="margin: 78rpx auto; width: 100%; padding-bottom: 100rpx; display: flex; justify-content: space-between;">
+        <van-button bind:tap="goinfo"  type="primary" color="#2623D1" style="width: 45%; " block>History</van-button>
+        <van-button formType="submit" type="primary" color="#2623D1" style="width: 45%;" block> Submit</van-button>
+      </view>
+    </form>
+  </view>
+
+  <van-popup show="{{ showeducational }}" bind:close="onClose" position="bottom">
+    <van-picker confirm-button-text="confirm" cancel-button-text="cancel" columns="{{ columns }}" default-index="{{ 1 }}" bind:cancel="onClose" bind:confirm="onConfirm1" show-toolbar title="" />
+  </van-popup>
+</view>

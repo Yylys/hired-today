@@ -1,0 +1,287 @@
+
+
+.scroll-views{
+  white-space: nowrap;
+}
+.scroll-view{ 
+  //  height: 75vh; /* 设置 scroll-view 的高度 */
+}
+.container {
+  position: fixed; /* 使用固定定位 */
+  top: 0; /* 距离顶部为 0 */
+  left: 0; /* 距离左边为 0 */
+  right: 0; /* 距离右边为 0 */
+  z-index: 1000; /* 设置一个较高的 z-index 值，确保在其他内容之上 */
+}
+
+.menu-item {
+  display: inline-block;
+  // padding: 10px 20px;
+  margin: 5px 10px;
+  /* background-color: pink; */
+  border-radius: 15px;
+  text-align: center;
+}
+
+.cate_warp {
+  overflow: hidden;
+  // padding: 20rpx;
+  padding-top: 0;
+  // padding-bottom: 10rpx;
+  position: sticky;
+  top: 0;
+  right: 0;
+  left: 0;
+  // z-index: 9999;
+  // background: #ffffff;
+}
+
+
+
+.cate_warp .cate_name {
+  margin-top: 8rpx;
+  font-size: 28rpx;
+  font-weight: normal;
+  background: #efeef1;
+  border-radius: 16rpx;
+  padding: 16rpx 26rpx;
+  color:#4B4F6B;
+}
+
+.cate_warp .cate_name_active {
+  font-weight: normal;
+  // background: linear-gradient(90deg, #0AA19A 0%, #87C24C 100%);
+  background-color: #2623D1;
+  border-radius: 16rpx;
+  padding: 16rpx 26rpx;
+  margin-top: 8rpx;
+  font-size: 28rpx;
+  color: #fff;
+}
+
+.cate_warp .scroll-view_H {
+  white-space: nowrap;
+}
+
+.cate_warp .scroll-view_H .item2 {
+  width: 300rpx;
+  margin-right: 60rpx;
+  text-align: center;
+}
+
+.item11 {
+  // margin-right: 26rpx;
+  /* margin-bottom: 20rpx; */
+  // padding: 20rpx 0rpx 0rpx 0rpx;
+  // background: #ffffff;
+  // border-radius: 20rpx;
+}
+
+.item {
+  position: relative;
+  padding: 22rpx;
+  background: #ffffff;
+}
+
+.item .libm_btn {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border-radius: 16rpx;
+  font-size: 28rpx;
+  width: 168rpx;
+  height: 66rpx;
+  color: #fff;
+  background: linear-gradient(270deg, #0AA19A 0%, #10CEC5 100%);
+}
+
+
+.item .title {
+  margin-top: 20rpx;
+  font-size: 32rpx;
+  font-weight: 700;
+}
+
+.item .desc {
+  margin: 20rpx 0;
+  color: #606881;
+}
+
+.item .price_price {
+  font-size: 32rpx;
+  color: #eb4a14;
+  font-weight: 600;
+}
+
+.item .img_warp {
+  position: relative;
+}
+
+.item .img_warp .state_tag {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 108rpx;
+  height: 48rpx;
+  background: rgba(0, 0, 0, 0.24);
+  border-radius: 16rpx 0rpx 16rpx 0rpx;
+  color: #ffffff;
+  font-size: 24rpx;
+}
+
+/*隐藏滚动条*/
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.irregular-button {
+  font-size: 28rpx;
+  width: 208rpx;
+  /* 按钮宽度 */
+  height: 80rpx;
+  /* 按钮高度 */
+  padding: 5rpx 0 0 25rpx;
+  background: linear-gradient(270deg, #0AA19A 0%, #10CEC5 100%);
+  color: white;
+  /* 文本颜色 */
+  border: none;
+  /* 移除边框 */
+  border-radius: 20prx;
+  outline: none;
+  /* 移除点击时的外边框 */
+  cursor: pointer;
+  /* 鼠标悬停时显示手型光标 */
+  clip-path: polygon(25% 0%, 100% 0%, 100% 100%, -5% 100%);
+  /* 定义不规则形状 */
+}
+.box2{
+  display: flex;
+  align-items: center; /* 垂直居中 */
+  justify-content: flex-end; /* 水平居中（可选） */
+  padding-right: 40rpx ;
+  color: #FFFFFF;
+  position: absolute;
+  text-align: right;
+  font-size: 24rpx;
+  right: 0rpx;
+  top: 0rpx;
+  // z-index: 9999;
+  width: 300rpx;
+  min-height: 100%-1rpx;
+  background-color:#150A33;
+  border-radius: 0rpx 68rpx 68rpx 0rpx;
+}
+.box {
+  // margin: 20rpx 0;
+  display: flex;
+  flex-wrap: wrap;
+  background: #FFFFFF;
+  // background-color: orange;
+  border-radius: 60rpx;
+
+  .card {
+    // position: absolute;
+    width: 720rpx;
+    border-radius: 60rpx;
+    // padding: 20rpx auto 0rpx;
+    // height: 90%;
+    .top {
+      padding: 24rpx;
+      display: flex;
+      justify-content: space-between;
+    }
+    .cens {
+      margin: 0 16rpx;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      .list {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+
+    .btm {
+      margin: 0 16rpx;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .left {
+        .avatar-stack {
+          position: relative;
+          width: 200rpx;
+          /* 根据需要调整宽度 */
+          height: 55rpx;
+          /* 根据需要调整高度 */
+        }
+
+        .avatar {
+          width: 48rpx;
+          /* 根据需要调整头像宽度 */
+          height: 48rpx;
+          /* 根据需要调整头像高度 */
+          border-radius: 50%;
+          /* 圆形头像 */
+          position: absolute;
+        }
+
+        .avatar:nth-child(1) {
+          z-index: 1;
+          /* 最上面的头像 */
+          left: 0;
+        }
+
+        .avatar:nth-child(2) {
+          z-index: 2;
+          left: 20rpx;
+          /* 调整位置 */
+        }
+
+        .avatar:nth-child(3) {
+          z-index: 3;
+          left: 40rpx;
+          /* 调整位置 */
+        }
+
+        .avatar:nth-child(4) {
+          z-index: 3;
+          left: 60rpx;
+          /* 调整位置 */
+        }
+
+        .avatar:nth-child(5) {
+          z-index: 5;
+          /* 最下面的头像 */
+          left: 80rpx;
+          /* 调整位置 */
+        }
+      }
+
+      .right {
+        // flex: 1;
+        padding-right: 30rpx;
+      }
+    }
+  }
+}
+
+.van-swipe-cell {}
+
+
+.van-swipe-cell__right {
+  display: flex;
+  align-items: center;
+  /* 垂直居中 */
+  justify-content: center;
+  /* 水平居中 */
+  height: 100%;
+  /* 确保高度一致 */
+  border-radius: 0 60rpx 60rpx 0 ;
+  // background-color: orange;
+  width: 180rpx;
+  // position: absolute;
+  // right: 0;
+}
+

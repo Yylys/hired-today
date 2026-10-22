@@ -1,0 +1,8 @@
+{
+
+  "navigationBarTitleText": "Job list",
+  "usingComponents": {
+    "jobcard": "/components/jobcard/index",
+    "van-button": "@vant/weapp/button/index"
+  }
+}

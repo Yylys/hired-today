@@ -1,0 +1,24 @@
+<!--pages/Interview_Feedback/Interview_Feedback.wxml-->
+<view class="box">
+  <view class="contaners">
+    <form catchsubmit="onFormSubmit" catchreset="formReset" class="form">
+      <view class="weui-cell__bd"  style="position: relative;">
+        <view class="title">Progress Feedback <span class="icon">*</span></view>
+        <input disabled bind:tap="showexperience" class="weui-input" name="work" value="{{interviewname}}" type="text" placeholder="Please Choose" placeholder-class="placeholder" bindblur="onPhoneInput" />
+        <van-icon style="width: 40rpx; height: 40rpx; position:absolute; bottom: 30rpx; right: 30rpx;" name="arrow-down" />
+      </view>
+      <view class="weui-cell__bd">
+        <view class="title">Feedback Details <span class="icon">*</span></view>
+        <textarea adjust-position="{{true}}" auto-height="{{true}}" value="{{form.content}}" class="weui-input" maxlength="-1" style="padding: 30rpx 20rpx;min-height: 200rpx;" bindinput="handleInputChange" name="need" type="text" placeholder="Please Enter content"></textarea>
+      </view>
+      <view style="margin: 78rpx auto; width: 60%; padding-bottom: 100rpx;">
+        <van-button formType="submit" type="primary" color="#2623D1" block>Submit</van-button>
+      </view>
+    </form>
+  </view>
+
+  <van-popup show="{{ showexperience }}" bind:close="onClose" position="bottom">
+    <van-picker confirm-button-text="confirm" cancel-button-text="cancel" columns="{{ columns }}" value-key="name" default-index="{{ item.type }}" bind:cancel="onClose" bind:confirm="onConfirm" show-toolbar title="" />
+  </van-popup>
+
+</view>

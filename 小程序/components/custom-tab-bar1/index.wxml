@@ -1,0 +1,11 @@
+<view wx:if="{{showTabBar}}" class="custom-tab-bar">
+  <view wx:for="{{list}}" wx:key="{{index}}" class="tab-item {{currentTab === index ? 'active' : ''}}" data-index="{{index}}" data-path='/pages/Enterprise/Enterprise' bindtap="switchTab">
+  <view style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 104rpx;">
+    <image style="width: 48rpx; height: 48rpx;" src="{{currentTab === index ? item.url : item.acturl}}"></image>
+    <text>{{item.name}}</text>
+  </view>
+  </view>
+  <view wx:if="{{num!=0}}" class="badge">
+    <text>{{num}}</text>
+  </view>
+</view>

@@ -1,0 +1,20 @@
+{
+  "navigationStyle": "custom",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "custom-tab-bar": "/components/custom-tab-bar/index",
+    "post": "/components/index/post/index",
+    "plaza": "/pages/qz_index/plaza/index",
+    "notification": "/components/index/notification/index",
+    "personal": "/components/index/personal/index",
+    "custom-header": "/components/header-tab/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "van-search": "@vant/weapp/search/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "jobcard": "/components/jobcard/index",
+    "job_coll": "/components/job_coll/index",
+    "mess_card": "/components/mess_card/index"
+  }
+}

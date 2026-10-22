@@ -1,0 +1,15 @@
+.empty_warp {
+  text-align: center;
+}
+
+.img_empty {
+  margin-top: 100rpx;
+  width: 450rpx;
+  height: 450rpx;
+}
+
+.empey_text {
+  font-size: 26rpx;
+  margin-top: 26rpx;
+  color: #6b6a6a;
+}

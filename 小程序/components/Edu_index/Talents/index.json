@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "custom-header": "/components/header-tab/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "card": "/components/Edu_card/card"
+  }
+}

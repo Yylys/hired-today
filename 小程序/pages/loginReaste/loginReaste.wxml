@@ -1,0 +1,47 @@
+<!--pages/login/login.wxml-->
+<view class="bac" style=" background-image: url(/static/imgs/bac.jpg);">
+  <!-- 头部图片 -->
+  <view style="width: 100%;">
+    <image class="logo_icon" src='/static/imgs/log.jpg' mode="aspectFit"></image>
+  </view>
+  <!-- 注册 -->
+  <view class="login">
+    <view class="containers">
+      <radio-group bindchange="radioChange" class="radio-group">
+        <label class="radio-label">
+          <span>Job seeker</span>
+          <radio value="3-015a13c88c5911efb1ce0242a4151c0b" class="radio" color="#2522D1" />
+        </label>
+        <label class="radio-label">
+          <span>Employer</span>
+          <radio value="4-015a14418c5911efb1ce0242a4151c0b" class="radio" color="#2522D1" />
+        </label>
+        <label class="radio-label">
+          <span>Headhunter</span>
+          <radio value="5-015a14a78c5911efb1ce0242a4151c0b" class="radio" color="#2522D1" />
+        </label>
+      </radio-group>
+    </view>
+    <view class="cen">
+      <form catchsubmit="onFormSubmit" catchreset="formReset" class="form">
+        <!-- <view class="box">
+          <input name="nickName" value="{{form.nickName}}" class="ipts" placeholder-style='font-size:14px;' placeholder='Please Enter your name'></input>
+        </view> -->
+        <view class="box">
+          <input name="userName" value="{{form.userName}}" class="ipts" placeholder-style='font-size:14px;' placeholder='Please input username'></input>
+        </view>
+        <view class="box">
+          <input name="password" value="{{form.password}}" class="ipts" placeholder-style='font-size:14px;' placeholder='Please input password'></input>
+        </view>
+        <view class="box">
+          <input name="checkpass" value="{{form.checkpass}}" class="ipts" placeholder-style='font-size:14px;' placeholder='Confirm password again'></input>
+        </view>
+        <view class="box" style="margin-top: 60rpx;">
+          <!-- <button class="btn"  bind:tap="login">register</button> -->
+          <van-button class="btn" formType="submit" type="primary" color="#2522D1" block round>Reset</van-button>
+        </view>
+      </form>
+    </view>
+  </view>
+
+</view>

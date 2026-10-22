@@ -1,0 +1,40 @@
+/* components/card/index.wxss */
+.box {
+  margin: 20rpx;
+  display: flex;
+  flex-wrap: wrap;
+  background: #FFFFFF;
+  border-radius: 36rpx 36rpx 36rpx 36rpx;
+}
+.box .card {
+  width: 702rpx;
+  margin: 20rpx auto 0;
+}
+.box .card .top {
+  padding: 24rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.box .card .cens {
+  margin: 0 16rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.box .card .cens .list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.box .card .btm {
+  width: 650rpx;
+  padding-bottom: 20rpx;
+  margin: 20rpx auto 0;
+  font-family: DM Sans, DM Sans;
+  font-weight: 400;
+  font-size: 28rpx;
+  color: #524B6B;
+  line-height: 40rpx;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+}

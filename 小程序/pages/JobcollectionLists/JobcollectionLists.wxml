@@ -1,0 +1,7 @@
+<view>
+  <scroll-view class="post_scroll-view" scroll-y="true">
+      <paging reqUrl="/v1/job/page"  params='{{params2}}' immediatecheck="{{false}}" pagingRefField="post" filed="list2">
+        <jobcard list="{{list2}}"></jobcard>
+      </paging>
+    </scroll-view>
+</view>

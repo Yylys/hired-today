@@ -1,0 +1,50 @@
+<view>
+  <!-- 骨架屏 -->
+  <!-- <view slot="loading"  wx:if="{{loading}}"> -->
+  <view slot="loading" wx:if="{{loading}}">
+    <!-- <view class="skeleton">
+          <view class="skeleton-item" wx:for="{{3}}"></view>
+        </view> -->
+    <view class="skeleton-card" wx:for="{{3}}">
+      <view class="skeleton-image"></view>
+      <view class="skeleton-title"></view>
+      <view class="skeleton-price"></view>
+    </view>
+  </view>
+  <view class="s_paging">
+    <slot></slot>
+
+    <view class="load_status_c">
+
+      <!--loading-->
+      <block wx:if="{{ !finished && (loading||!empty) && initLoaded}}">
+        <!--loading插槽-->
+        <view class="loadingSlot">
+          <slot name="loading"></slot>
+        </view>
+        <!--插槽默认值-->
+        <view class="loadingDefault">
+          <t-loading theme="circular" size="40rpx" loading />
+        </view>
+      </block>
+      <!--empty-->
+      <!-- {{loading}}{{empty}} -->
+      <block wx:if="{{!loading && empty }}">
+        <!--empty插槽-->
+        <view class="emptySlot">
+          <slot name="empty"></slot>
+        </view>
+        <!--empty默认值-->
+        <view class="emptyDefault">
+          <image src="{{ emptyImage }}" class="empty_img" />
+          <view class="des">{{emptyText}}</view>
+        </view>
+      </block>
+      <view wx:if="{{ !loading && finished && !empty && showNoMoreTip}}" class="no_more">
+        <view class="line left"></view>
+        <view class="text">{{noMoreText}}</view>
+        <view class="line right"></view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,5 @@
+<!--pages/Messagedetail/Messagedetail.wxml-->
+<view style="width: 95%; margin:0 auto;">
+<view style="font-weight: 600;">{{info.title}}</view>
+<view style="font-size:28rpx">{{info.content}}</view>
+</view>

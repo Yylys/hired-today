@@ -1,0 +1,115 @@
+<view>
+  <view>
+    <van-tabs animated sticky color='#2623D1' title-active-color='#2623D1' title-inactive-color='#150B3D' active="{{ active }}" bind:change="onChange">
+      <van-tab title="Favorites">
+        <view class="cate_warp">
+          <scroll-view class="scroll-view" scroll-y="true">
+              <paging reqUrl="/v1/resume/my-job"  immediatecheck="{{false}}" pagingRefField="paging">
+                <view  style="width: 95%; margin:20rpx auto ;">
+                    <view class="box" wx:for="{{list}}" style="margin-bottom: 20rpx;">
+                      <view class="card" bind:tap="goinfo" data-path="/pages/cardinfo/cardinfo" data-sid="{{item.sid}}">
+                        <view class="top">
+                          <view style="display: flex;">
+                            <view style="width: 84rpx; height: 84rpx; margin-right: 16rpx">
+                            <image style="width: 84rpx; height: 84rpx;  border-radius: 20rpx" src="{{imgurl + item.publish.avatar}}" mode="aspectFill" />
+                            </view>
+                            <view>
+                              <view class="text_ellipsis" style="font-weight: 700;font-size:28rpx;margin-bottom:12rpx ; max-width: 420rpx;">{{item.jobName}}</view>
+                              <view style="font-weight: 400;font-size:24rpx">{{item.address}}</view>
+                            </view>
+                          </view>
+                          <view wx:if="{{item.publishType==1 && item.urgent==1}}" style="height: 40rpx;padding: 10rpx 16rpx; line-height: 40rpx; background-color:#E3E3FF; color: #2623D1; border-radius: 8rpx; font-size: 24rpx; ">Headhunter</view>
+                          <view wx:if="{{(item.publishType==1 && item.urgent==0) || item.urgent==0}}" style="height: 40rpx; line-height: 40rpx;padding: 10rpx 16rpx; background-color:#FFEDED; color: #D12323; border-radius: 8rpx; font-size: 24rpx; ">Urgent</view>
+                        </view>
+                        <view class="cens">
+                          <view class="list">
+                            <view wx:for="{{item.showTag}}" style="background: #F5F4F6;border-radius: 8rpx 8rpx 8rpx 8rpx; padding: 10rpx 12rpx; font-size: 24rpx;margin-right: 30rpx; margin-top: 10rpx ;">{{item.memberName}}</view>
+                          </view>
+                          <!-- <view wx:if="{{item.recruiter==0}}" style="display: flex; align-items: center; margin-right: 20rpx;">
+                            <image style="width: 24rpx; height: 24rpx;" src="/static/imgs/money.jpg" mode="aspectFill" />
+                            <span style="color:#2623D1;font-size:28rpx">￥128</span>
+                          </view> -->
+                        </view>
+                        <!-- 线条 -->
+                        <view style="width: 670rpx;height: 2rpx; background-color: #E4E7ED; margin: 20rpx;"></view>
+                        <view class="btm">
+                          <view class="left">
+                            <view class="avatar-stack" wx:if="{{item.userList.length>0}}">
+                              <image wx:for="{{item.userList}}" class="avatar" src="{{imgurl + item.avatar}}"></image>
+                            </view>
+                            <view style="font-size:24rpx ;color:#808289 ;margin: 16rpx 0;">{{item.cnt || 0}} Applicants</view>
+                          </view>
+                          <view class="right" style="margin-bottom: 10rpx;">
+                    <span style="font-size:36rpx;color:#2623d1;font-weight:600;white-space: nowrap;">￥{{item.minSalary/1000}}K-￥{{item.maxSalary/1000}}K</span>
+                            <span style="font-size:24rpx;color: #808289;font-weight:400">/Month</span>
+                          </view>
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+            </paging>
+          </scroll-view>
+        </view>
+      </van-tab>
+      <van-tab title="Submitted">
+        <view class="cate_warp">
+          <scroll-view scroll-x="true" class="scroll-views" scroll-into-view="{{scrollIntoView}}" scroll-with-animation="true">
+            <view class="menu-item" wx:for="{{CateList}}" wx:key="index" id="item-{{index}}" data-index="{{item.id}}" data-acid="{{item.id}}" bindtap="onCateItem">
+              <view class="item11">
+                <view class="{{actives==item.id?'cate_name_active':'cate_name'}}">{{item.name}}</view>
+              </view>
+            </view>
+          </scroll-view>
+          <scroll-view class="scroll-view" scroll-y="true">
+            <paging reqUrl="/v1/resume/my-delivery-job" params='{{params1}}' immediatecheck="{{true}}" pagingRefField="delivery" filed="list2">
+                  <!--components/card/index.wxml-->
+                  <view style="padding-bottom: 100rpx;">
+                    <view class="box" style="margin:20rpx 20rpx;" wx:for="{{list2}}">
+                      <view class="card" bind:tap="goinfo" data-path="/pages/Jobrecordinfo/Jobrecordinfo" data-sid="{{item.sid}}">
+                        <view class="top">
+                          <view style="display: flex;">
+                            <view style="width: 84rpx; height: 84rpx; margin-right: 16rpx">
+                            <image style="width: 84rpx; height: 84rpx; border-radius: 20rpx;" src="{{imgurl + item.publish.avatar}}" mode="aspectFill" />
+                            </view>
+                            <view>
+                              <view style="font-weight: 700;font-size:28rpx;margin-bottom:12rpx ;">{{item.jobName}}</view>
+                              <view style="font-weight: 400;font-size:24rpx">{{item.address}}</view>
+                            </view>
+                          </view>
+                          <view wx:if="{{item.feedbackType==3}}" style="height: 40rpx;padding: 10rpx 16rpx; background-color:#E3E3FF; line-height: 40rpx; color: #2623D1; border-radius: 8rpx; font-size: 24rpx; ">Pass</view>
+                          <view wx:if="{{item.feedbackType==2  ||  item.feedbackType==4}}" style="height: 40rpx; line-height: 40rpx; padding: 10rpx 16rpx; background-color:#E3E3FF; color: #2623D1; border-radius: 8rpx; font-size: 24rpx; ">Interview</view>
+                          <view wx:if="{{item.feedbackType==1 }}" style="height: 40rpx; line-height: 40rpx;padding: 10rpx 16rpx; background-color:#E3E3FF; color: #2623D1; border-radius: 8rpx; font-size: 24rpx; ">Reject</view>
+                        </view>
+                        <view class="cens">
+                          <view class="list">
+                            <view wx:for="{{item.showTag}}" style="background: #F5F4F6;border-radius: 8rpx 8rpx 8rpx 8rpx; padding: 10rpx 12rpx; font-size: 24rpx;margin-right: 30rpx; margin-top: 10rpx ;">{{item.memberName}}</view>
+                          </view>
+                          <!-- <view wx:if="{{item.recruiter==0}}" style="display: flex; align-items: center; margin-right: 20rpx;">
+                            <image style="width: 24rpx; height: 24rpx;" src="/static/imgs/money.jpg" mode="aspectFill" />
+                            <span style="color:#2623D1;font-size:28rpx">￥128</span>
+                          </view> -->
+                        </view>
+                        <!-- 线条 -->
+                        <view style="width: 670rpx;height: 2rpx; background-color: #E4E7ED; margin: 20rpx;"></view>
+                        <view class="btm">
+                          <view class="left">
+                            <view class="avatar-stack" wx:if="{{item.userList.length>0}}">
+                              <image wx:for="{{item.userList}}" class="avatar" src="{{imgurl + item.avatar}}"></image>
+                            </view>
+                            <view style="font-size:24rpx ;color:#808289 ;margin: 16rpx 0;">{{item.userList.length}} Applicants</view>
+                          </view>
+                          <view class="right" style="margin-bottom: 10rpx;">
+                    <span style="font-size:36rpx;color:#2623d1;font-weight:600;white-space: nowrap;">￥{{item.minSalary/1000}}K-￥{{item.maxSalary/1000}}K</span>
+                            <span style="font-size:24rpx;color: #808289;font-weight:400">/Month</span>
+                          </view>
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </paging>
+          </scroll-view>
+        </view>
+      </van-tab>
+    </van-tabs>
+  </view>
+</view>

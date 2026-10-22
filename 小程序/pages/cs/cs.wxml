@@ -1,0 +1,101 @@
+<view class="page">
+  <view class="content">
+    <!-- 页面内容 -->
+    <!--components/index/me/me.wxml-->
+    <view wx:if="{{currentTab==0}}">
+      <!-- 顶部背景 -->
+      <image class="post_img" style="width: 100%;" src="/static/imgs/bac1.jpg" mode="aspectFill" />
+      <!-- 定位搜索框 -->
+      <view class="post_top">
+        <view bindtap="setCity" style="color:#FFFFFF;margin: 10rpx 0rpx; display: flex; align-items: center;">
+          <image style="width: 30rpx; height: 30rpx; margin-right: 12rpx;" src="/static/imgs/address.jpg" mode="aspectFill" />
+          <span style="margin-right: 12rpx;">{{askname ? askname : "Please select"}}</span>
+          <van-icon name="arrow-down" />
+        </view>
+        <view>
+          <van-search custom-class="post_search" disabled bind:tap="gosearch" background="none" style="padding: 0;" placeholder="Search by Job Position/Company Name" />
+        </view>
+      </view>
+      <!-- 底部内容展示 -->
+      <view class="post_btm">
+        <van-tabs sticky animated offset-top="356rpx" color='#2623D1' title-active-color='#2623D1' title-inactive-color='#150B3D' active="{{ post_active }}" bind:change="Changepost">
+          <van-tab wx:for="{{titles}}" title="{{item}}" name="{{index}}">
+            <view wx:if="{{post_active === index}}">
+              <scroll-view class="post_scroll-view" scroll-y="true">
+                <paging reqUrl="/v1/job/page" params='{{params2}}' immediatecheck="{{false}}" pagingRefField="post" filed="list2">
+                  <jobcard list="{{list2}}"></jobcard>
+                </paging>
+              </scroll-view>
+            </view>
+          </van-tab>
+        </van-tabs>
+      </view>
+    </view>
+    <view wx:if="{{currentTab==1}}">
+      <custom-header title="Plaza"></custom-header>
+      <view style="margin: {{topHeight}}px 0;">
+        <!-- <van-tabs animated color='#2623D1' title-active-color='#2623D1' title-inactive-color='#150B3D' active="{{ active }}" bind:change="onChange">
+          <van-tab title="Events"> -->
+            <view class="cate_warp">
+              <scroll-view scroll-x="true" class="scroll-views" scroll-into-view="{{scrollIntoView}}" scroll-with-animation="true">
+                <view class="menu-item" wx:for="{{CateList}}" wx:key="index" id="item-{{index}}" data-index="{{index}}" data-sid="{{item.sid}}" bindtap="onCateItem">
+                  <view class="item11">
+                    <view class="{{actives==index?'cate_name_active':'cate_name'}}">{{item.memberName}}</view>
+                  </view>
+                </view>
+              </scroll-view>
+              <scroll-view style="height: {{contentHeight}}px;" scroll-y="true">
+                <paging reqUrl="/v1/activity/mini" params="{{params1}}" immediatecheck="{{false}}" pagingRefField="paging">
+                  <!--components/card/index.wxml-->
+                  <view class="boxs">
+                    <view class="card" wx:for="{{list}}" bind:tap="goinfo" data-path="/pages/plazainfo/plazainfo" data-sid="{{item.sid}}">
+                      <!-- 上层 -->
+                      <view style="display: flex; padding: 20rpx;">
+                        <!-- 左册 -->
+                        <view>
+                          <image class="img" src="{{imgurl+item.posters.cover}}" alt="" />
+                        </view>
+                        <!-- 右侧 -->
+                        <view>
+                          <view style="display: flex;">
+                            <view class="text2" style="width: 238rpx;height: 80rpx; margin-right: 5rpx; font-weight: 700;">
+                              <span class="line-clamp-2" style="font-size: 28rpx;"> {{item.title}}</span>
+                            </view>
+                            <view wx:if="{{item.activityStatus==1}}" class="text">Upcoming</view>
+                            <view wx:if="{{item.activityStatus==2}}" class="text">Signing up</view>
+                            <view wx:if="{{item.activityStatus==3}}" class="text">In progress</view>
+                            <view wx:if="{{item.activityStatus==4}}" class="text">Closed</view>
+                          </view>
+                          <view style="width: 354rpx; font-size: 24rpx;margin-top: 12rpx;" class="text2">{{item.description}}</view>
+                        </view>
+                      </view>
+                      <!-- 下层 -->
+                      <view style="display: flex; justify-content: space-between; align-items: center; padding: 0 0rpx 0 20rpx">
+                        <view class="time">Ends on {{item.endTime}}</view>
+                        <view wx:if="{{item.fee!=0}}" class='money'>￥{{item.fee/100}}<span style="color:#AAA6B9">/Per</span></view>
+                        <view wx:else="" class='money'>Free</view>
+                      </view>
+                    </view>
+                  </view>
+                </paging>
+              </scroll-view>
+            </view>
+
+      </view>
+    </view>
+    <view wx:if="{{currentTab==2}}">
+      <custom-header title="Notifications" type="item-dynamic"></custom-header>
+      <view>
+        <scroll-view style="margin: {{topHeight}}px 0; padding-bottom: 100rpx;" scroll-y="true">
+          <paging reqUrl="/v1/message" immediatecheck="{{false}}" pagingRefField="notification" filed="list3">
+            <mess_card list="{{list3}}"  bind:callParent="upmessage"></mess_card>
+          </paging>
+        </scroll-view>
+      </view>
+    </view>
+    <personal infos="{{userinfos}}" wx:if="{{currentTab==3}}" />
+  </view>
+  <!-- 自定义 TabBar -->
+  <custom-tab-bar showTabBar="{{true}}"  num="{{num}}" currentTab="{{currentTab}}" bind:switchTab="handleTabChange" />
+  <!-- <custom-tab-bar bind:switchTab="handleTabChange" /> -->
+</view>

@@ -1,0 +1,118 @@
+<view>
+  <view>
+    <van-tabs sticky animated color='#2623D1' title-active-color='#2623D1' title-inactive-color='#150B3D' active="{{ active }}" bind:change="onChange">
+      <van-tab title="Talent Pool">
+        <view class="cate_warp">
+          <scroll-view scroll-x="true" class="scroll-views" scroll-into-view="{{scrollIntoView}}" scroll-with-animation="true">
+            <view class="menu-item" wx:for="{{CateList}}" wx:key="index" id="item-{{index}}" data-index="{{index}}" data-sid="{{item.type}}" bindtap="onCateItem">
+              <view class="item11">
+                <view class="{{actives==index?'cate_name_active':'cate_name'}}">{{item.name}}</view>
+              </view>
+            </view>
+          </scroll-view>
+          <scroll-view style="height: {{contentHeight}}px;" scroll-y="true" style="margin-bottom: 150rpx;">
+            <paging reqUrl="/v1/candidate" params="{{params1}}" immediatecheck="{{false}}" pagingRefField="paging1">
+              <!--components/card/index.wxml-->
+              <view class="boxs">
+                <view class="cards" wx:for="{{list}}" bind:tap="goinfo" data-path="/pages/rec_myresume/rec_myresume" data-sid="{{item.sid}}" data-type="1">
+                  <view style="display: flex; justify-content: space-between; align-items: center;">
+                    <view style="display: flex; align-items: center; margin-left: 20rpx;">
+                      <image style="width: 85rpx;height: 85rpx; border-radius: 50%;" src="{{imgurl + item.avatar}}" mode="aspectFill" />
+                      <view class="top">
+                        <view class="title">{{item.fullName}}
+                          <image wx:if="{{item.sex==0}}" style="width: 26rpx;height: 26rpx;" src="/static/imgs/detail/man.jpg" mode="aspectFill" />
+                          <image wx:if="{{item.sex==1}}" style="width: 26rpx;height: 26rpx;" src="/static/imgs/detail/woman.jpg" mode="aspectFill" />
+                        </view>
+                        <view class="nth .line_ellipsis">{{item.age}} years old</view>
+                      </view>
+                    </view>
+                    <view wx:if="{{item.time}}" class="left" style="margin-right: 10rpx;">{{item.time}}</view>
+                  </view>
+                  <view wx:if="{{item.recruiter==0}}" style="margin-right: 0rpx;">
+                    <view style="display: flex; align-items: center; margin-right: 20rpx;">
+                      <image style="width: 24rpx; height: 24rpx;" src="/static/imgs/money.jpg" mode="aspectFill" />
+                      <span style="color:#2623D1;font-size:28rpx">￥{{item.recruiterPrice}}</span>
+                    </view>
+                  </view>
+                  <view style="height: 40rpx;padding: 5rpx 16rpx; background-color:#E3E3FF; color: #2623D1; font-size: 24rpx;position: absolute; top: 0; right: 0; border-radius: 0px 14px 0px 14px; ">Headhunter</view>
+                </view>
+              </view>
+            </paging>
+          </scroll-view>
+
+        </view>
+
+      </van-tab>
+      <van-tab title="Job Pool">
+        <view class="cate_warp">
+          <scroll-view scroll-x="true" class="scroll-views" scroll-into-view="{{scrollIntoView}}" scroll-with-animation="true">
+            <view class="menu-item" wx:for="{{CateList1}}" wx:key="index" id="item-{{index}}" data-index="{{index}}" data-sid="{{item.type}}" bindtap="onCateItem1">
+              <view class="item11">
+                <view class="{{actives1==index?'cate_name_active':'cate_name'}}">{{item.name}}</view>
+              </view>
+            </view>
+          </scroll-view>
+          <scroll-view style="height: {{contentHeight}}px;" scroll-y="true" style="margin-bottom: 150rpx;">
+            <paging reqUrl="/v1/job/page"  params="{{params2}}" immediatecheck="{{false}}" pagingRefField="paging2" filed="list2">
+              <!--components/card/index.wxml-->
+              <view style="padding-bottom: 100rpx; margin:0 20rpx;">
+                <view wx:for="{{list2}}" style="position: relative; margin: 20rpx 0;">
+                  <view class="box2">Remove</view>
+                  <van-swipe-cell bind:click='dellist' right-width="{{80}}" data-sid="{{item.sid}}" bind:close="closebox" bind:open="openbox">
+                    <view class="boxs" style="border-radius: 30rpx; overflow: hidden;">
+                      <van-cell-group>
+                        <view class="cards1" id="card">
+                          <view class="card">
+                            <view style="display: flex; justify-content: space-between;">
+                              <view class="tit">{{item.jobName}}</view>
+                              <view class="money">￥{{item.minSalary/1000}}K-￥{{item.maxSalary/1000}}K</view>
+                            </view>
+                            <view class="tit1">Recruiting {{item.recruitsCount}} people <span>· {{item.address}}</span></view>
+                            <view style="display: flex; flex-wrap: wrap; margin: 10rpx 0;">
+                              <span class="tag" wx:for="{{item.showTag}}">{{item.memberName}}</span>
+                            </view>
+                            <!-- 线条 -->
+                            <view style="background-color: #E4E7ED; height: 1rpx ;width: 100%; margin:0 auto;"></view>
+                            <view class="tit1">{{item.content}}</view>
+                          </view>
+                          <view wx:if="{{actives1==1}}" style="display: flex; align-items: center; justify-content: space-between; margin:10rpx 20rpx ;">
+                            <view class="btn" bind:tap="setJobstatus" data-sid="{{item.sid}}">
+                              <image style="width: 30rpx ; height: 30rpx; margin-right: 10rpx ;" src="/static/imgs/down.jpg" mode="aspectFill" />Closed
+                            </view>
+                            <view class="tit2" bind:tap="goinfo" data-path="/pages/edu_Received/edu_Received" data-sid="{{item.sid}}"><span>Received resume</span>
+                              <van-icon name="arrow" />
+                            </view>
+                          </view>
+                          <view wx:if="{{actives1==2}}" style="display: flex; align-items: center; justify-content: space-between; margin:10rpx 0 ;">
+                            <view></view>
+                            <view class="btn" style="margin-right: 40rpx;" data-path="/pages/New_Positions/New_Positions" bind:tap="goinfo" data-sid="{{item.sid}}">
+                              <van-icon style="width: 40rpx ; height: 40rpx;" name="edit" />
+                              Re-edit
+                            </view>
+                          </view>
+                        </view>
+                      </van-cell-group>
+                    </view>
+                    <!-- <view slot="right" class="van-swipe-cell__right">删除</view> -->
+                  </van-swipe-cell>
+                </view>
+              </view>
+            </paging>
+          </scroll-view>
+        </view>
+      </van-tab>
+    </van-tabs>
+  </view>
+  <view wx:if="{{active==0}}" style="display: flex; justify-content:space-around; position: fixed; bottom: 0; width: 100%; background-color: #fff; padding: 30rpx 0;">
+    <van-button bind:tap="goinfo" data-path="/pages/rec_myresume/rec_myresume" style="width: 40%;" block plain color="#2623D1" type="primary">ADDTALENT</van-button>
+    <van-button open-type="getUserInfo" bindgetuserinfo="getUserInfo" style="width: 40%;" block color="#2623D1" type="info">INVITE TALENT</van-button>
+    <!-- <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" style="background-color: #2623D1; color: #ffffff;" block>CREATE</button> -->
+
+  </view>
+
+  <view wx:if="{{active==1}}" style="display: flex; justify-content:space-around; position: fixed; bottom: 0; width: 100%; background-color: #fff; padding: 30rpx 0;">
+    <van-button bind:tap="goinfo" data-path="/pages/New_Positions/New_Positions" style="width: 90%;" block color="#2623D1" type="primary">ADD NEW POSITIONS</van-button>
+  </view>
+</view>
+
+<share-box wx:if="{{isCanDraw}}" info="{{fxlist}}" isCanDraw="{{isCanDraw}}" bind:initData="createShareImage" bind:close="handleClose" />

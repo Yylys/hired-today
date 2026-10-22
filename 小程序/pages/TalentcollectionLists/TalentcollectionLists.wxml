@@ -1,0 +1,8 @@
+<view>
+  <scroll-view class="scroll-view" scroll-y="true">
+              <paging reqUrl="/v1/candidate" params="{{params2}}" immediatecheck="{{false}}" pagingRefField="post" filed="list2">
+                <!--components/card/index.wxml-->
+                <tan_card list="{{list2}}"></tan_card>
+              </paging>
+            </scroll-view>
+</view>

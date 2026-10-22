@@ -1,0 +1,6 @@
+<view class="side_bar_c">
+    <scroll-view scroll-y="true" style="height: 100%;" scroll-top="{{scrollTop}}" bindscrolltolower="scrolltolower" enhanced="{{true}}" show-scrollbar="{{false}}" scroll-with-animation enable-back-to-top>
+        <slot />
+        <view class="brace {{safe_area_inset_bottom?'env':''}}"></view>
+    </scroll-view>
+</view>

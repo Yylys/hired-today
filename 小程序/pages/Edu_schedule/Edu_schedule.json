@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "My Positions' Interview Schedule",
+  "navigationBarBackgroundColor":"#F7F7F7",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "van-icon": "@vant/weapp/icon/index"
+  }
+}

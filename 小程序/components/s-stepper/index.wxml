@@ -1,0 +1,9 @@
+<view class="s_stepper">
+    <view class="operation minus {{value<=min?'disabled':''}}" hover-class="{{value<=min?'':'tapstate_mark'}}" catchtap="onMinus">
+        <text class="text">-</text>
+    </view>
+    <input class="input" value="{{value}}" type="number" adjust-position bindblur="onInputBlur" focus="{{false}}" catchtap="stop"></input>
+    <view class="operation {{max!=undefined&&value>=max?'disabled':''}}" hover-class="{{max!=undefined&&value>=max?'':'tapstate_mark'}}" catchtap="onPlus">
+        <text class="text">+</text>
+    </view>
+</view>

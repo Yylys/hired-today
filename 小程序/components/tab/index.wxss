@@ -1,0 +1,14 @@
+.scroll_content {
+    display: flex;
+    align-items: center;
+}
+
+.scroll_content .default_item {
+    flex-shrink: 0;
+}
+
+/*隐藏滚动条*/
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}

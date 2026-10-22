@@ -1,0 +1,11 @@
+{
+  "component": true,
+  "navigationBarTitleText": "页面标题",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black", 
+  "usingComponents": {
+    "van-swipe-cell": "@vant/weapp/swipe-cell/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index"
+  }
+}

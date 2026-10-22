@@ -1,0 +1,21 @@
+.side_bar_c {
+    height: 100%;
+}
+
+.brace {
+    box-sizing: border-box;
+    height: 34px;
+}
+
+.env {
+    padding-bottom: constant(safe-area-inset-bottom);
+    /*兼容 IOS<11.2*/
+    padding-bottom: env(safe-area-inset-bottom);
+    /*兼容 IOS>11.2*/
+}
+
+/*隐藏滚动条*/
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}

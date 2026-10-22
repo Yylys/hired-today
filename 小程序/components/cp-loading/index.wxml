@@ -1,0 +1,3 @@
+<view class="loading_warp">
+    <t-loading theme="circular" size="40rpx" class="wrapper" />
+</view>

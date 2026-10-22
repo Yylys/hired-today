@@ -1,0 +1,48 @@
+<t-popup visible="{{show}}" placement="center">
+    <view class="addCartPopupWrap">
+        <view class="good">
+            <t-image shape="round" loading="slot" width="172rpx" height="172rpx" src="{{goodInfo.cover[0]+'!img_400'}}">
+                <t-loading slot="loading" theme="circular" size="40rpx" loading />
+            </t-image>
+            <view class="rightContent">
+                <view class="title one-line">{{good.title}}</view>
+                <view class="sub one-line" wx:if="{{good.intro}}">{{good.intro}}</view>
+                <view class="saled">{{i18.salesVolume + ' '}}{{good.sales}}</view>
+                <view class="bottom">
+                    <view class="priceWrap">
+                        <view class="icon">{{i18.currencySymbol}}</view>
+                        <view class="price">{{singlePrice==undefined?good.sku_price:singlePrice}}</view>
+                    </view>
+                    <view class="buttonWrap">
+                        <view class="button reduce center" hover-class="tapstate_mark" catchtap="reduce">
+                            <t-icon name="remove" size="28rpx" color="var(--themeColor)" />
+                        </view>
+                        <view class="num">{{addCartNum}}</view>
+                        <view class="button add center" hover-class="tapstate_mark" catchtap="add">
+                            <t-icon name="add" size="28rpx" color="#fff" />
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="chooseAttrWrap">
+            <view wx:for="{{goodInfo.attribute}}" wx:key="title" class="chooseAttr">
+                <view class="title">{{item.title}}</view>
+                <view class="values">
+                    <view wx:for="{{item.item}}" wx:key="title" wx:for-item="attr" wx:for-index="attrIndex" class="item center {{item.activeAttr===attrIndex?'active':''}}" hover-class="tapstate_mark" bindtap="chooseAttr" data-index="{{index}}" data-attrIndex="{{attrIndex}}">{{attr.title}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="totalPrice">
+            <text>{{i18.totalPrice}}：</text>
+            <view class="priceWrap">
+                <view class="icon">{{i18.currencySymbol}}</view>
+                <view class="price">{{addCartTotalPrice}}</view>
+            </view>
+        </view>
+        <view class="buttonActionWrap">
+            <view class="button center" hover-class="tapstate_mark" bindtap="close">{{i18.close}}</view>
+            <view class="button center" hover-class="tapstate_mark" bindtap="confirmAddCart">{{i18.add}}</view>
+        </view>
+    </view>
+</t-popup>

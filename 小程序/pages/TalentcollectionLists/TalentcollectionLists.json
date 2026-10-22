@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "tan_card": "/components/tan_card/index"
+  }
+}

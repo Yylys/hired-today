@@ -1,0 +1,45 @@
+.custom-tab-bar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  background-color: #ffffff;
+  border-top: 1rpx solid #eeeeee;
+  box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+}
+.tab-item {
+  flex: 1;
+  font-size: 24rpx;
+  text-align: center;
+  padding: 10rpx 0;
+  color: #888888;
+}
+.tab-item.active {
+  color: #150A33;
+  font-size: 24rpx;
+}
+.custom-tab-bar .tab-item {
+  position: relative;
+}
+.badge {
+  position: absolute;
+  top: 5rpx;
+  right: 30%;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  background-color: red;
+  /* 角标背景色 */
+  color: white;
+  /* 文字颜色 */
+  font-size: 22rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.badge text {
+  line-height: 20rpx;
+  /* 文字垂直居中 */
+}

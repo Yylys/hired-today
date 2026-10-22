@@ -1,0 +1,280 @@
+.scroll-views {
+  white-space: nowrap;
+  margin-left: 8rpx;
+}
+.container {
+  position: fixed;
+  /* 使用固定定位 */
+  top: 0;
+  /* 距离顶部为 0 */
+  left: 0;
+  /* 距离左边为 0 */
+  right: 0;
+  /* 距离右边为 0 */
+  z-index: 1000;
+  /* 设置一个较高的 z-index 值，确保在其他内容之上 */
+}
+.menu-item {
+  display: inline-block;
+  margin: 5px 5px;
+  /* background-color: pink; */
+  border-radius: 15px;
+  text-align: center;
+}
+.cate_warp {
+  overflow: hidden;
+  padding-top: 0;
+  position: sticky;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 9999;
+}
+.cate_warp .cate_name {
+  margin-top: 8rpx;
+  font-size: 28rpx;
+  font-weight: normal;
+  background: #efeef1;
+  border-radius: 16rpx;
+  padding: 16rpx 26rpx;
+  color: #4B4F6B;
+}
+.cate_warp .cate_name_active {
+  font-weight: normal;
+  background-color: #2623D1;
+  border-radius: 16rpx;
+  padding: 16rpx 26rpx;
+  margin: 0 8rpx;
+  font-size: 28rpx;
+  color: #fff;
+}
+.cate_warp .scroll-view_H {
+  white-space: nowrap;
+}
+.cate_warp .scroll-view_H .item2 {
+  width: 300rpx;
+  margin-right: 60rpx;
+  text-align: center;
+}
+.card {
+  width: 93%;
+  margin: 20rpx auto;
+  padding: 10rpx;
+  border-radius: 18px;
+  background: #FFFFFF;
+}
+.card .tit {
+  font-family: DM Sans;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 20px;
+  letter-spacing: 0px;
+  color: #150A33;
+}
+.card .money {
+  font-family: DM Sans;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+  text-align: right;
+  letter-spacing: 0em;
+  font-variation-settings: "opsz" auto;
+  font-feature-settings: "kern" on;
+  color: #2623D1;
+}
+.card .tit1 {
+  font-family: DM Sans;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 17px;
+  letter-spacing: 0px;
+  color: #524B6B;
+}
+.card .tit2 {
+  font-family: DM Sans;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 14px;
+  letter-spacing: 0px;
+  color: #7551FF;
+}
+.card .btn {
+  background-color: #FFF0F0;
+  color: #FC4646;
+  margin-left: 10rpx;
+  font-size: 24rpx;
+  border-radius: 15rpx;
+  padding: 13rpx 20rpx;
+}
+.card .btns {
+  color: #FC4646;
+  margin: 20rpx auto;
+  width: 90%;
+  font-size: 24rpx;
+  border-radius: 15rpx;
+}
+.card .tag {
+  font-family: Alibaba PuHuiTi 2;
+  font-size: 12px;
+  font-weight: 250;
+  line-height: 16px;
+  text-align: right;
+  letter-spacing: 0.036em;
+  font-feature-settings: "kern" on;
+  color: #514B6B;
+  border-radius: 4px;
+  background: #F5F4F6;
+  margin: 10rpx 20rpx 10rpx 0;
+  padding: 8rpx 10rpx;
+}
+.weui-cell__bd {
+  padding: 1rpx;
+  font-size: 24rpx;
+  margin: 0rpx 24rpx;
+}
+.weui-cell__bd .card {
+  background-color: #F4F5F8;
+  min-height: 100rpx;
+}
+.weui-cell__bd .title {
+  margin: 20rpx 10rpx;
+  font-family: DM Sans, DM Sans;
+  font-weight: 500;
+  font-size: 24rpx;
+  color: #150A33;
+  line-height: 34rpx;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+}
+.weui-cell__bd .titles {
+  font-family: DM Sans;
+  margin-left: 12rpx;
+  font-size: 12px;
+  font-weight: normal;
+  letter-spacing: 0px;
+  font-variation-settings: "opsz" auto;
+  color: #AAA6B9;
+  padding-bottom: 15rpx;
+}
+.weui-cell__bd .weui-input {
+  width: 94%;
+  min-height: 72rpx;
+  background: #FFFFFF;
+  border-radius: 30rpx;
+  padding: 10rpx 20rpx;
+  font-family: PingFang SC, PingFang SC;
+  font-weight: 400;
+  font-size: 28rpx;
+  line-height: 32rpx;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+}
+.weui-cell__bd .weui-input1 {
+  width: 40%;
+  min-height: 72rpx;
+  background: #FFFFFF;
+  border-radius: 30rpx;
+  padding: 10rpx 20rpx;
+  font-family: PingFang SC, PingFang SC;
+  font-weight: 400;
+  font-size: 28rpx;
+  line-height: 32rpx;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+}
+.weui-cell__bd .weui-inputs {
+  width: 94%;
+  padding: 30rpx 20rpx;
+  height: 80rpx;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 62px 0px rgba(153, 171, 198, 0.18);
+  border-radius: 30rpx;
+  font-family: PingFang SC, PingFang SC;
+  font-weight: 400;
+  font-size: 28rpx;
+  line-height: 32rpx;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+}
+.box {
+  margin: 20rpx;
+  display: flex;
+  flex-wrap: wrap;
+  background: #FFFFFF;
+  border-radius: 36rpx 36rpx 36rpx 36rpx;
+}
+.box .cards {
+  width: 90%;
+  margin: 20rpx auto 0;
+}
+.box .cards .top {
+  padding: 24rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.box .cards .cens {
+  margin: 0 16rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.box .cards .cens .list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.box .cards .btm {
+  margin: 0 16rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.box .cards .btm .left .avatar-stack {
+  position: relative;
+  width: 200rpx;
+  /* 根据需要调整宽度 */
+  height: 55rpx;
+  /* 根据需要调整高度 */
+}
+.box .cards .btm .left .avatar {
+  width: 44rpx;
+  /* 根据需要调整头像宽度 */
+  height: 44rpx;
+  /* 根据需要调整头像高度 */
+  border-radius: 50%;
+  /* 圆形头像 */
+  position: absolute;
+}
+.box .cards .btm .left .avatar:nth-child(1) {
+  z-index: 1;
+  /* 最上面的头像 */
+  left: 0;
+}
+.box .cards .btm .left .avatar:nth-child(2) {
+  z-index: 2;
+  left: 20rpx;
+  /* 调整位置 */
+}
+.box .cards .btm .left .avatar:nth-child(3) {
+  z-index: 3;
+  left: 40rpx;
+  /* 调整位置 */
+}
+.box .cards .btm .left .avatar:nth-child(4) {
+  z-index: 3;
+  left: 60rpx;
+  /* 调整位置 */
+}
+.box .cards .btm .left .avatar:nth-child(5) {
+  z-index: 5;
+  /* 最下面的头像 */
+  left: 80rpx;
+  /* 调整位置 */
+}
+.icon {
+  color: red;
+  margin-left: 5rpx;
+}

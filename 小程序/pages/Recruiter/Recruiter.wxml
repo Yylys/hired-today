@@ -1,0 +1,40 @@
+<!--pages/information/information.wxml-->
+<view class="box">
+  <view class="contaners">
+    <form catchsubmit="onFormSubmit" catchreset="formReset" class="form">
+      <view style="background-color: #FFFFFF; border-radius: 30rpx;" wx:key="{{index}}" wx:for="{{form}}">
+        <view class="weui-cell__bd">
+          <view class="title">Name</view>
+          <input bindinput="handleInput" data-title="name" data-index="{{index}}" class="weui-input" name="Name" value="{{item.name}}" placeholder="Please Choose" placeholder-class="placeholder" />
+        </view>
+        <view class="weui-cell__bd">
+          <view class="title">Gender</view>
+          <view class="bac">
+            <view class="bacs" bind:tap="setsex" data-index="{{index}}" data-sex="0">
+              <image style="width: 36rpx; height: 36rpx; margin:0 10rpx ;" src="{{form[index].sex==0 ? '/static/imgs/Select@2x.png' : '/static/imgs/Select@2x-2.png'}}" mode="aspectFill" /><span>Male</span>
+            </view>
+            <view class="bacs" bind:tap="setsex" data-index="{{index}}" data-sex="1">
+              <image style="width: 36rpx; height: 36rpx; margin:0 10rpx ;" src="{{form[index].sex==1 ? '/static/imgs/Select@2x.png' : '/static/imgs/Select@2x-2.png'}}" mode="aspectFill" /><span>Female</span>
+            </view>
+          </view>
+        </view>
+        <view class="weui-cell__bd">
+          <view class="title">Position</view>
+          <input  bindinput="handleInput" data-title="position" data-index="{{index}}" class="weui-input" name="position" value="{{item.position}}" type="text" placeholder="Please Choose" placeholder-class="placeholder" />
+        </view>
+        <view class="weui-cell__bd">
+          <view class="title">Head Portrait</view>
+          <van-uploader  image-fit="aspectFill"bind:delete="delimg" data-index="{{index}}" file-list="{{ item.fileList}}" bind:after-read="afterRead" max-count="1">
+          </van-uploader>
+        </view>
+      </view>
+      <view style="width: 520rpx; margin:50rpx auto;">
+        <van-button bind:tap="onAdd" custom-class="btn" custom-style="border-color: #fff;box-shadow: 0rpx 4rpx 20rpx 0rpx rgba(153,171,198,0.28);" icon="add-o" plain color="#FF9228" block>Add position</van-button>
+      </view>
+
+      <view style="margin: 78rpx auto; width: 60%; padding-bottom: 100rpx;">
+        <van-button formType="submit" type="primary" color="#2623D1" block>Submit</van-button>
+      </view>
+    </form>
+  </view>
+</view>

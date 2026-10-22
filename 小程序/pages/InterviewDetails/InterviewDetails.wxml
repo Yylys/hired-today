@@ -1,0 +1,136 @@
+<!--components/card/index.wxml-->
+<view class="box" style="width: 90%; margin-left:5%;background-color: white;">
+  <view class="card" bind:tap="goinfo" data-path="/pages/TalentDetails/TalentDetails" data-sid="{{info.resumeInfo.candidate.sid}}">
+    <view class="top">
+        <view style="display: flex; width: 100%;">
+          <view style="width: 74rpx; height: 74rpx; margin-right: 16rpx">
+            <image style="width: 74rpx; height: 74rpx;border-radius: 50%;" src="{{imgurl+ info.resumeInfo.candidate.avatar}}" mode="aspectFill" />
+          </view>
+          <view style="flex:1">
+            <view style="display: flex; justify-content: space-between; width: 100%;">
+              <view style="font-weight: 700;font-size:25rpx;margin-bottom:12rpx ;">{{info.resumeInfo.candidate.fullName}} <span class="tt">
+                  <image wx:if="{{info.resumeInfo.candidate.sex==0}}" style="width: 26rpx;height: 26rpx;" src="/static/imgs/detail/man.jpg" mode="aspectFill" />
+                  <image wx:if="{{info.resumeInfo.candidate.sex==1}}" style="width: 26rpx;height: 26rpx;" src="/static/imgs/detail/woman.jpg" mode="aspectFill" />
+                </span>
+              </view>
+              <span style="font-size:32rpx;color:#2623d1;font-weight:600;white-space: nowrap;">￥{{info.resumeInfo.candidate.minSalary/1000}}K-￥{{info.resumeInfo.candidate.maxSalary/1000}}K</span>
+            </view>
+            <view style="font-size:24rpx;color:#524B6B">{{info.resumeInfo.candidate.age}} years old | <span style="font-weight:900;">{{info.resumeInfo.candidate.desiredIndustry}}</span>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view style="display: flex; flex-direction:column;align-items:flex-end;">
+        <view wx:if="{{info.resumeInfo.candidate.isHeadhunting==0}}" style="height: 50rpx;line-height: 50rpx; background-color:#E3E3FF; width: 150rpx; color: #2623D1; border-radius: 8rpx; font-size: 24rpx;  text-align: center;">Headhunter</view>
+      </view>
+      <view class="cens">
+        <view class="list" style=" white-space: pre-wrap;">
+          <view  style="background: #F5F4F6;border-radius: 8rpx 8rpx 8rpx 8rpx; padding: 10rpx 12rpx; font-size: 24rpx;margin-right: 30rpx; margin-top: 10rpx ;">{{info.resumeInfo.candidate.countries.countriesName}}</view>
+          <view wx:for="{{info.resumeInfo.candidate.tag}}" style="background: #F5F4F6;border-radius: 8rpx 8rpx 8rpx 8rpx; padding: 10rpx 12rpx; font-size: 24rpx;margin-right: 30rpx; margin-top: 10rpx ;">{{item.memberName}}</view>
+        </view>
+        <view wx:if="{{info.resumeInfo.candidate.recruiter==0}}" style="display: flex; align-items: center; margin-right: 0rpx;">
+          <image style="width: 24rpx; height: 24rpx;" src="/static/imgs/money.jpg" mode="aspectFill" />
+          <span style="color:#2623D1;font-size:28rpx">￥{{info.resumeInfo.candidate.recruiterPrice}}</span>
+        </view>
+      </view>
+      <!-- 线条 -->
+      <view style="width: 90%;height: 2rpx; background-color: #E4E7ED; margin: 20rpx;"></view>
+      <view class="btms line_ellipsis" style="margin:20rpx;">
+        {{info.resumeInfo.candidate.content}}
+      </view>
+  </view>
+</view>
+
+<view class="boxs">
+  <view class="box">
+    <view>
+      <view class="card" bind:tap="goinfo" data-path="/pages/cardinfo/cardinfo" data-sid="{{info.job.sid}}">
+        <view class="top">
+          <view style="display: flex;">
+            <view style="width: 84rpx; height: 84rpx; margin-right: 16rpx">
+            <image style="width: 84rpx; height: 84rpx;  border-radius: 20rpx;" src="{{imgurl + info.job.publish.avatar}}" mode="aspectFill" />
+            </view>
+            <view>
+              <view style="font-weight: 700;font-size:28rpx;margin-bottom:12rpx ;">{{info.job.jobName}}</view>
+              <view style="font-weight: 400;font-size:24rpx">{{info.job.address}}</view>
+            </view>
+          </view>
+          <view wx:if="{{info.job.publishType==1 && info.job.urgent==1}}" style="height: 40rpx; line-height: 40rpx; padding: 10rpx 16rpx; background-color:#E3E3FF; color: #2623D1; border-radius: 8rpx; font-size: 24rpx; ">Headhunter</view>
+          <view wx:if="{{(info.job.publishType==1 && info.job.urgent==0) || info.job.urgent==0}}" style="height: 40rpx;line-height: 40rpx; padding: 10rpx 16rpx; background-color:#FFEDED; color: #D12323; border-radius: 8rpx; font-size: 24rpx; ">Urgent</view>
+        </view>
+        <view class="cens">
+          <view class="list">
+            <view wx:for="{{info.job.showTag}}" style="background: #F5F4F6;border-radius: 8rpx 8rpx 8rpx 8rpx; padding: 6rpx 9rpx; font-size: 22rpx;margin-right: 30rpx; margin-top: 10rpx ;">{{item.memberName}}</view>
+          </view>
+          <view wx:if="{{info.job.recruiter==0  && userKey!='candidate'}}" style="display: flex; align-items: center; margin-right: 20rpx;">
+            <image style="width: 24rpx; height: 24rpx;" src="/static/imgs/money.jpg" mode="aspectFill" />
+            <span style="color:#2623D1;font-size:24rpx">￥{{info.job.recruiterPrice}}</span>
+          </view>
+        </view>
+        <!-- 线条 -->
+        <view style="width: 570rpx;height: 2rpx; background-color: #E4E7ED; margin: 20rpx;"></view>
+        <view class="btm">
+          <view class="left">
+            <view class="avatar-stack" wx:if="{{info.job.userList.length>0}}">
+              <image wx:for="{{info.job.userList}}" class="avatar" src="{{imgurl + item.avatar}}"></image>
+            </view>
+            <view style="font-size:22rpx ;color:#808289 ;margin: 16rpx 0;">{{info.job.cnt}} Applicants</view>
+          </view>
+          <view class="right" style="margin-bottom: 10rpx; display: flex; align-items: center;flex:1">
+            <span style="font-size:30rpx;color:#2623d1;font-weight:600;white-space: nowrap;">￥{{info.job.minSalary}}-￥{{info.job.maxSalary}}</span>
+            <span style="font-size:21rpx;color: #808289;font-weight:400">/Month</span>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 线条 -->
+  <view style="width: 670rpx;height: 2rpx; background-color: #E4E7ED; margin: 20rpx;"></view>
+  <view style="width: 622rpx; margin:0 auto;">
+    <view style="display: flex;">
+      <view class="lists">
+        <view class="title">Interviewer</view>
+        <view class="nth">{{info.interview.interviewer}}</view>
+      </view>
+      <view class="lists">
+        <view class="title">Interview platform</view>
+        <view class="nth">{{info.interview.platform}}</view>
+      </view>
+    </view>
+    <view class="lists" style="width: 100%;">
+      <view class="title">Interview number</view>
+      <view class="nth">{{info.interview.numberOfInterviews}}</view>
+    </view>
+    <view class="lists" style="width: 100%;">
+      <view class="title">{{info.interview.title}}</view>
+      <view class="nth">{{info.interview.detail }}</view>
+    </view>
+    <view class="lists" style="width: 100%;">
+      <view class="title">Please select your interview time</view>
+      <view class="nth">Please note, this is Beijing Time</view>
+    </view>
+    <view class="lists" style="width: 100%; display: flex; flex-wrap: wrap; justify-content: space-between;">
+      <view bind:tap="settime" data-time="{{item}}" wx:for="{{info.interview.timeList}}" class="{{time===item ? 'bac2' : 'bac1'}}">{{item}}</view>
+    </view>
+
+  </view>
+</view>
+<view wx:if="{{info.readOnly==1}}" style=" width: 622rpx; margin: 40rpx auto; padding-bottom: 100rpx; display: flex;justify-content: space-between;">
+  <van-button bind:tap="showPopup" style="width: 45%;" plain formType="submit" type="primary" color="#2623D1" block>Decline</van-button>
+  <van-button bind:tap="posttime" style="width: 45%;" formType="submit" type="primary" color="#2623D1" block>Accept</van-button>
+</view>
+
+<van-popup round show="{{ show }}" bind:close="closepop">
+  <view style="width: 620rpx;min-height: 738rpx; border-radius: 50rpx;">
+    <view style="width: 100%;background: #F3F3F3; height: 106rpx; line-height: 106rpx; text-align: center;">Reason of cancellation</view>
+    <view style="min-height: 460rpx; width: 92%; margin: 15rpx auto; position: relative;">
+      <textarea adjust-position="{{true}}" maxlength="-1" auto-height="{{true}}" style="width: 100%; min-height: 420rpx;" value="{{content}}" bindinput="handleInputChange" placeholder="" placeholder-class="placeholder"></textarea>
+      <view class="placeholder-text" wx:if="{{!content}}">
+        Please Enter the rejection reason or make another appointment of interview.
+      </view>
+    </view>
+    <view>
+      <button bind:tap="onsub" style="width: 80%; background-color: #2623D1; color: #FFFFFF; border-radius: 50rpx; margin-bottom: 28rpx; font-size: 28rpx;">SUBMIT</button>
+    </view>
+  </view>
+</van-popup>

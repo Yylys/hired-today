@@ -1,0 +1,13 @@
+<view class="share-wrap {{visible ? 'active' : ''}}" catchtouchmove="preventDefault">
+  <view  class="share-back {{visible ? 'active' : ''}}">
+  </view>
+  <view  class="share-container {{visible ? 'active' : ''}}">
+    <!-- <view class="close" bindtap="handleClose"></view> -->
+    <image  mode="widthFix" src="{{sharePath}}" class="share-image" />
+    <view style="position:absolute;bottom:0rpx; width: 100%;">
+    <view class="save-btn" bindtap="handleSavePhoto">Save poster</view>
+    <view class="can-btn" bindtap="handleClose">Cancel</view>
+  </view>
+  </view>
+</view>
+<painter style="position: absolute; top: -9999rpx;" palette="{{imgDraw}}" bind:imgOK="onImgOK" scaleRatio="3" />

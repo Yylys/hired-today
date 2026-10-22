@@ -1,0 +1,38 @@
+<!--pages/jsCase/historySearch/index.wxml-->
+<view >
+<view class="head flex-row">
+  <view class="head_input">
+    <!-- <image src="/img/search_icon.png" class="search_icon"></image> -->
+    <van-icon class="search_icon" name="search" />
+    <input type="text" placeholder="Search" placeholder-class="place_holder" bindconfirm="getData" value="{{jobName}}"></input>
+  </view>
+  <!-- <view class="sha_icon" catchtap="clear_input">取消</view> -->
+</view>
+<view class="cons">
+  <!-- <view class="title">Popular</view>
+  <view class="flex-row list">
+    <block wx:for="{{hot_list}}"  wx:key="index">
+      <view class="c_item color"  data-index="{{index}}" catchtap="getSearch">{{item}}</view>
+    </block>
+  </view> -->
+  <view wx:if="{{list.length>0}}">
+    <view class="flex-row j_b">
+      <view class="title">Search History</view>
+      <view catchtap="clearHistory" class="clear">Clear History</view>
+    </view>
+    <view class="flex-row list">
+      <block wx:for="{{list}}" wx:key="index" wx:if="{{index < 10}}">
+        <view class="c_item" data-index="{{index}}" catchtap="getSearchOne">{{item}}</view>
+      </block>
+    </view>
+
+  </view>
+
+</view>
+<view >
+      <paging reqUrl="/v1/job/page"  params='{{params2}}' immediatecheck="{{false}}" pagingRefField="post" filed="list2">
+        <!--components/card/index.wxml-->
+        <jobcard list="{{list2}}"></jobcard>
+      </paging>
+  </view>
+</view>

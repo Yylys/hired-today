@@ -1,0 +1,150 @@
+/* pages/cs/cs.wxss */
+/* index.wxss */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  /* 自定义导航栏的高度 */
+  background-color: rgba(255, 255, 255, 0);
+  /* 初始背景透明 */
+  color: #ffffff;
+  /* 文字颜色 */
+  z-index: 1000;
+  /* 确保导航栏在页面元素的最上层 */
+  transition: background-color 0.3s ease;
+  /* 添加过渡效果 */
+}
+
+.nav-title {
+  font-size: 18px;
+  line-height: 64px;
+  text-align: center;
+}
+
+.page-content {
+  margin-top: 64px;
+  /* 页面内容顶部留出导航栏高度的空间 */
+  /* 其他页面内容样式 */
+}
+
+/* components/card/index.wxss */
+.box {
+  margin: 20rpx;
+  display: flex;
+  flex-wrap: wrap;
+  background: #FFFFFF;
+  border-radius: 36rpx 36rpx 36rpx 36rpx;
+
+  .card {
+    width: 702rpx;
+    margin: 20rpx auto 0;
+
+    .top {
+      padding: 24rpx;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .cens {
+      margin: 0 16rpx;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      .list {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+
+    .btm {
+      // display: flex;
+      // justify-content: space-between;
+      // align-items: center;
+      width: 650rpx;
+      margin: 20rpx auto;
+      // font-family: DM Sans, DM Sans;
+      font-size: 28rpx;
+      color: #524B6B;
+
+    }
+  }
+}
+
+.imgs {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.weui-cell__bd {
+  padding: 1rpx;
+  font-size: 24rpx;
+  margin: 0rpx 24rpx;
+
+  .title {
+    margin: 20rpx 10rpx;
+    font-family: DM Sans, DM Sans;
+    // font-weight: 500;
+    font-size: 28rpx;
+    color: #323233;
+    line-height: 34rpx;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+  }
+
+  .weui-input {
+    width: 94%;
+    min-height: 72rpx;
+    background: #CBC9D4;
+    border-radius: 10rpx;
+    margin: 20rpx auto;
+    padding: 5rpx 20rpx;
+    font-family: PingFang SC, PingFang SC;
+    font-weight: 400;
+    font-size: 28rpx;
+    color: #9197AA;
+    line-height: 32rpx;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+  }
+}
+
+.flex-container {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  // padding: 0 20rpx;
+  font-size: 28rpx;
+  /* 垂直居中对齐 */
+}
+
+.input {
+  .van-field__control {
+    background-color: #CBC9D4;
+    height: 80rpx;
+    padding: 0 20rpx;
+  }
+}
+.btn{
+  border-radius: 30rpx;
+  background-color: red;
+}
+.scroll-view1{
+  // height: 82vh;
+  // margin-bottom: 160rpx;
+}
+.collapse {
+  .van-cell__title{
+    font-family: DM Sans;
+font-size: 28rpx;
+font-weight: bold;
+line-height: 20px;
+letter-spacing: 0px;
+font-variation-settings: "opsz" auto;
+color: #150B3D;
+  }
+}

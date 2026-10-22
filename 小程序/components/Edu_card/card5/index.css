@@ -1,0 +1,104 @@
+/* components/card/index.wxss */
+.box2 {
+  display: flex;
+  align-items: center;
+  /* 垂直居中 */
+  justify-content: flex-end;
+  /* 水平居中（可选） */
+  padding-right: 40rpx ;
+  color: #FFFFFF;
+  position: absolute;
+  text-align: right;
+  right: 0rpx;
+  top: 20rpx;
+  width: 300rpx;
+  height: 90%;
+  background-color: #150A33;
+  border-radius: 0rpx 68rpx 68rpx 0rpx;
+}
+.box {
+  margin: 20rpx 0;
+  display: flex;
+  flex-wrap: wrap;
+  background: #FFFFFF;
+  border-radius: 60rpx;
+}
+.box .card {
+  width: 702rpx;
+  border-radius: 60rpx;
+}
+.box .card .top {
+  padding: 24rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.box .card .cens {
+  margin: 0 16rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.box .card .cens .list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.box .card .btm {
+  margin: 0 16rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.box .card .btm .left .avatar-stack {
+  position: relative;
+  width: 300rpx;
+  /* 根据需要调整宽度 */
+  height: 55rpx;
+  /* 根据需要调整高度 */
+}
+.box .card .btm .left .avatar {
+  width: 48rpx;
+  /* 根据需要调整头像宽度 */
+  height: 48rpx;
+  /* 根据需要调整头像高度 */
+  border-radius: 50%;
+  /* 圆形头像 */
+  position: absolute;
+}
+.box .card .btm .left .avatar:nth-child(1) {
+  z-index: 1;
+  /* 最上面的头像 */
+  left: 0;
+}
+.box .card .btm .left .avatar:nth-child(2) {
+  z-index: 2;
+  left: 20rpx;
+  /* 调整位置 */
+}
+.box .card .btm .left .avatar:nth-child(3) {
+  z-index: 3;
+  left: 40rpx;
+  /* 调整位置 */
+}
+.box .card .btm .left .avatar:nth-child(4) {
+  z-index: 3;
+  left: 60rpx;
+  /* 调整位置 */
+}
+.box .card .btm .left .avatar:nth-child(5) {
+  z-index: 5;
+  /* 最下面的头像 */
+  left: 80rpx;
+  /* 调整位置 */
+}
+.van-swipe-cell__right {
+  display: flex;
+  align-items: center;
+  /* 垂直居中 */
+  justify-content: center;
+  /* 水平居中 */
+  height: 100%;
+  /* 确保高度一致 */
+  border-radius: 0 60rpx 60rpx 0 ;
+  background-color: orange;
+  width: 180rpx;
+}

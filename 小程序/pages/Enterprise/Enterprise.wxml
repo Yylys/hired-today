@@ -1,0 +1,153 @@
+<page-meta page-style="{{ show ? 'overflow: hidden;' : '' }}" />
+<view class="page">
+  <view class="content">
+    <!-- 页面内容 -->
+    <view wx:if="{{currentTab==0}}">
+      <view>
+        <custom-header style="position: fixed; top: 0; width: 100%; z-index:999" title="Talent"></custom-header>
+        <view>
+          <view class="cate_warp">
+            <view style="display: flex; align-items: center; margin-top: {{topHeight}}px;background-color: #F5F5F5;">
+              <image bind:tap="showPopup" style="width: 80rpx ; height: 80rpx; margin-left: 10rpx;" src="/static/imgs/sx.jpg" mode="aspectFill" />
+              <scroll-view scroll-x="true" class="scroll-views1" scroll-into-view="{{scrollIntoView}}" scroll-with-animation="true">
+                <view class="menu-item" wx:for="{{TalentsList}}" wx:key="index" id="item-{{index}}" data-index="{{index}}" data-sid="{{item.sid}}" bindtap="onCateItem1">
+                  <view class="item11">
+                    <view class="{{actives1==index?'cate_name_active':'cate_name'}}">{{item.memberName}}</view>
+                  </view>
+                </view>
+              </scroll-view>
+            </view>
+            <scroll-view class="scroll-view" style="margin-bottom:{{topHeight}}px" scroll-y="true">
+              <paging reqUrl="/v1/candidate" params="{{params2}}" immediatecheck="{{false}}" pagingRefField="paging2" filed="list2">
+                <!--components/card/index.wxml-->
+                <tan_card list="{{list2}}"></tan_card>
+
+              </paging>
+            </scroll-view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{currentTab==1}}">
+      <custom-header title="Plaza"></custom-header>
+      <view style=" margin-top: {{topHeight}}px;">
+          <view class="cate_warp">
+              <scroll-view scroll-x="true" class="scroll-views" scroll-into-view="{{scrollIntoView}}" scroll-with-animation="true">
+                <view class="menu-item" wx:for="{{CateList}}" wx:key="index" id="item-{{index}}" data-index="{{index}}" data-sid="{{item.sid}}" bindtap="onCateItem">
+                  <view class="item11">
+                    <view class="{{actives==index?'cate_name_active':'cate_name'}}">{{item.memberName}}</view>
+                  </view>
+                </view>
+              </scroll-view>
+              <scroll-view style="height: {{contentHeight}}px;" scroll-y="true">
+                <paging reqUrl="/v1/activity/mini" params="{{params1}}" immediatecheck="{{false}}" pagingRefField="paging">
+                  <!--components/card/index.wxml-->
+                  <view class="boxs">
+                    <view class="card" wx:for="{{list}}" bind:tap="goinfo" data-path="/pages/plazainfo/plazainfo" data-sid="{{item.sid}}">
+                      <!-- 上层 -->
+                      <view style="display: flex; padding: 20rpx;">
+                        <!-- 左册 -->
+                        <view>
+                          <image class="img" src="{{imgurl+item.posters.cover}}" alt="" />
+                        </view>
+                        <!-- 右侧 -->
+                        <view>
+                          <view style="display: flex;">
+                            <view class="text2" style="width: 238rpx;height: 80rpx; margin-right: 5rpx; font-weight: 700;">
+                              <span class="line-clamp-2" style="font-size: 28rpx;"> {{item.title}}</span>
+                            </view>
+                            <view wx:if="{{item.activityStatus==1}}" class="text">Upcoming</view>
+                            <view wx:if="{{item.activityStatus==2}}" class="text">Signing up</view>
+                            <view wx:if="{{item.activityStatus==3}}" class="text">In progress</view>
+                            <view wx:if="{{item.activityStatus==4}}" class="text">Closed</view>
+                          </view>
+                          <view style="width: 354rpx; font-size: 24rpx;margin-top: 12rpx;" class="text2">{{item.description}}</view>
+                        </view>
+                      </view>
+                      <!-- 下层 -->
+                      <view style="display: flex; justify-content: space-between; align-items: center; padding: 0 0rpx 0 20rpx">
+                        <view class="time">Ends on {{item.endTime}}</view>
+                        <view wx:if="{{item.fee!=0}}" class='money'>￥{{item.fee/100}}<span style="color:#AAA6B9">/Per</span></view>
+                        <view wx:else="" class='money'>Free</view>
+                      </view>
+                    </view>
+                  </view>
+                </paging>
+              </scroll-view>
+            </view>
+      </view>
+    </view>
+    <view wx:if="{{currentTab==2}}">
+      <custom-header title="Notifications" type="item-dynamic"></custom-header>
+      <view style=" padding: {{topHeight}}px 0;">
+        <scroll-view class="scroll-view1" scroll-y="true">
+          <paging reqUrl="/v1/message" immediatecheck="{{false}}" pagingRefField="message" filed="list3">
+            <mess_card list="{{list3}}" bind:callParent="upmessage"></mess_card>
+          </paging>
+        </scroll-view>
+      </view>
+    </view>
+    <personal infos="{{userinfos}}" wx:if="{{currentTab==3}}" />
+  </view>
+  <!-- 自定义 TabBar -->
+  <custom-tab-bar showTabBar="{{true}}" num="{{num}}" currentTab="{{currentTab}}" bind:switchTab="handleTabChange" />
+  <!-- <custom-tab-bar bind:switchTab="handleTabChange" /> -->
+
+</view>
+<van-popup round z-index="1000" show="{{ show }}" position="bottom" custom-style="height: 80%" bind:close="onClose">
+  <van-collapse custom-class='collapse' value="{{ activeNames }}" bind:change="onChanges">
+    <van-collapse-item title="Educational background" name="1">
+      <van-radio-group value="{{ degreeSid }}" bind:change="onChanges1">
+        <van-radio use-icon-slot wx:for="{{degreeList}}" value="{{ degreeSid }}" name="{{item.sid}}">
+          {{item.memberName}}
+          <image slot="icon" class="imgs" src="{{ degreeSid === item.sid ? '/static/imgs/Select@2x.png' : '/static/imgs/Select@2x-2.png'}}" />
+        </van-radio>
+      </van-radio-group>
+    </van-collapse-item>
+    <van-collapse-item title="Age range" name="2">
+      <my-slider bind:submit="getAge" min="{{min}}" max="{{max}}"></my-slider>
+    </van-collapse-item>
+    <view class="weui-cell__bd" style="position: relative;">
+      <view class="van-cell__title">Nationality</view>
+      <input disabled bind:tap="goinfos" class="weui-input" name="countries" value="{{countriesName}}" type="text" placeholder="to choose" placeholder-class="placeholder" />
+      <van-icon style="width: 40rpx; height: 40rpx; position:absolute; bottom: 40rpx; right: 30rpx;" name="arrow" />
+    </view>
+    <van-collapse-item title="Work Experience" name="3">
+      <van-radio-group value="{{ experienceSid }}" bind:change="onChanges2">
+        <van-radio use-icon-slot wx:for="{{ ExperienceList}}" value="{{ experienceSid }}" name="{{item.sid}}">
+          {{item.memberName}}
+          <image slot="icon" class="imgs" src="{{ experienceSid === item.sid ? '/static/imgs/Select@2x.png' : '/static/imgs/Select@2x-2.png'}}" />
+        </van-radio>
+      </van-radio-group>
+    </van-collapse-item>
+    <van-collapse-item title="Job Searching Status" name="4">
+      <van-radio-group value="{{ jobStatus }}" bind:change="onChanges3">
+        <van-radio use-icon-slot wx:for="{{ jobList}}" value="{{ jobStatus }}" name="{{item.sid}}">
+          {{item.memberName}}
+          <image slot="icon" class="imgs" src="{{ jobStatus === item.sid ? '/static/imgs/Select@2x.png' : '/static/imgs/Select@2x-2.png'}}" />
+        </van-radio>
+      </van-radio-group>
+    </van-collapse-item>
+    <van-collapse-item title="Monthly Salary" name="5">
+      <view class="flex-container">￥
+        <van-field custom-class="input" bindinput="handleInput" data-title="minSalary" value="{{minSalary }}" class="flex-item" />
+        <view>-</view>￥
+        <van-field bindinput="handleInput" data-title="maxSalary" value="{{ maxSalary}}" custom-class="input" class="flex-item" />
+      </view>
+    </van-collapse-item>
+    <van-collapse-item title="Job Type" name="6">
+      <van-radio-group value="{{ Talentsid }}" bind:change="onChanges4">
+        <van-radio use-icon-slot wx:for="{{ TalentsList }}" value="{{ Talentsid }}" name="{{item.sid}}">
+          {{item.memberName}}
+          <image slot="icon" class="imgs" src="{{ Talentsid === item.sid ? '/static/imgs/Select@2x.png' : '/static/imgs/Select@2x-2.png'}}" />
+        </van-radio>
+      </van-radio-group>
+    </van-collapse-item>
+    <view style="display: flex; margin: 20rpx 0 100rpx;">
+      <van-button custom-class='btn' bind:tap="Reset" style="width: 30%; margin: 0 20rpx;" block color="#2623D1">Reset</van-button>
+      <van-button bind:tap="setsearch" style="width:60%;" block color="#2623D1">CONFIRM</van-button>
+      <!-- <button  bind:tap="Reset" style="width: 30%;background-color: #2623D1; color: #fff;">Reset</button>
+    <button bind:tap="setsearch" style="width: 60%; background-color: #2623D1; color: #fff;">CONFIRM</button> -->
+    </view>
+  </van-collapse>
+</van-popup>

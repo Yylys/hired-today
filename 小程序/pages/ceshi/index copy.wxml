@@ -1,0 +1,24 @@
+<view class="tab_warp">
+  <van-tabs color='#0AA19A' title-active-color='#0AA19A' swipeable line-height='{{4}}' active="{{ active }}" bind:change="onCateChange" data-id="{{item.id}}">
+    <van-tab wx:for="{{activityCateList}}" wx:key="id" title="{{item.name}}"></van-tab>
+  </van-tabs>
+</view>
+<view class="page">
+  <!-- 文章 -->
+  <paging reqUrl="/v1/activity" params="{{params1}}" immediatecheck="{{true}}">
+    <view class="activity_item_warp">
+      <view class="activity_item" hover-class="tapstate_opacity" wx:for="{{list}}" wx:key="id" bind:tap="togzh" data-link="{{item.h5_link}}">
+      {{111}}--{{list.length}}
+        <!-- <web-view wx:if="{{isHFive}}" src="{{item.h5_link}}"></web-view> -->
+        <image class="img_img" src="{{imgHost+item.fm}}" mode="aspectFill" style="width: 244rpx; height: 164rpx; border-radius: 16rpx;" mode="aspectFill" />
+        <view class="right_ct">
+          <view class="one-line title">{{item.title}}</view>
+          <view class="two-line desc">{{item.jj}}</view>
+          <view class="date">{{item.created_at}}</view>
+        </view>
+        <!-- <web-view wx:if="{{isHFive}}" src="{{item.h5_link}}"></web-view> -->
+      </view>
+
+    </view>
+  </paging>
+</view>

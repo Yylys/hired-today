@@ -1,0 +1,95 @@
+<!--pages/information/information.wxml-->
+<view class="box">
+  <view class="contaners">
+    <view style="text-align: center;">
+      <!-- 头像 -->
+      <view class="upload_warp">
+        <view class="head">
+          <view class="avatar_pick" hover-class="tapstate_opacity">
+            <button class="avatar_wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+              <image wx:if="{{form.avatar}}" src="{{wx_ImgbaseURL + form.avatar}}" class="uploadIcon" mode="widthFix" />
+              <image wx:if="{{!form.avatar}}" src="/static/imgs/avator.jpg" class="uploadIcon" mode="widthFix" />
+            </button>
+          </view>
+        </view>
+      </view>
+    </view>
+    <form catchsubmit="onFormSubmit" catchreset="formReset" class="form">
+      <view class="weui-cell__bd">
+        <view class="title">Candidate’s Full Name<span class="icon">*</span></view>
+        <input class="weui-input" name="fullName" value="{{form.fullName}}" placeholder="Please Enter" placeholder-class="placeholder" />
+      </view>
+      <view class="weui-cell__bd">
+        <view class="title">Candidate’s Gender<span class="icon">*</span></view>
+        <view class="bac">
+          <view class="bacs" bind:tap="setsex" data-sex="0"><span class="{{form.sex==0 ? 'act': 'noe'}}"></span><span>Male</span></view>
+          <view class="bacs" bind:tap="setsex" data-sex="1"><span class="{{form.sex==1 ? 'act': 'noe'}}"></span><span>Female</span></view>
+        </view>
+      </view>
+      <view class="weui-cell__bd" style="position: relative;">
+        <view class="title">Candidate’s Date of Birth<span class="icon">*</span></view>
+        <input disabled bind:tap="showPopup" class="weui-input" name="birth" value="{{form.birth}}" type="text" placeholder="Please Choose" placeholder-class="placeholder" />
+        <image bind:tap="showPopup" style="width: 40rpx; height: 40rpx; position:absolute; bottom: 30rpx; right: 30rpx;" src="/static/imgs/me/rl.jpg" />
+      </view>
+      <view class="weui-cell__bd">
+        <view class="title">Candidate’s Email Address<span class="icon">*</span></view>
+        <view class="titles">The candidate's contact information will only be visible to you. For other users, only your contact information will be shown.</view>
+        <input class="weui-input" name="email" value="{{form.email}}" type="text" placeholder="Please Enter" placeholder-class="placeholder" />
+      </view>
+      <view class="weui-cell__bd">
+        <view class="title">Candidate’s Phone Number<span class="icon">*</span></view>
+        <view  class="titles">The candidate's contact information will only be visible to you. For other users, only your contact information will be shown.</view>
+        <input class="weui-input" name="phone" value="{{form.phone}}" type="text" placeholder="Please Enter" placeholder-class="placeholder" bindblur="onPhoneInput" />
+      </view>
+      <view class="weui-cell__bd">
+        <view class="title">Candidate’s WeChat ID/Account<span class="icon">*</span></view>
+        <view  class="titles">The candidate's contact information will only be visible to you. For other users, only your contact information will be shown.</view>
+        <input class="weui-input" name="weChat" value="{{form.weChat}}" type="text" placeholder="Please Enter" placeholder-class="placeholder" bindblur="onPhoneInput" />
+      </view>
+      <view class="weui-cell__bd">
+        <view class="title">Candidate’s Nationality<span class="icon">*</span></view>
+        <input disabled bind:tap="goinfo" class="weui-input" name="countries " value="{{form.countriesName}}" type="text" placeholder="Please Choose" placeholder-class="placeholder" bindblur="onPhoneInput" />
+      </view>
+      <view class="weui-cell__bd">
+        <view class="title">Candidate’s Educational Background<span class="icon">*</span></view>
+        <input disabled bind:tap="showeducational" class="weui-input" name="degree" value="{{form.degreeName}}" type="text" placeholder="Please Choose" placeholder-class="placeholder" bindblur="onPhoneInput" />
+      </view>
+      <view class="weui-cell__bd">
+        <view class="title">Candidate’s Work Experience<span class="icon">*</span></view>
+        <input disabled bind:tap="showexperience" class="weui-input" name="work" value="{{form.workName}}" type="text" placeholder="Please Choose" placeholder-class="placeholder" bindblur="onPhoneInput" />
+      </view>
+      <!-- <view class="weui-cell__bd">
+        <view class="title">需求</view>
+        <textarea adjust-position="{{true}}" auto-height="{{true}}" value="{{need}}" class="weui-input" maxlength="-1" style="padding: 30rpx 20rpx;min-height: 200rpx;" name="need" type="text" placeholder="Please Choose您的需求"></textarea>
+      </view> -->
+      <!-- <view class="weui-cell__bd">
+        <view class="title">Referral commission</view>
+        <input class="weui-input" name="recommendPrice" value="{{form.recommendPrice}}" type="text" placeholder="Please Enter referral commission" placeholder-class="placeholder" />
+      </view> -->
+      <view class="weui-cell__bd" style="position: relative;">
+        <view class="title">Will headhunting commissions be charged?<span class="icon">*</span></view>
+        <input disabled bind:tap="showre" class="weui-input" value="{{recruitername}}" type="text" placeholder="Please Choose" />
+        <van-icon style="width: 40rpx; height: 40rpx; position:absolute; bottom: 30rpx; right: 30rpx;" name="arrow-down" />
+      </view>
+      <view class="weui-cell__bd" wx:if="{{form.recruiter==0}}">
+        <input class="weui-input"  name="recruiterPrice" style="margin-top: 10rpx;"  value="{{form.recruiterPrice}}" placeholder="Please enter the commission you charge." bindinput="onInputChange" />
+      </view>
+
+      <view style="margin: 78rpx auto; width: 60%; padding-bottom: 100rpx;">
+        <van-button formType="submit" type="primary" color="#2623D1" block>Submit</van-button>
+      </view>
+    </form>
+  </view>
+  <van-popup show="{{ show }}" bind:close="onClose" position="bottom">
+    <van-datetime-picker confirm-button-text="confirm" cancel-button-text="cancel"  type="date" value="{{ currentDate }}" bind:input="onInput" bind:confirm="onsucces" bind:cancel="onClose" min-date="{{ minDate }}" formatter="{{ formatter }}" />
+  </van-popup>
+  <van-popup show="{{ showexperience }}" bind:close="onClose" position="bottom">
+    <van-picker confirm-button-text="confirm" cancel-button-text="cancel" columns="{{ columns }}" default-index="{{ 1 }}" bind:cancel="onClose" bind:confirm="onConfirm" show-toolbar title="" />
+  </van-popup>
+  <van-popup show="{{ showeducational }}" bind:close="onClose" position="bottom">
+    <van-picker confirm-button-text="confirm" cancel-button-text="cancel" columns="{{ columns1 }}" default-index="{{ 1 }}" bind:cancel="onClose" bind:confirm="onConfirm1" show-toolbar title="" />
+  </van-popup>
+  <van-popup show="{{ showre }}" bind:close="onClose" position="bottom">
+    <van-picker confirm-button-text="confirm" cancel-button-text="cancel" columns="{{ columns4 }}" value-key="name" default-index="{{ item.id }}" bind:cancel="onClose" bind:confirm="onConfirm4" show-toolbar title="" />
+  </van-popup>
+</view>

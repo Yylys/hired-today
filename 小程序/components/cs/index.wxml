@@ -1,0 +1,15 @@
+<!-- pages/index/index.wxml -->
+<view class="containers">
+  <!-- 侧边导航栏 -->
+  <view class="sidebar">
+    <van-collapse  value="{{ activeNames }}" bind:change="onChange">
+      <van-collapse-item custom-class="{{faActive == item.id && chiActive == item.value ? 'active-custom' : 'custom-items' }}"   content-class='content-items' is-link="{{false}}"  wx:for="{{list}}" wx:key="{{item.id}}"  title="标题{{item.id}}" name="{{item.id}}"data-id="{{item.id}}" bind:tap="setactives" >
+        <view bind:tap="setactive" data-id="{{item}}" class="{{faActive == item.id && chiActive == item ? 'active-item' : 'panel-item' }}"wx:for="{{item.value}}">选项{{item}} </view>
+      </van-collapse-item>
+    </van-collapse>
+  </view>
+  <!-- 主要内容 -->
+  <view class="main" style="background-color: red; width: 100%;">
+    你好呀
+  </view>
+</view>

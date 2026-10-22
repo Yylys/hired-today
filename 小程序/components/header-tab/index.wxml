@@ -1,0 +1,1 @@
+<van-nav-bar placeholder="{{true}}" class="header" custom-class="{{navBarClass}}" title="{{title}}" type="{{type}}" bind:click-left="onClickLeft" />

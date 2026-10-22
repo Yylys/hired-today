@@ -1,0 +1,26 @@
+{
+  "navigationStyle": "custom",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "custom-tab-bar": "/components/custom-tab-bar2/index",
+    "plaza": "/pages/qz_index/plaza/index",
+    "notification": "/components/Edu_index/notification/index",
+    "personal": "/components/Edu_index/rec_personal/index",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "custom-header": "/components/header-tab/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-collapse": "@vant/weapp/collapse/index",
+    "van-collapse-item": "@vant/weapp/collapse-item/index",
+    "van-radio": "@vant/weapp/radio/index",
+    "van-radio-group": "@vant/weapp/radio-group/index",
+    "my-slider": "/components/silder/silder",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-search": "@vant/weapp/search/index",
+    "mess_card": "/components/mess_card/index",
+    "jobcard": "/components/jobcard/index",
+    "tan_card": "/components/tan_card/index"
+  }
+}

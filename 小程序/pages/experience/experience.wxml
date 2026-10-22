@@ -1,0 +1,58 @@
+<!--pages/expectations/expectations.wxml-->
+<view class="box"  scroll-y="true" >
+  <view class="contaners" >
+    <form catchsubmit="onFormSubmit" catchreset="formReset" class="form" >
+      <view class="weui-cell__bd">
+        <view class="title">Company Name</view>
+        <input class="weui-input" name="companyName" value="{{expectations.companyName}}" placeholder="Please Enter" placeholder-class="placeholder" />
+      </view>
+      <view class="weui-cell__bd" style="position: relative" data-path="/pages/location/location" bind:tap="goinfo">
+        <view class="title">Location</view>
+        <input disabled class="weui-input" name="companyCountry" value="{{expectations.companyCountry}}" placeholder="Please Choose" placeholder-class="placeholder" />
+        <van-icon name="arrow" size="20px" color="#150B3D" style="position:absolute; bottom: 30rpx; right: 30rpx;" />
+      </view>
+      <view class="weui-cell__bd">
+        <view class="title">Industry</view>
+        <input class="weui-input" name="industry" value="{{expectations.industry}}" placeholder="Please Enter" placeholder-class="placeholder" />
+      </view>
+      <view style="display: flex;">
+        <view class="weui-cell__bd" style="position: relative; margin-right: 30rpx;">
+          <view class="title">Start Time</view>
+          <input disabled bind:tap="showPopup" data-time="start" class="weui-input" name="startDate" value="{{expectations.startDate}}" type="text" placeholder="Please Choose" placeholder-class="placeholder" />
+          <image bind:tap="showPopup" data-time="start" style="width: 40rpx; height: 40rpx; position:absolute; bottom: 30rpx; right: 30rpx;" src="/static/imgs/me/rl.jpg" />
+        </view>
+        <view class="weui-cell__bd" style="position: relative;">
+          <view class="title">End Time</view>
+          <input disabled bind:tap="showPopup" data-time="end" class="weui-input" name="endDate" value="{{expectations.endDate}}" type="text" placeholder="Please Choose" placeholder-class="placeholder" />
+          <image bind:tap="showPopup" data-time="end" style="width: 40rpx; height: 40rpx; position:absolute; bottom: 30rpx; right: 30rpx;" src="/static/imgs/me/rl.jpg" />
+        </view>
+      </view>
+      <view class="weui-cell__bd">
+        <view class="title">Department </view>
+        <input class="weui-input" name="department" value="{{expectations.department}}" placeholder="Please Enter" placeholder-class="placeholder" />
+      </view>
+      <view class="weui-cell__bd">
+        <view class="title">Job Title</view>
+        <input class="weui-input" name="postsName" value="{{expectations.postsName}}" placeholder="Please Enter" placeholder-class="placeholder" />
+      </view>
+      <view class="weui-cell__bd" >
+        <view class="title">
+          <view class="weui-cell__bd">
+            <view class="title">Work Content</view>
+            <!-- <textarea adjust-position="{{true}}" maxlength="-1" auto-height="{{true}}" class="weui-input" style="padding: 30rpx 20rpx 0;min-height: 200rpx;" name="content" value="{{expectations.descriptionContent}}" placeholder="Please Enter" placeholder-class="placeholder" /> -->
+
+            <van-field cursor-spacing='200' hold-keyboard value="{{ expectations.descriptionContent }}" input-class="weui-input2" name="content" type='textarea' autosize="{{ { minHeight: 100} }}" placeholder="Please Enter" />
+          </view>
+        </view>
+        <!-- <view class="title">Work Performance</view>
+        <textarea adjust-position="{{true}}" class="weui-input" maxlength="-1" auto-height="{{true}}" style="padding: 30rpx 20rpx;height: 150rpx;min-height: 200rpx;" name="performance" value="{{expectations.achievementsContent}}" placeholder="Please Enter" placeholder-class="placeholder" /> -->
+      </view>
+      <view style="margin: 78rpx auto; width: 60%; padding-bottom: 100rpx;" >
+        <van-button formType="submit" type="primary" color="#2623D1" block>Submit</van-button>
+      </view>
+    </form>
+  </view>
+  <van-popup show="{{ show }}" bind:close="onClose" position="bottom">
+    <van-datetime-picker confirm-button-text="confirm" cancel-button-text="cancel"  type="year-month" value="{{ currentDate }}" bind:input="onInput" bind:confirm="onsucces" bind:cancel="onClose" min-date="{{ minDate }}" formatter="{{ formatter }}" />
+  </van-popup>
+</view>

@@ -1,0 +1,7 @@
+{
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "List",
+  "usingComponents": {
+    "jobcard": "/components/jobcard/index"
+  }
+}

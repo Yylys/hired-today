@@ -1,0 +1,142 @@
+<view style=" margin:0 20rpx;">
+  <view wx:for="{{list}}" style="position: relative; margin: 20rpx auto;">
+    <view class="box2">Remove</view>
+    <van-swipe-cell bind:click='dellists' right-width="{{80}}" data-sid="{{item.sid}}">
+      <view class="box">
+        <view style="padding-top: 20rpx; margin: 0 auto; width: 650rpx; color:#808289; font-size: 28rpx;"> {{item.created}}</view>
+        <view style="width: 650rpx;height: 2rpx; background-color: #E4E7ED; margin: 10rpx auto 0;"></view>
+        <view wx:if="{{item.messageType==1}}">
+          <view class="card">
+            <view class="top">
+              <view style="display: flex;">
+                <view style="width: 84rpx; height: 84rpx; margin-right: 16rpx">
+                  <image style="width: 84rpx; height: 84rpx; border-radius: 20rpx;" src="{{imgurl + item.job.publish.avatar}}" mode="aspectFill" />
+                </view>
+                <view>
+                  <view class="text_ellipsis" style="font-weight: 700;font-size:28rpx;margin-bottom:12rpx ; width: 300rpx;">{{item.job.jobName}}</view>
+                  <view style="font-weight: 400;font-size:24rpx">{{item.job.address}}</view>
+                </view>
+              </view>
+              <view wx:if="{{item.messageState==0}}" style=" height: 40rpx; line-height: 40rpx; font-size: 24rpx;color: #1C54EE; background-color: #EAEEFF; padding:12rpx;white-space: nowrap; border-radius: 8rpx;">No Feedback</view>
+              <view wx:if="{{item.messageState==2}}" style="height: 40rpx; line-height: 40rpx; font-size: 24rpx;color: #FF9228; background-color: #FFF6ED; padding:12rpx;white-space: nowrap; border-radius: 8rpx;">Inviting</view>
+              <view wx:if="{{item.messageState==1}}" style=" height: 40rpx; line-height: 40rpx; font-size: 24rpx;color: #FE4848; background-color: #FFEDED; padding:12rpx;white-space: nowrap; border-radius: 8rpx;">Candidate Unfit</view>
+              <view wx:if="{{item.messageState==7}}" style=" height: 40rpx; line-height: 40rpx; font-size: 24rpx;color: #FE4848; background-color: #FFEDED; padding:12rpx;white-space: nowrap; border-radius: 8rpx;">Candidate Unfit</view>
+              <view wx:if="{{item.messageState==4}}" style="height: 40rpx; line-height: 40rpx; font-size: 24rpx;color: #1EBF77; background-color: #E7F9F2; padding:12rpx;white-space: nowrap; border-radius: 8rpx;">Pending Interview</view>
+              <view wx:if="{{item.messageState==3}}" style="height: 40rpx; line-height: 40rpx; font-size: 24rpx;color: #1EBF77; background-color: #E7F9F2; padding:12rpx;white-space: nowrap; border-radius: 8rpx;">Passed</view>
+              <view wx:if="{{item.messageState==5}}" style="height: 40rpx; line-height: 40rpx; font-size: 24rpx;color: #1EBF77; background-color: #E7F9F2; padding:12rpx;white-space: nowrap; border-radius: 8rpx;">Passed</view>
+              <view wx:if="{{item.messageState==6}}" style="height: 40rpx; line-height: 40rpx; font-size: 24rpx;color: #FE4848; background-color: #E7F9F2; padding:12rpx;white-space: nowrap; border-radius: 8rpx;">Interview Invitation Failed</view>
+              <view wx:if="{{item.messageState==8}}" style="height: 40rpx; line-height: 40rpx; font-size: 24rpx;color: #FF9228; background-color: #E7F9F2; padding:12rpx;white-space: nowrap; border-radius: 8rpx;">Pending Confirmation</view>
+            </view>
+            <view class="cens">
+              <view class="list">
+                <view wx:for="{{item.job.showTag}}" style="background: #F5F4F6;border-radius: 8rpx 8rpx 8rpx 8rpx; padding: 10rpx 12rpx; font-size: 24rpx;margin-right: 30rpx; margin-top: 10rpx ;">{{item.memberName}}</view>
+              </view>
+              <view wx:if="{{item.job.recruiter==0  && userKey!='candidate'}}" style="display: flex; align-items: center; margin-right: 20rpx;">
+                <image style="width: 24rpx; height: 24rpx;" src="/static/imgs/money.jpg" mode="aspectFill" />
+                <span style="color:#2623D1;font-size:28rpx">￥{{item.job.recruiterPrice}}</span>
+              </view>
+            </view>
+          </view>
+          <!-- 线条 -->
+          <view style="width: 650rpx;height: 2rpx; background-color: #E4E7ED; margin: 24rpx auto 0;"></view>
+          <view class="card">
+            <!-- 线条 -->
+            <view class="btm">
+              <view style="font-size:24rpx ;color:#808289 ;margin: 16rpx 0 20rpx;">{{item.content}}</view>
+            </view>
+            <view bind:tap="goinfo" data-type="{{item.messageType}}" data-path="{{item.messageType==1 ? '/pages/InterviewDetails/InterviewDetails' : '/pages/TalentInfo/TalentInfo'}}" data-sid="{{item.sid}}" wx:if="{{(item.messageState==2 || item.messageState==7 || item.messageState==8)  && (item.messageType==3 || item.messageType==1) }}" style="display: flex; justify-content: space-between;">
+              <view></view>
+              <view style="color:#7551FF;font-size: 28rpx; margin:20rpx;">
+                <span>Check the details</span>
+                <van-icon name="arrow" />
+              </view>
+            </view>
+          </view>
+        </view>
+        <view wx:if="{{item.messageType==3}}">
+          <view class="card">
+            <view class="top">
+              <view style="display: flex; width: 100%;">
+                <view style="width: 84rpx; height: 84rpx; margin-right: 16rpx">
+                  <image style="width: 84rpx; height: 84rpx;border-radius: 50%;" src="{{imgurl+ item.candidateInfo.avatar}}" mode="aspectFill" />
+                </view>
+                <view style="flex:1">
+                  <view style="display: flex; justify-content: space-between; width: 100%;">
+                    <view style="font-weight: 700;font-size:28rpx;margin-bottom:12rpx ;">{{item.candidateInfo.fullName}} <span class="tt">
+                        <image wx:if="{{item.candidateInfo.sex==0}}" style="width: 26rpx;height: 26rpx;" src="/static/imgs/detail/man.jpg" mode="aspectFill" />
+                        <image wx:if="{{item.candidateInfo.sex==1}}" style="width: 26rpx;height: 26rpx;" src="/static/imgs/detail/woman.jpg" mode="aspectFill" />
+                      </span>
+                    </view>
+                    <span style="font-size:36rpx;color:#2623d1;font-weight:600;white-space: nowrap;">￥{{item.candidateInfo.minSalary/1000}}K-￥{{item.candidateInfo.maxSalary/1000}}K</span>
+                  </view>
+                  <view style="font-size:24rpx;color:#524B6B">{{item.candidateInfo.age}} years old | <span style="font-weight:900;">{{item.candidateInfo.desiredIndustry}}</span>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <view style="display: flex; flex-direction:column;align-items:flex-end;">
+              <view wx:if="{{item.messageState==0}}" style=" height: 40rpx; line-height: 40rpx; font-size: 24rpx;color: #1C54EE; background-color: #EAEEFF; padding:12rpx;white-space: nowrap; border-radius: 8rpx;">No Feedback</view>
+              <view wx:if="{{item.messageState==2}}" style="height: 40rpx; line-height: 40rpx; font-size: 24rpx;color: #FF9228; background-color: #FFF6ED; padding:12rpx;white-space: nowrap; border-radius: 8rpx;">Inviting</view>
+              <view wx:if="{{item.messageState==1}}" style=" height: 40rpx; line-height: 40rpx; font-size: 24rpx;color: #FE4848; background-color: #FFEDED; padding:12rpx;white-space: nowrap; border-radius: 8rpx;">Candidate Unfit</view>
+              <view wx:if="{{item.messageState==7}}" style=" height: 40rpx; line-height: 40rpx; font-size: 24rpx;color: #FE4848; background-color: #FFEDED; padding:12rpx;white-space: nowrap; border-radius: 8rpx;">Candidate Unfit</view>
+              <view wx:if="{{item.messageState==4}}" style="height: 40rpx; line-height: 40rpx; font-size: 24rpx;color: #1EBF77; background-color: #E7F9F2; padding:12rpx;white-space: nowrap; border-radius: 8rpx;">Pending Interview</view>
+              <view wx:if="{{item.messageState==3}}" style="height: 40rpx; line-height: 40rpx; font-size: 24rpx;color: #1EBF77; background-color: #E7F9F2; padding:12rpx;white-space: nowrap; border-radius: 8rpx;">Passed</view>
+              <view wx:if="{{item.messageState==5}}" style="height: 40rpx; line-height: 40rpx; font-size: 24rpx;color: #1EBF77; background-color: #E7F9F2; padding:12rpx;white-space: nowrap; border-radius: 8rpx;">Passed</view>
+              <view wx:if="{{item.messageState==6}}" style="height: 40rpx; line-height: 40rpx; font-size: 24rpx;color: #FE4848; background-color: #E7F9F2; padding:12rpx;white-space: nowrap; border-radius: 8rpx;">Interview Invitation Failed</view>
+              <view wx:if="{{item.messageState==8}}" style="height: 40rpx; line-height: 40rpx; font-size: 24rpx;color: #FF9228; background-color: #E7F9F2; padding:12rpx;white-space: nowrap; border-radius: 8rpx;">Pending Confirmation</view>
+            </view>
+            <view class="cens">
+              <view class="list" style=" white-space: pre-wrap;">
+
+                <view style="background: #F5F4F6;border-radius: 8rpx 8rpx 8rpx 8rpx; padding: 10rpx 12rpx; font-size: 24rpx;margin-right: 30rpx; margin-top: 10rpx ;">{{item.candidateInfo.countries.countriesName}}</view>
+                <view wx:for="{{item.candidateInfo.tag}}" style="background: #F5F4F6;border-radius: 8rpx 8rpx 8rpx 8rpx; padding: 10rpx 12rpx; font-size: 24rpx;margin-right: 30rpx; margin-top: 10rpx ;">{{item.memberName}}</view>
+              </view>
+              <view wx:if="{{item.candidateInfo.recruiter==0}}" style="display: flex; align-items: center; margin-right: 0rpx;">
+                <image style="width: 24rpx; height: 24rpx;" src="/static/imgs/money.jpg" mode="aspectFill" />
+                <span style="color:#2623D1;font-size:28rpx">￥{{item.candidateInfo.recruiterPrice}}</span>
+              </view>
+            </view>
+          </view>
+          <!-- 线条 -->
+          <view style="width: 650rpx;height: 2rpx; background-color: #E4E7ED; margin: 24rpx auto 0;"></view>
+          <view class="card">
+            <!-- 线条 -->
+            <view class="btm">
+              <view style="font-size:24rpx ;color:#808289 ;margin: 16rpx 0 20rpx;">{{item.content}}</view>
+            </view>
+            <view bind:tap="goinfo" data-type="{{item.messageType}}" data-path="{{item.messageType==1 ? '/pages/InterviewDetails/InterviewDetails' : '/pages/TalentInfo/TalentInfo'}}" data-sid="{{item.sid}}" wx:if="{{(item.messageState==2 || item.messageState==7 || item.messageState==8)  && (item.messageType==3 || item.messageType==1) }}" style="display: flex; justify-content: space-between;">
+              <view></view>
+              <view style="color:#7551FF;font-size: 28rpx; margin:20rpx;">
+                <span>Check the details</span>
+                <van-icon name="arrow" />
+              </view>
+            </view>
+          </view>
+        </view>
+        <view wx:if="{{item.messageType==0 || item.messageType==2}}">
+          <view style="width: 650rpx;margin:0rpx auto; display: flex; align-items: center; justify-content: space-between;padding-top: 15rpx;">
+            <view style="display: flex; align-items: center;">
+              <view>
+                <view style="font-size: 28rpx; font-weight: bold;">System notification</view>
+              </view>
+            </view>
+            <view style="color:#7551FF;font-size: 28rpx;" bind:tap="goinfo" data-sid="{{item.sid}}" data-path="/pages/Messagedetail/Messagedetail">
+              <span>Details</span>
+              <van-icon name="arrow" />
+            </view>
+          </view>
+          <!-- 线条 -->
+          <view style="width: 650rpx;height: 2rpx; background-color: #E4E7ED; margin: 24rpx auto 0;"></view>
+          <view class="card">
+            <!-- 线条 -->
+            <view style="margin: 0 20rpx;">
+              <view style="font-size:28rpx;color:#150A33">{{item.title}}</view>
+              <view style="font-size:24rpx ;color:#808289 ;padding: 16rpx 0 20rpx; line-height: 40rpx;">{{item.content}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view slot="right" class="van-swipe-cell__right"></view>
+    </van-swipe-cell>
+  </view>
+</view>

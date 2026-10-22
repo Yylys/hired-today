@@ -1,0 +1,29 @@
+<!--pages/schedule/schedule.wxml-->
+<paging reqUrl="/v1/interview/page-candidate-enterprise" immediatecheck="{{false}}" pagingRefField="paging">
+  <view style="padding-bottom: 100rpx">
+    <view class="card" wx:for="{{list}}">
+      <view style="display: flex; justify-content: space-between; align-items: center;">
+      <view style="display: flex; align-items: center; margin-left: 20rpx;">
+        <image style="width: 85rpx;height: 85rpx; border-radius: 50%;" src="{{imgurl + item.userInfo.avatar}}" mode="aspectFill" />
+        <view class="top">
+          <view class="title">{{item.userInfo.fullName}}
+            <image wx:if="{{item.userInfo.sex==0}}" style="width: 26rpx;height: 26rpx;" src="/static/imgs/detail/man.jpg" mode="aspectFill" />
+            <image wx:if="{{item.userInfo.sex==1}}" style="width: 26rpx;height: 26rpx;" src="/static/imgs/detail/woman.jpg" mode="aspectFill" />
+          </view>
+          <view class="nth .line_ellipsis">{{item.userInfo.age}} years old</view>
+        </view>
+      </view>
+        <view wx:if="{{item.time}}" class="left" style="margin-right: 10rpx;">{{item.time}}</view>
+      </view>
+      <!-- 线条 -->
+      <view style="height: 2rpx; width: 95%; background-color: #E4E7ED;"></view>
+      <view class="btm">
+        <view class="left">{{item.updated}}</view>
+        <view class="right" bind:tap="goinfo" data-sid="{{item.sid}}" data-path="/pages/Edu_scheduleinfo/Edu_scheduleinfo">
+          <span>Check the details</span>
+          <van-icon name="arrow" />
+        </view>
+      </view>
+    </view>
+  </view>
+</paging>

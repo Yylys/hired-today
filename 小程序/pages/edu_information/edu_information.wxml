@@ -1,0 +1,91 @@
+<!--pages/information/information.wxml-->
+<view class="box" scroll-y="true">
+  <view class="contaners">
+    <view style="text-align: center;">
+      <!-- 头像 -->
+      <view class="upload_warp">
+        <view class="head">
+          <view class="avatar_pick" hover-class="tapstate_opacity">
+            <button class="avatar_wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+              <image wx:if="{{form.avatar}}" src="{{wx_ImgbaseURL + form.avatar}}" class="uploadIcon" mode="widthFix" />
+              <image wx:if="{{!form.avatar}}" src="/static/imgs/avator.jpg" class="uploadIcon" mode="widthFix" />
+            </button>
+          </view>
+        </view>
+      </view>
+    </view>
+    <form catchsubmit="onFormSubmit" catchreset="formReset" class="form">
+      <view class="weui-cell__bd">
+        <view class="title">Company Name <span class="icon">*</span></view>
+        <input class="weui-input" name="name" value="{{form.name}}" placeholder="Please Enter" placeholder-class="placeholder" />
+      </view>
+
+      <view class="weui-cell__bd">
+        <view class="title">Company Tags <span class="icon">*</span></view>
+        <view class="weui-input1">
+          <view style=" min-height: 200rpx; position: relative; padding-bottom: 100rpx; ">
+            <view class="weui-cell__bd">
+              <view style="display: flex; flex-wrap: wrap; align-items: center;">
+                <view style="background: #F5F4F6; padding: 20rpx 30rpx; border-radius: 20rpx; margin:15rpx 5rpx" wx:for="{{taglist}}">
+                  {{item.memberName}}
+                  <van-icon data-sid="{{item.sid}}" bind:tap="deltag" name="cross" />
+                </view>
+              </view>
+            </view>
+            <view style="display: flex; align-items: center; position: absolute;bottom: 20rpx; left: 50rpx;">
+              <input style="box-shadow: 0px 2px 10px 0px rgba(153, 171, 198, 0.28); border-radius: 20rpx; padding: 15rpx; width: 330rpx;" class="weui-inputs" name="tagName" value="{{tagName}}" placeholder="Please Enter" maxlength="35" placeholder-class="placeholder" bindinput="handleInputChange" />
+              <van-button bind:tap="settag" data-data="{{tagName}}" style="margin-left: 20rpx; " color="#2623D1" plain type="info">Confirm</van-button>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="weui-cell__bd">
+        <view class="title">Company address <span class="icon">*</span></view>
+        <input class="weui-input" name="address" value="{{form.address}}" type="text" placeholder="Please Enter" placeholder-class="placeholder" />
+      </view>
+      <view class="weui-cell__bd">
+        <view class="title">Industry <span class="icon">*</span></view>
+        <input class="weui-input" name="industry" value="{{form.industry}}" type="text" placeholder="Please Enter" placeholder-class="placeholder" />
+      </view>
+      <view class="weui-cell__bd" style="position: relative;">
+        <view class="title">Recruiter <span class="icon">*</span></view>
+        <view style="display:flex; flex-wrap:wrap; justify-content:start;" class="weui-input1" bind:tap="goinfo" data-item="{{form.recruiterList}}" data-path="/pages/Recruiter/Recruiter">
+          <view style="margin: 20rpx 0; width: 25%; display: flex; flex-direction: column;justify-content: flex-start; align-items: center; " wx:for="{{form.recruiterList}}">
+            <image style="width:100rpx;height: 100rpx;" src="{{wx_ImgbaseURL + item.avatar}}" mode="aspectFill" />
+            <view style="margin-top: 10rpx; ">{{item.name}}</view>
+          </view>
+        </view>
+        <van-icon bind:tap="goinfo" data-item="{{form.recruiterList}}" data-path="/pages/Recruiter/Recruiter" size="35rpx" style="position:absolute; top: 35rpx; right: 30rpx;" name="plus" />
+      </view>
+      <view class="weui-cell__bd">
+        <view class="title">Company Profile <span class="icon">*</span></view>
+        <van-field cursor-spacing='200' hold-keyboard value="{{ form.introContent }}" input-class="weui-input2" name="introContent" type='textarea' autosize="{{ { minHeight: 100} }}" placeholder="Please Enter" />
+        <!-- <textarea adjust-position="{{true}}" maxlength="-1" auto-height="{{true}}" value="{{form.introContent}}" class="weui-input" style="padding: 30rpx 20rpx;min-height: 200rpx;" name="introContent" type="text" placeholder="Please Enter"></textarea> -->
+      </view>
+      <view class="weui-cell__bd">
+        <view class="title">Company culture <span class="icon">*</span></view>
+        <!-- <textarea adjust-position="{{true}}" maxlength="-1" auto-height="{{true}}" value="{{form.cultureContent}}" class="weui-input" style="padding: 30rpx 20rpx;min-height: 200rpx;" name="cultureContent" type="text" placeholder="Please Enter"></textarea> -->
+        <van-field cursor-spacing='200' hold-keyboard value="{{ form.cultureContent }}" input-class="weui-input2" name="cultureContent" type='textarea' autosize="{{ { minHeight: 100} }}" placeholder="Please Enter" />
+      </view>
+  <view style="width: 670rpx; margin:0 auto;">
+    <view class="title">Upload image <span class="icon">*</span></view>
+    <view style="background-color: #fff; border-radius: 36rpx; padding: 20rpx 20rpx;">
+      <van-uploader image-fit="aspectFill" bind:delete="delimg" file-list="{{ fileList }}" bind:after-read="afterRead" max-count="5">
+        <view style="display: flex; align-items: center; justify-content: center; border: 1rpx dashed #9D97B5; border-radius: 36rpx; width: 620rpx; padding: 60rpx 0; margin-bottom: 20rpx;">
+          <van-icon size="40rpx" name="photo-o" />
+          <span style="color: #150A33; font-size: 24rpx; margin-left: 10rpx;">Upload Image</span>
+        </view>
+      </van-uploader>
+    </view>
+  </view>
+  <view style="margin: 78rpx auto; width: 60%; padding-bottom: 100rpx;">
+    <van-button formType="submit" type="primary" color="#2623D1" block>Submit</van-button>
+  </view>
+  </form>
+</view>
+
+<van-popup show="{{ showeducational }}" bind:close="onClose" position="bottom">
+  <van-picker confirm-button-text="confirm" cancel-button-text="cancel" columns="{{ columns1 }}" default-index="{{ 1 }}" bind:cancel="onClose" bind:confirm="onConfirm1" show-toolbar title="" />
+</van-popup>
+</view>

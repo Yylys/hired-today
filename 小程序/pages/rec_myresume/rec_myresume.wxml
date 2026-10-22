@@ -1,0 +1,264 @@
+<!--pages/myresume/myresume.wxml-->
+<view class="box">
+  <view class="container">
+    <!-- About Me -->
+    <view class="card">
+      <view class="top">
+        <view class="left">
+          <image src="/static/imgs/me/组 711119@2x.png" mode="aspectFill" />
+          <span class="title">About Candidate</span>
+        </view>
+        <view class="right">
+          <!-- <image src="/static/imgs/me/hg.jpg" mode="aspectFill" /> -->
+          <image bind:tap="goinfo" data-path="/pages/rec_informations/rec_informations" src="/static/imgs/me/Edit.png" mode="aspectFill" />
+        </view>
+      </view>
+      <view class="btm">
+        <view class="card2">
+          <view class="weui-cell__bd">
+            <view class="title">Full Name</view>
+            <input bind:tap="goinfo" data-path="/pages/rec_informations/rec_informations" disabled class="weui-input" name="fullName" value="{{userinfo.fullName}}" placeholder="Please Enter" placeholder-class="placeholder" />
+          </view>
+          <view class="weui-cell__bd">
+            <view class="title">Gender</view>
+            <view class="bac">
+              <view bind:tap="goinfo" data-path="/pages/rec_informations/rec_informations" class="bacs" data-gender="0"><span class="{{userinfo.sex==0 ? 'act': 'noe'}}"></span><span>Male</span></view>
+              <view bind:tap="goinfo" data-path="/pages/rec_informations/rec_informations" class="bacs"  data-gender="1"><span class="{{userinfo.sex==1 ? 'act': 'noe'}}"></span><span>Female</span></view>
+            </view>
+          </view>
+        </view>
+        <view bind:tap="goinfo" data-path="/pages/rec_informations/rec_informations" class="more">See more</view>
+      </view>
+    </view>
+    <!-- Job Searching Status -->
+    <view class="card">
+      <view class="top">
+        <view class="left">
+          <image src="/static/imgs/me/组 711141@2x.png" mode="aspectFill" />
+          <span class="title">Candidate’s Job Searching Status</span>
+        </view>
+        <view class="right">
+        </view>
+      </view>
+      <view class="btm">
+        <view class="card2">
+          <view class="weui-cell__bd">
+            <view class="bac" style="margin: 20rpx 0">
+              <view class="bacs2" bind:tap="setstatus" data-status="0"><span class="{{form.jobStatus==0 ? 'act': 'noe'}}"></span><span>Resignation - Arrive at any time</span></view>
+              <view class="bacs2" bind:tap="setstatus" data-status="1"><span class="{{form.jobStatus==1 ? 'act': 'noe'}}"></span><span>On the job - Arrive within the month</span></view>
+              <view class="bacs2" bind:tap="setstatus" data-status="2"><span class="{{form.jobStatus==2 ? 'act': 'noe'}}"></span><span>Employed - Consider Opportunities</span></view>
+              <view class="bacs2" bind:tap="setstatus" data-status="4"><span class="{{form.jobStatus==4 ? 'act': 'noe'}}"></span><span>Employed - not considered yet</span></view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- Personal Tags -->
+    <view class="card">
+      <view class="top">
+        <view class="left">
+          <image src="/static/imgs/me/Icon Skill@2x.png" mode="aspectFill" />
+          <span class="title">Candidate’s Personal Tags</span>
+        </view>
+        <view class="right">
+          <image bind:tap="showPopup" src="/static/imgs/me/Add@2x.png" mode="aspectFill" />
+          <image bind:tap="showPopup" src="/static/imgs/me/Edit.png" mode="aspectFill" />
+        </view>
+      </view>
+      <view class="btm">
+        <view class="card2">
+          <view class="weui-cell__bd">
+            <view style="display: flex; flex-wrap: wrap; align-items: center;">
+              <view style="background: #F5F4F6; padding: 20rpx 30rpx; border-radius: 20rpx; margin:15rpx 5rpx" wx:for="{{taglist}}" wx:if="{{index < 5}}">
+                {{item.memberName}}
+              </view>
+              <span wx:if="{{taglist.length>5}}" style="font-size: 24rpx;color: #524B6B;margin-left: 10rpx;">+5 more</span>
+            </view>
+          </view>
+        </view>
+        <view bind:tap="showPopup" class="more">See more</view>
+      </view>
+    </view>
+    <!-- Personal Advantage -->
+    <!-- <view class="card">
+      <view class="top">
+        <view class="left">
+          <image src="/static/imgs/me/Icon@2x-2.png" mode="aspectFill" />
+          <span class="title">Personal Advantage</span>
+        </view>
+        <view class="right">
+          <image bind:tap="goinfo" data-data="Personal Advantage" data-item="{{form.personalStrengths}}"  data-path="/pages/advantage/advantage" data-data="{{form.personalStrengths}}" src="/static/imgs/me/Edit.png" mode="aspectFill" />
+        </view>
+      </view>
+      <view class="btm">
+        <view style="padding: 30rpx 0; font-size: 28rpx;color: #524B6B;  word-wrap: break-word; overflow-wrap: break-word;">{{form.personalStrengths}}</view>
+      </view>
+    </view> -->
+        <!-- Self-Evaluation -->
+        <view class="card">
+      <view class="top">
+        <view class="left">
+          <image src="/static/imgs/me/Icon@2x-2.png" mode="aspectFill" />
+          <span class="title">Candidate’s Self-Evaluation</span>
+        </view>
+        <view class="right">
+          <image bind:tap="goinfo" data-data="Self-Evaluation" data-item="{{form.content}}" data-path="/pages/advantage/advantage" src="/static/imgs/me/Edit.png" mode="aspectFill" />
+        </view>
+      </view>
+      <view class="btm">
+        <view style="padding: 30rpx 0; font-size: 28rpx;color: #524B6B; word-wrap: break-word; overflow-wrap: break-word;">{{form.content}}</view>
+      </view>
+    </view>
+    <!-- Job Search Expectations -->
+    <view class="card">
+      <view class="top">
+        <view class="left">
+          <image src="/static/imgs/me/Icon resume@2x.png" mode="aspectFill" />
+          <span class="title">Candidate’s Job Search Expectations</span>
+        </view>
+        <view class="right">
+          <image bind:tap="goinfo" data-path="/pages/expectations/expectations" data-sid="{{expectations.sid}}" src="/static/imgs/me/Edit.png" mode="aspectFill" />
+        </view>
+      </view>
+      <view class="btm">
+        <view class="tit1" wx:if="{{expectations.desiredCity}}">Preferred City · {{expectations.desiredCity}}</view>
+        <view class="tit2"  wx:if="{{expectations.desiredIndustry}}">Desired Position · {{expectations.desiredIndustry}}</view>
+        <view class="tit2"  wx:if="{{expectations.minSalary}}">Expected Salary · ￥{{expectations.minSalary}}-{{expectations.maxSalary}}</view>
+      </view>
+    </view>
+    <!-- Work Experience -->
+    <view class="card">
+      <view class="top">
+        <view class="left">
+          <image src="/static/imgs/me/Icon@2x.png" mode="aspectFill" />
+          <span class="title">Candidate’s Work Experience</span>
+        </view>
+        <view class="right">
+          <image data-path="/pages/experience/experience"  bind:tap="goinfo"  src="/static/imgs/me/Add@2x.png" mode="aspectFill" />
+        </view>
+      </view>
+      <view class="btm" wx:for="{{work}}">
+        <view style="display: flex; justify-content: space-between; align-items: center;">
+          <span class="tit1">{{item.companyName}}</span>
+          <view>
+            <image bind:tap="delwork" data-sid="{{item.sid}}" src="/static/imgs/me/Icon Remove@2x.png" mode="aspectFill" />
+            <image data-path="/pages/experience/experience" data-sid="{{item.sid}}" bind:tap="goinfo" src="/static/imgs/me/Edit.png" mode="aspectFill" />
+          </view>
+        </view>
+        <view class="tit2">{{item.companyCountry}}</view>
+        <view class="tit2">{{item.industry}} · {{item.startDate}} —— {{item.endDate}}</view>
+        <view class="tit2">{{item.postsName}}</view>
+        <view class="tit2">{{item.department}}</view>
+        <view class="tit2">{{item.descriptionContent}}</view>
+        <!-- <view class="tit2">{{item.achievementsContent}}</view> -->
+      </view>
+    </view>
+    <!-- Project Experience -->
+    <view class="card">
+      <view class="top">
+        <view class="left">
+          <image src="/static/imgs/me/Icon@2x.png" mode="aspectFill" />
+          <span class="title">Candidate’s Project Experience</span>
+        </view>
+        <view class="right">
+          <image data-path="/pages/project/project" data-sid="{{project.sid}}" bind:tap="goinfo" src="/static/imgs/me/Edit.png" mode="aspectFill" />
+        </view>
+      </view>
+      <view class="btm">
+        <view style="display: flex; justify-content: space-between; align-items: center;">
+          <span class="tit1">{{project.projectName}}</span>
+        </view>
+        <view class="tit2">{{project.projectRole}}</view>
+        <view class="tit2" wx:if="{{project.startDate}}">{{project.startDate}} —— {{project.endDate}}</view>
+        <view class="tit2">{{project.descriptionContent}}</view>
+        <!-- <view class="tit2">{{project.achievementsContent}}</view> -->
+      </view>
+    </view>
+    <!--Education -->
+    <view class="card">
+      <view class="top">
+        <view class="left">
+          <image src="/static/imgs/me/Icon Education@2x.png" mode="aspectFill" />
+          <span class="title">Candidate’s Education</span>
+        </view>
+        <view class="right">
+          <image bind:tap="goinfo" data-path="/pages/Educational/Educational" src="/static/imgs/me/Add@2x.png" mode="aspectFill" />
+        </view>
+      </view>
+      <view class="btm" wx:for="{{school}}">
+        <view style="display: flex; justify-content: space-between; align-items: center;">
+          <span class="tit1" wx:if="{{item.school}}">{{item.school}}</span>
+          <view>
+            <image bind:tap="delSchool" data-sid="{{item.sid}}"   src="/static/imgs/me/Icon Remove@2x.png" mode="aspectFill" />
+            <image data-path="/pages/Educational/Educational" bind:tap="goinfo" data-sid="{{item.sid}}" src="/static/imgs/me/Edit.png" mode="aspectFill" />
+          </view>
+        </view>
+        <view class="tit2" wx:if="{{item.degree}}">{{item.degree.memberName}}</view>
+        <view class="tit2" wx:if="{{item.major}}">{{item.major}}</view>
+        <view class="tit2" wx:if="{{item.startDate}}">{{item.startDate}} —— {{item.endDate}}</view>
+        <view class="tit2" wx:if="{{item.content}}">{{item.content}}</view>
+      </view>
+    </view>
+
+    <!--Attachments -->
+    <view class="card">
+      <view class="tops">
+        <view class="left">
+          <image src="/static/imgs/me/Icon Education@2x.png" mode="aspectFill" />
+          <span class="title">Candidate’s Attachments</span>
+        </view>
+        <view class="right">
+          <image bind:tap="goinfo" data-item="{{form.images}}" data-path="/pages/Attachments/Attachments" src="/static/imgs/me/Add@2x.png" mode="aspectFill" />
+        </view>
+      </view>
+      <view style="color: #9197AF; border-bottom: 1px solid #DEE1E7; font-size: 24rpx; padding-bottom: 10rpx;">(Profile Photo, Certificates, etc.)</view>
+      <view class="btm">
+        <view style="display: flex; justify-content: space-between; padding:20rpx 0;">
+          <image  wx:if="{{form.images[0].cover}}" src="{{form.images[0].cover}}" style="width: 47%; height: 204rpx;" mode="aspectFill" />
+          <view wx:if="{{form.images[1].cover}}" style="width: 47%; height: 204rpx;position: relative;">
+            <image  src="{{form.images[1].cover}}" style="width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.5); " mode="aspectFill" />
+            <view wx:if="{{form.images.length>2}}" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);font-weight: 700;font-size: 24rpx;color: #FFFFFF;">+5 pictures</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view style="margin: 78rpx auto; width: 60%; padding-bottom: 100rpx;">
+      <van-button bind:tap="submit" type="primary" color="#2623D1" block>Save and Publish</van-button>
+    </view>
+  </view>
+  <van-popup show="{{ show }}" bind:close="onClose" round>
+    <view class="card" style="width:620rpx;">
+      <view class="top">
+        <view class="left">
+          <image src="/static/imgs/me/Icon Skill@2x.png" mode="aspectFill" />
+          <span class="title">Personal Tags</span>
+        </view>
+        <view class="right">
+        </view>
+      </view>
+      <view class="btm">
+        <view class="card2">
+          <view class="weui-cell__bd">
+            <view style="display: flex; flex-wrap: wrap; align-items: center;">
+              <view style="background: #F5F4F6; padding: 20rpx 30rpx; border-radius: 20rpx; margin:15rpx 5rpx" wx:for="{{taglist}}">
+                {{item.memberName}}
+                <van-icon data-sid="{{item.sid}}" bind:tap="deltag" name="cross" />
+              </view>
+            </view>
+          </view>
+          <!-- 弹出层 -->
+          <view>
+            <view class="title">New</view>
+            <view style="display: flex; align-items: center;">
+              <input class="weui-inputs" name="tagName" value="{{tagName}}" placeholder="Please Choose" maxlength="35" placeholder-class="placeholder" bindinput="handleInputChange" />
+              <van-button bind:tap="settag" data-data="{{tagName}}" style="margin-left: 20rpx;" color="#2623D1" plain type="info">Confirm</van-button>
+            </view>
+            <view style="margin: 50rpx 0;">
+              <van-button bind:tap="onClose" color="#2623D1" type="primary" block>Submit</van-button>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </van-popup>
+</view>

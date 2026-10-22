@@ -1,0 +1,30 @@
+<!--components/index/me/me.wxml-->
+<view>
+  <!-- 顶部背景 -->
+  <image class="post_img" style="width: 100%;" src="/static/imgs/bac1.jpg" mode="aspectFill" />
+  <!-- 定位搜索框 -->
+  <view class="post_top">
+    <view style="color:#FFFFFF;margin: 10rpx 0rpx; display: flex; align-items: center;">
+      <image style="width: 30rpx; height: 30rpx; margin-right: 12rpx;" src="/static/imgs/address.jpg" mode="aspectFill" />
+      <span style="margin-right: 12rpx;">Singapore</span>
+      <van-icon name="arrow-down" />
+    </view>
+    <view>
+      <van-search custom-class="post_search" disabled bind:tap="gosearch" background="none" style="padding: 0;" placeholder="Search by Job Position/Company Name" />
+    </view>
+  </view>
+  <!-- 底部内容展示 -->
+  <view class="post_btm">
+    <van-tabs sticky animated offset-top="356rpx" color='#2623D1' title-active-color='#2623D1' title-inactive-color='#150B3D' active="{{ active }}" bind:change="onChange">
+      <van-tab wx:for="{{3}}" title="All jobs">
+        <view>
+          <scroll-view class="post_scroll-view" scroll-y="true">
+            <paging reqUrl="user/hd/index" params='{{getParams1}}' immediatecheck="{{false}}">
+              <jobcard></jobcard>
+            </paging>
+          </scroll-view>
+        </view>
+      </van-tab>
+    </van-tabs>
+  </view>
+</view>

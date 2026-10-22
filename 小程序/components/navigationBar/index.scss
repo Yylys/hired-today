@@ -1,0 +1,45 @@
+.navigationBar {
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    z-index: 9999999;
+
+    .text {
+        box-sizing: border-box;
+        flex: 1;
+        font-size: 18px;
+        color: #000e37;
+
+        &.center {
+            text-align: center;
+
+            &.paddingRight {
+                padding-right: 28px;
+            }
+        }
+    }
+
+    .bgSlot {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        width: 100%;
+        z-index: -1;
+    }
+
+    .backButtonWrap {
+        margin-bottom: -2px;
+    }
+}
+
+.tapstate_opacity {
+    opacity: 0.7;
+}

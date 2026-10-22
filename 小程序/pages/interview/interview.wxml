@@ -1,0 +1,57 @@
+<!--pages/expectations/expectations.wxml-->
+<view class="box">
+  <view class="contaners">
+    <form catchsubmit="onFormSubmit" catchreset="formReset" class="form">
+      <view class="weui-cell__bd">
+        <view class="title">Choose a Position <span class="icon">*</span></view>
+        <input  disabled bind:tap="{{!form.messageSid ? 'showexperience' : ''}}"  class="weui-input" name="work" value="{{jobName}}" type="text" placeholder="Please Choose" placeholder-class="placeholder" bindblur="onPhoneInput" />
+      </view>
+      <view class="weui-cell__bd" style="position: relative;">
+        <view class="title" style="display: flex; justify-content: space-between; align-items: center;">
+          <view style="display: flex; flex-direction: column;">
+            <span>Please select your interview time  <span class="icon">*</span></span>
+            <span style="font-weight: 250;color: #A49EB5;">Multiple time slots can be added</span>
+          </view>
+          <image bind:tap="addtime" style="width: 40rpx; height: 40rpx;" src="/static/imgs/tianjia.jpg" />
+        </view>
+        <view wx:for="{{form.interviewTime}}">
+          <input disabled style="position: relative; margin:20rpx 0 ;" bind:tap="showPopup" data-index="{{index}}" class="weui-input" value="{{item}}"  type="text"  placeholder="Please Enter" placeholder-class="placeholder">
+          <image style="width: 40rpx; height: 40rpx; position:absolute; bottom: 30rpx; right: 30rpx;" src="/static/imgs/me/rl.jpg" /></input>
+        </view>
+      </view>
+      <view class="weui-cell__bd">
+        <view class="title">Interview Title <span class="icon">*</span></view>
+        <input class="weui-input" name="title" value="{{form.title}}" placeholder="Please Enter" placeholder-class="placeholder" />
+      </view>
+      <view class="weui-cell__bd">
+        <view class="title">
+          <view class="weui-cell__bd">
+            <view class="title">Interview Details <span class="icon">*</span></view>
+            <textarea adjust-position="{{true}}" maxlength="-1" auto-height="{{true}}" class="weui-input" style="padding: 30rpx 20rpx;min-height: 200rpx;" name="detail" value="{{form.detail}}" placeholder="Please Enter" placeholder-class="placeholder" />
+          </view>
+        </view>
+      </view>
+      <view class="weui-cell__bd">
+        <view class="title">Interviewer <span class="icon">*</span></view>
+        <input class="weui-input" name="interviewer" value="{{form.interviewer}}" placeholder="Please Enter" placeholder-class="placeholder" />
+      </view>
+      <view class="weui-cell__bd">
+        <view class="title">Interview Platform <span class="icon">*</span></view>
+        <input class="weui-input" name="platform" value="{{form.platform}}" placeholder="Please Enter" placeholder-class="placeholder" />
+      </view>
+      <view class="weui-cell__bd">
+        <view class="title">Interview Number <span class="icon">*</span></view>
+        <input class="weui-input" name="numberOfInterviews" value="{{form.numberOfInterviews}}" placeholder="Please Enter" placeholder-class="placeholder" />
+      </view>
+      <view style="margin: 78rpx auto; width: 60%; padding-bottom: 100rpx;">
+        <van-button formType="submit" type="primary" color="#2623D1" block>CONFIRM INVITATION</van-button>
+      </view>
+    </form>
+  </view>
+  <van-popup show="{{ show }}" bind:close="onClose" position="bottom">
+    <van-datetime-picker confirm-button-text="confirm" cancel-button-text="cancel"  type="datetime" value="{{ currentDate }}" bind:input="onInput" bind:confirm="onsucces" bind:cancel="onClose" min-date="{{ minDate }}" formatter="{{ formatter }}" />
+  </van-popup>
+  <van-popup show="{{ showexperience }}" bind:close="onClose" position="bottom">
+    <van-picker confirm-button-text="confirm" cancel-button-text="cancel" columns="{{ columns }}" default-index="{{ 1 }}" bind:cancel="onClose" bind:confirm="onConfirm" show-toolbar title="" />
+  </van-popup>
+</view>

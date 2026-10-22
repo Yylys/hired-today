@@ -1,0 +1,65 @@
+<scroll-view class="post_scroll-view" scroll-y="true">
+  <paging reqUrl="/v1/candidate" params='{{params2}}' immediatecheck="{{false}}" pagingRefField="post" filed="list2">
+    <!--components/card/index.wxml-->
+    <view style="padding-bottom: 100rpx;">
+      <view class="{{item.sid ==form.userCandidateSid ? 'boxs' : 'box'}}" wx:for="{{list2}}" bind:tap="toggleSelect" data-item="{{item}}">
+        <view class="card">
+          <view class="top">
+        <view style="display: flex; width: 100%;">
+          <view style="width: 84rpx; height: 84rpx; margin-right: 16rpx">
+            <image style="width: 84rpx; height: 84rpx;border-radius: 50%;" src="{{imgurl+ item.avatar}}" mode="aspectFill" />
+          </view>
+          <view style="flex:1">
+            <view style="display: flex; justify-content: space-between; width: 100%;">
+              <view style="font-weight: 700;font-size:28rpx;margin-bottom:12rpx ;">{{item.fullName}} <span class="tt">
+                  <image wx:if="{{item.sex==0}}" style="width: 26rpx;height: 26rpx;" src="/static/imgs/detail/man.jpg" mode="aspectFill" />
+                  <image wx:if="{{item.sex==1}}" style="width: 26rpx;height: 26rpx;" src="/static/imgs/detail/woman.jpg" mode="aspectFill" />
+                </span>
+              </view>
+              <span style="font-size:36rpx;color:#2623d1;font-weight:600;white-space: nowrap;">￥{{item.minSalary/1000}}K-￥{{item.maxSalary/1000}}K</span>
+            </view>
+            <view style="font-size:24rpx;color:#524B6B">{{item.age}} years old | <span style="font-weight:900;">{{item.desiredIndustry}}</span>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view style="display: flex; flex-direction:column;align-items:flex-end;">
+        <view wx:if="{{item.isHeadhunting==0}}" style="height: 50rpx;line-height: 50rpx; background-color:#E3E3FF; width: 150rpx; color: #2623D1; border-radius: 8rpx; font-size: 24rpx;  text-align: center;">Headhunter</view>
+      </view>
+      <view class="cens">
+        <view class="list" style=" white-space: pre-wrap;">
+          <view  style="background: #F5F4F6;border-radius: 8rpx 8rpx 8rpx 8rpx; padding: 10rpx 12rpx; font-size: 24rpx;margin-right: 30rpx; margin-top: 10rpx ;">{{item.countriesName}}</view>
+          <view wx:for="{{item.tag}}" style="background: #F5F4F6;border-radius: 8rpx 8rpx 8rpx 8rpx; padding: 10rpx 12rpx; font-size: 24rpx;margin-right: 30rpx; margin-top: 10rpx ;">{{item.memberName}}</view>
+        </view>
+        <view wx:if="{{item.recruiter==0}}" style="display: flex; align-items: center; margin-right: 0rpx;">
+          <image style="width: 24rpx; height: 24rpx;" src="/static/imgs/money.jpg" mode="aspectFill" />
+          <span style="color:#2623D1;font-size:28rpx">￥{{item.recruiterPrice}}</span>
+        </view>
+      </view>
+          <!-- 线条 -->
+          <view style="width: 670rpx;height: 2rpx; background-color: #E4E7ED; margin: 20rpx;"></view>
+          <view class="btm .line_ellipsis" style="margin:20rpx;">
+            {{item.content}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </paging>
+  <view style="position:fixed; bottom: 0; height: 150rpx; width: 100%; background: #FFFFFF; z-index: 100;">
+    <view style="width: 90%; margin:30rpx auto;">
+      <van-button bind:tap="postdata" type="primary" color="#2623D1" block>SUBMIT</van-button>
+    </view>
+  </view>
+  <van-popup round show="{{ show }}" bind:close="closepops">
+    <view style="width: 620rpx;height: 738rpx; border-radius: 50rpx;">
+      <view style="width: 100%;background: #F3F3F3; height: 106rpx; line-height: 106rpx; text-align: center;">Attach Message</view>
+      <view style="height: 390rpx; width: 92%; margin: 15rpx auto;">
+        <textarea adjust-position="{{true}}" style="width: 100%; height: 390rpx;" bindinput="bindTextAreaBlur" placeholder="Please Enter your recommendation reason." placeholder-style='font-size:28rpx; font-weight: 300;'></textarea>
+      </view>
+      <view>
+        <button bind:tap="closepop" style="width: 70%; background-color: #2623D1; color: #FFFFFF; border-radius: 50rpx; margin-bottom: 28rpx; font-size: 28rpx;">Confirm</button>
+        <button bind:tap="closepop" style="width: 70%; height: 90%; background-color: #EAEAFF; color: #2623D1; border-radius: 50rpx; font-size: 28rpx;">Submit Directly</button>
+      </view>
+    </view>
+  </van-popup>
+</scroll-view>

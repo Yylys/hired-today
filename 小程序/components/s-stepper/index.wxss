@@ -1,0 +1,53 @@
+.s_stepper {
+  display: flex;
+  align-items: center;
+}
+
+.s_stepper .operation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50rpx;
+  height: 50rpx;
+  color: #333;
+  font-size: 0;
+  border-radius: 4rpx;
+  background: #f7f7f9;
+}
+
+.s_stepper .operation.minus .text {
+  transform: scaleX(1.8);
+}
+
+.s_stepper .operation.disabled .text {
+  color: #c4c4c4;
+}
+
+.s_stepper .operation .text {
+  font-size: 32rpx;
+}
+
+.s_stepper .input {
+  margin: 0 10rpx;
+  text-align: center;
+  width: 70rpx;
+  height: 50rpx;
+  background-color: #f7f7f9;
+  border-radius: 4rpx;
+}
+
+.tapstate_mark {
+  position: relative;
+}
+
+.tapstate_mark::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.1;
+  background: #000;
+  border-radius: inherit;
+}

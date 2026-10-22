@@ -1,0 +1,133 @@
+<view style="position: relative;" scroll-y="true">
+  <view style="padding-bottom: 200rpx;">
+    <view class="weui-cell__bd" wx:if="{{roleKeySet!='employer'}}">
+      <view class="title">Job Source <span class="icon">*</span></view>
+      <input class="weui-input" bindinput="handleInput" data-title="form.companyName" value="{{form.companyName}}" placeholder="Please enter the specific job source" />
+    </view>
+    <view class="weui-cell__bd">
+      <view class="title">Position Title<span class="icon">*</span></view>
+      <input class="weui-input" bindinput="handleInput" data-title="form.jobName" value="{{form.jobName}}" placeholder="Please Enter" />
+    </view>
+    <view class="weui-cell__bd">
+      <view class="title"> Salary<span class="icon">*</span></view>
+      <view style="display: flex; align-items: center; justify-content: space-between;">
+        ¥<input class="weui-input1" bindinput="onInputChange" data-title="form.minSalary" value="{{form.minSalary}}" placeholder="Min Salary" />
+        ¥-
+        <input class="weui-input1" bindinput="onInputChange" data-title="form.maxSalary" value="{{form.maxSalary}}" placeholder="Max Salary" />
+      </view>
+    </view>
+    <!-- <view class="weui-cell__bd">
+            <view class="title">max Salary</view>
+            <input class="weui-input" bindinput="handleInput" data-title="form.maxSalary" value="{{form.maxSalary}}" placeholder="Max Salary" />
+          </view> -->
+    <view class="weui-cell__bd" style="position: relative;">
+      <view class="title">Working address<span class="icon">*</span></view>
+      <input disabled class="weui-input" bindtap="setCity" data-title="form.address" value="{{form.address}}" placeholder="Please Enter" />
+      <van-icon style="width: 40rpx; height: 40rpx; position:absolute; bottom: 30rpx; right: 30rpx;" name="arrow-down" />
+    </view>
+
+    <view class="weui-cell__bd" style="position: relative;">
+      <view class="title">Academic requirements<span class="icon">*</span></view>
+      <input disabled  bind:tap="showdeg" class="weui-input" name="degree" value="{{form.Degreename}}" type="text" placeholder="Please Choose" bindblur="onPhoneInput" />
+      <van-icon style="width: 40rpx; height: 40rpx; position:absolute; bottom: 30rpx; right: 30rpx;" name="arrow-down" />
+    </view>
+
+    <view class="weui-cell__bd">
+      <view class="title">Department<span class="icon">*</span></view>
+      <input class="weui-input" bindinput="handleInput" data-title="form.department" value="{{form.department}}" placeholder="Please Enter" />
+    </view>
+
+    <view class="weui-cell__bd" style="position: relative;">
+      <view class="title">Experience required <span class="icon">*</span></view>
+      <input disabled  bind:tap="showExp"  class="weui-input" name="degree" value="{{Experiencename}}" type="text" placeholder="Please Choose" bindblur="onPhoneInput" />
+      <van-icon style="width: 40rpx; height: 40rpx; position:absolute; bottom: 30rpx; right: 30rpx;" name="arrow-down" />
+    </view>
+
+    <view class="weui-cell__bd" style="position: relative;">
+      <view class="title">Job Type<span class="icon">*</span></view>
+      <input disabled bind:tap="showWork" class="weui-input" name="degree" value="{{WorkName}}" type="text" placeholder="Please Choose" bindblur="onPhoneInput" />
+      <van-icon style="width: 40rpx; height: 40rpx; position:absolute; bottom: 30rpx; right: 30rpx;" name="arrow-down" />
+    </view>
+
+    <!-- <view class="weui-cell__bd">
+            <view class="title">Skill requirements</view>
+            <input class="weui-input" bindinput="handleInput" data-title="form.skill" value="{{form.skill}}" placeholder="Please Enter" />
+          </view> -->
+
+    <view class="weui-cell__bd">
+      <view class="title">Skill Requirements<span class="icon">*</span></view>
+      <view class="weui-input">
+        <view style=" min-height: 200rpx; position: relative; padding-bottom: 100rpx; ">
+          <view class="weui-cell__bd">
+            <view style="display: flex; flex-wrap: wrap; align-items: center;">
+              <view style="background: #F5F4F6; padding: 20rpx 30rpx; border-radius: 20rpx; margin:15rpx 5rpx" wx:for="{{form.skill}}">
+                {{item}}
+                <van-icon data-index="{{index}}" bind:tap="deltag" name="cross" />
+              </view>
+            </view>
+          </view>
+          <view style="display: flex; align-items: center; position: absolute;bottom: 20rpx; left: 50rpx;">
+            <input style="box-shadow: 0px 2px 10px 0px rgba(153, 171, 198, 0.28); border-radius: 20rpx; padding:5rpx 15rpx ; width: 330rpx;" class="weui-inputs" name="tagName" value="{{lable}}" placeholder="Please Enter tag" maxlength="35" placeholder-class="placeholder" bindinput="handleInput" data-title="lable" />
+            <van-button bind:tap="settag" data-data="{{lable}}" style="margin-left: 20rpx; " color="#2623D1" plain type="info">Confirm</van-button>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cell__bd">
+      <view class='title'>Recruitment Quantity<span class="icon">*</span></view>
+      <view class="titles">Please enter a specific number</view>
+      <input class="weui-input" bindinput="handleInput" data-title="form.recruitsCount" value="{{form.recruitsCount}}" placeholder="Please enter a specific number" />
+    </view>
+
+    <view class="weui-cell__bd">
+      <view class="title">Number of Interview Rounds<span class="icon">*</span></view>
+      <input class="weui-input" bindinput="handleInput" data-title="form.interviewCount" value="{{form.interviewCount}}" placeholder="Please enter a specific number" />
+    </view>
+
+    <view class="weui-cell__bd">
+      <view class="title">Job Description<span class="icon">*</span></view>
+      <!-- <textarea adjust-position="{{true}}" maxlength="-1" auto-height="{{true}}" value="{{form.content}}" class="weui-input" style="padding: 30rpx 20rpx;min-height: 200rpx; max-height: 800rpx; border-radius: 30rpx;" name="need" type="text" placeholder="Please Enter" bindinput="handleInput" data-title="form.content"></textarea> -->
+
+      <van-field cursor-spacing='200' hold-keyboard value="{{ form.content }}" input-class="weui-input2" type='textarea' autosize="{{ { minHeight: 100} }}" placeholder="Please Enter"  bindinput="handleInputs" data-title="form.content" />
+    </view>
+
+    <view class="weui-cell__bd">
+      <view class="title">Is this recruitment urgent</view>
+      <switch checked="{{switch1Checked}}" bindchange="switch1Change" />
+    </view>
+
+    <view class="weui-cell__bd" style="position: relative;">
+      <view class="title">Accept Headhunter Recommendations</view>
+      <input disabled bind:tap="showre" class="weui-input" name="degree" value="{{recruitername}}" type="text" placeholder="Please Choose" />
+      <van-icon style="width: 40rpx; height: 40rpx; position:absolute; bottom: 30rpx; right: 30rpx;" name="arrow-down" />
+    </view>
+    <view class="weui-cell__bd" wx:if="{{form.recruiter==0}}">
+      <input class="weui-input" style="margin-top: 10rpx;" bindinput="onInputChange" data-title="form.recruiterPrice" value="{{form.recruiterPrice}}" placeholder="Enter the reward amount" />
+    </view>
+
+    <view style="position:absolute; bottom: 0; height: 150rpx; width: 100%; background: #FFFFFF;">
+      <view style="width: 90%; margin:30rpx auto;">
+        <van-button bind:tap="postdata" type="primary" color="#2623D1" block>POST A JOB</van-button>
+      </view>
+    </view>
+  </view>
+
+
+  <van-popup show="{{ showExp}}" bind:close="onClose" position="bottom">
+    <van-picker confirm-button-text="confirm" cancel-button-text="cancel" columns="{{ columns1 }}" value-key="memberName" default-index="{{ item.sid }}" bind:cancel="onClose" bind:confirm="onConfirm1" show-toolbar title="" />
+  </van-popup>
+  <van-popup show="{{ showdeg }}" bind:close="onClose" position="bottom">
+    <van-picker confirm-button-text="confirm" cancel-button-text="cancel" columns="{{ columns2 }}" value-key="memberName" default-index="{{ item.sid }}" bind:cancel="onClose" bind:confirm="onConfirm2" show-toolbar title="" />
+  </van-popup>
+  <van-popup show="{{ showWork }}" bind:close="onClose" position="bottom">
+    <van-picker confirm-button-text="confirm" cancel-button-text="cancel" columns="{{ columns3 }}" value-key="memberName" default-index="{{ item.sid }}" bind:cancel="onClose" bind:confirm="onConfirm3" show-toolbar title="" />
+  </van-popup>
+
+  <van-popup show="{{ showre }}" bind:close="onClose" position="bottom">
+    <van-picker confirm-button-text="confirm" cancel-button-text="cancel" columns="{{ columns4 }}" value-key="name" default-index="{{ item.id }}" bind:cancel="onClose" bind:confirm="onConfirm4" show-toolbar title="" />
+  </van-popup>
+
+  <van-popup show="{{ showjob }}" bind:close="onClose" position="bottom">
+    <van-picker confirm-button-text="confirm" cancel-button-text="cancel" columns="{{ columns5 }}" value-key="memberName" default-index="{{ item.sid }}" bind:cancel="onClose" bind:confirm="onConfirm5" show-toolbar title="" />
+  </van-popup>
+</view>

@@ -1,0 +1,117 @@
+<!--pages/information/information.wxml-->
+<view class="box">
+  <view class="contaners">
+    <view style="text-align: center;">
+      <!-- 头像 -->
+      <view class="upload_warp">
+        <view class="head">
+          <view class="avatar_pick" hover-class="tapstate_opacity">
+            <button class="avatar_wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+              <image wx:if="{{form.avatar}}" src="{{wx_ImgbaseURL + form.avatar}}" class="uploadIcon" mode="widthFix" />
+              <image wx:if="{{!form.avatar}}" src="/static/imgs/avator.jpg" class="uploadIcon" mode="widthFix" />
+            </button>
+          </view>
+        </view>
+      </view>
+    </view>
+    <form catchsubmit="onFormSubmit" catchreset="formReset" class="form">
+      <view class="weui-cell__bd">
+        <view class="title">Headhunter name<span class="icon">*</span></view>
+        <input class="weui-input" name="name" value="{{form.name}}" placeholder="Please Enter" placeholder-class="placeholder" />
+      </view>
+
+
+      <view class="weui-cell__bd">
+        <view class="title">Headhunter's Email<span class="icon">*</span></view>
+        <input class="weui-input" name="email" value="{{form.email}}" type="text" placeholder="Please Enter" placeholder-class="placeholder" />
+      </view>
+      <view class="weui-cell__bd">
+        <view class="title">Headhunter's phonenumber<span class="icon">*</span></view>
+        <input class="weui-input" name="phone" value="{{form.phone}}" type="text" placeholder="Please Enter" placeholder-class="placeholder" />
+      </view>
+
+      <view class="weui-cell__bd">
+        <view class="title">Headhunter's WeChat ID/Account<span class="icon">*</span></view>
+        <input class="weui-input" name="weChat" value="{{form.weChat}}" type="text" placeholder="Please Enter" placeholder-class="placeholder" />
+      </view>
+      <view class="weui-cell__bd">
+        <view class="title">Service slogan<span class="icon">*</span></view>
+        <input class="weui-input" name="address" value="{{form.address}}" type="text" placeholder="Please Enter" placeholder-class="placeholder" />
+      </view>
+      <view class="weui-cell__bd">
+        <view class="title">Industries of expertise<span class="icon">*</span></view>
+        <view class="weui-input1">
+          <view style=" min-height: 200rpx; position: relative; padding-bottom: 100rpx; ">
+            <view class="weui-cell__bd">
+              <view style="display: flex; flex-wrap: wrap; align-items: center;">
+                <view style="background: #F5F4F6; padding: 20rpx 30rpx; border-radius: 20rpx; margin:15rpx 5rpx" wx:for="{{form.infoTag}}">
+                  {{item}}
+                  <van-icon data-sid="{{index}}" bind:tap="deltag" name="cross" />
+                </view>
+              </view>
+            </view>
+            <view style="display: flex; align-items: center; position: absolute;bottom: 20rpx; left: 50rpx;">
+              <input style="box-shadow: 0px 2px 10px 0px rgba(153, 171, 198, 0.28); border-radius: 20rpx; padding: 15rpx; width: 330rpx;" class="weui-inputs" name="tagName" value="{{tagName}}" placeholder="Please Enter tag" maxlength="20" placeholder-class="placeholder" bindinput="handleInputChange" data-title='tagName'  />
+              <van-button bind:tap="settag" data-data="{{tagName}}" style="margin-left: 20rpx; " color="#2623D1" plain type="info">Confirm</van-button>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="weui-cell__bd">
+        <view class="title">Skills<span class="icon">*</span></view>
+        <view class="weui-input1">
+          <view style=" min-height: 200rpx; position: relative; padding-bottom: 100rpx; ">
+            <view class="weui-cell__bd">
+              <view style="display: flex; flex-wrap: wrap; align-items: center;">
+                <view style="background: #F5F4F6; padding: 20rpx 30rpx; border-radius: 20rpx; margin:15rpx 5rpx" wx:for="{{form.skillTag}}">
+                  {{item}}
+                  <van-icon data-sid="{{index}}" bind:tap="deltag1" name="cross" />
+                </view>
+              </view>
+            </view>
+            <view style="display: flex; align-items: center; position: absolute;bottom: 20rpx; left: 50rpx;">
+              <input style="box-shadow: 0px 2px 10px 0px rgba(153, 171, 198, 0.28); border-radius: 20rpx; padding: 15rpx; width: 330rpx;" class="weui-inputs" name="skllName" value="{{skllName}}" placeholder="Please Enter" maxlength="20" placeholder-class="placeholder" bindinput="handleInputChange" data-title='skllName' />
+              <van-button bind:tap="settag1" data-data="{{skllName}}" style="margin-left: 20rpx; " color="#2623D1" plain type="info">Confirm</van-button>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- <view class="weui-cell__bd" style="position: relative;">
+        <view class="title">Nationality</view>
+        <view style="display:flex; flex-wrap:wrap; justify-content:start;" class="weui-input1">
+          <view style="margin: 20rpx 0; width: 25%; display: flex; flex-direction: column;justify-content: flex-start; align-items: center; " wx:for="{{form.recruiterList}}">
+            <image style="width:100rpx;height: 100rpx;" src="{{wx_ImgbaseURL + item.avatar}}" mode="aspectFill" />
+            <view style="margin-top: 10rpx; ">{{item.name}}</view>
+          </view>
+        </view>
+        <van-icon bind:tap="goinfo" data-item="{{form.recruiterList}}" data-path="/pages/Recruiter/Recruiter" style="width: 40rpx; height: 40rpx; position:absolute; top: 20rpx; right: 30rpx;" name="plus" />
+      </view> -->
+
+      <view style="width: 670rpx; margin:0 auto;">
+        <view class="title">Personal photo album<span class="icon">*</span></view>
+        <view style="background-color: #fff; border-radius: 36rpx; padding: 20rpx 20rpx;">
+          <van-uploader  image-fit="aspectFill"bind:delete="delimg" file-list="{{ fileList }}" bind:after-read="afterRead" max-count="5">
+            <view style="display: flex; align-items: center; justify-content: center; border: 1rpx dashed #9D97B5; border-radius: 36rpx; width: 620rpx; padding: 60rpx 0; margin-bottom: 20rpx;">
+              <van-icon size="40rpx" name="photo-o" />
+              <span style="color: #150A33; font-size: 24rpx; margin-left: 10rpx;">Upload Image</span>
+            </view>
+          </van-uploader>
+        </view>
+      </view>
+      <view style="width: 670rpx; margin:0 auto;">
+        <view class="title">Certificate<span class="icon">*</span></view>
+        <view style="background-color: #fff; border-radius: 36rpx; padding: 20rpx 20rpx;">
+          <van-uploader  image-fit="aspectFill"bind:delete="delimg1" file-list="{{ fileList1 }}" bind:after-read="afterRead1" max-count="5">
+            <view style="display: flex; align-items: center; justify-content: center; border: 1rpx dashed #9D97B5; border-radius: 36rpx; width: 620rpx; padding: 60rpx 0; margin-bottom: 20rpx;">
+              <van-icon size="40rpx" name="photo-o" />
+              <span style="color: #150A33; font-size: 24rpx; margin-left: 10rpx;">Upload Image</span>
+            </view>
+          </van-uploader>
+        </view>
+      </view>
+      <view style="margin: 78rpx auto; width: 60%; padding-bottom: 100rpx;">
+        <van-button formType="submit" type="primary" color="#2623D1" block>Submit</van-button>
+      </view>
+    </form>
+  </view>
+</view>

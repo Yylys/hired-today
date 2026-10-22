@@ -1,0 +1,134 @@
+<!--components/index/me/me.wxml-->
+<view style="background-color: #fff; min-height: 100vh;">
+  <!-- 头部卡片 -->
+  <view>
+    <image class="img" style="width: 100%;" src="/static/imgs/bac3.jpg" mode="aspectFill" />
+    <view style="position: absolute; top: 13vh;  width: 706rpx; left: 42rpx;">
+      <!-- <span style="font-size: 20rpx;">{{infos}}</span> -->
+      <view style="display: flex; align-items: center; ">
+        <image bind:tap="goinfo" data-path="/pages/edu_information/edu_information" style="width: 104rpx; height: 105rpx;border-radius: 50%; margin-right: 24rpx;" src="{{ infos.infos.avatar ? wx_ImgbaseURL + infos.infos.avatar : '/static/imgs/avator.jpg'}}" mode="aspectFill" />
+        <view style="color: #FFFFFF;">
+          <view style="font-size: 28rpx; margin-bottom: 10rpx;">{{infos.infos.name}}</view>
+          <view wx:if="{{infos.infos.vipOverdueTime}}" style="font-size: 24rpx;">Membership Expiration Date 
+          <view> {{infos.infos.vipOverdueTime}}</view></view>
+          <view wx:else style="font-size: 24rpx;">Non-Member</view>
+        </view>
+      </view>
+      <view style="color: #fff; display: flex; align-items: center; justify-content: space-between; margin-top: 50rpx;">
+        <view>
+          <span>Job refresh</span>
+          <image bind:tap="Refresh" style="width:35rpx; height:35rpx;border-radius: 50%; margin-left: 24rpx;" src="/static/imgs/me/up.png" mode="aspectFill" />
+        </view>
+        <view class="btn" bind:tap="goinfo" data-path="/pages/edu_information/edu_information">
+          <view>Edit profile</view>
+          <image style="width:48rpx; height:48rpx; margin-left: 20rpx;" src="/static/imgs/me/Edit@2x.png" mode="aspectFill" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 会员卡片 -->
+  <view style="width: 702rpx;margin:0 auto;  position: relative; ">
+    <image style="width: 100%;height: 100%;  position: absolute; top:0%;" src="/static/imgs/me/bor3.jpg" mode="" />
+    <view style=" width: 93%; margin:0 auto; padding:  10% 0 20rpx; display: flex; justify-content:space-between; flex-wrap: wrap; ">
+      <view class="card">
+        <view class="title">Job Refresh</view>
+        <view class="cen">
+          <!-- <span class="f500"></span> -->
+          <span class="f">{{infos.Vip.jobRefreshQuotaPerDayAfter}} Times/Day</span>
+        </view>
+      </view>
+      <view class="card">
+        <view class="title">Job Posting</view>
+        <view class="cen">
+          <!-- <span class="f500"></span> -->
+          <span class="f">{{infos.Vip.jobPostingQuotaAfter}}</span>
+        </view>
+      </view>
+      <view class="card">
+        <view class="title">Resume View</view>
+        <view class="cen">
+          <span class="f500"></span>
+          <span class="f">{{infos.Vip.resumeViewingQuotaPerDayAfter}} Times/Day</span>
+        </view>
+      </view>
+      <view style="width: 94%; height: 2rpx; background-color: #E9E9F6; margin:20rpx 0;"></view>
+      <view style="width: 100%; display: flex; justify-content:space-between; flex-wrap: wrap; align-items: center; margin:0rpx 0;">
+        <view class="card">
+          <view class="title">
+            <span class="f700">￥{{infos.Vip.membershipFee/100}}</span>
+            <span class="f">/Month</span>
+          </view>
+          <!-- <view >
+            <view wx:if="{{infos.infos.vipOverdueTime}}" style="font-weight: 400;font-size: 24rpx;color: #514B6B;">Ends on {{infos.infos.vipOverdueTime}}</view>
+          </view> -->
+        </view>
+        <view class="card" style="z-index: 1;">
+          <view bind:tap="showPopup">
+            <span class="f500" style="font-size: 24rpx;">Membership</span>
+            <van-icon size="24rpx" name="arrow" />
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 列表 -->
+  <view style="padding-bottom: 120rpx;">
+    <view bind:tap="goinfo" wx:for="{{list}}" data-path="{{item.path}}" data-type="{{item.type}}">
+      <view class="list" wx:if="{{item.name!=='Online Support'}}">
+        <view>
+          <image style="width:48rpx; height:48rpx; margin: 0 20rpx;" src="{{item.icon}}" mode="aspectFill" />
+          <span class="name">{{item.name}}</span>
+        </view>
+        <van-icon style="margin-right:20rpx;" color="#FF9228" size="34rpx" name="arrow" />
+      </view>
+      <button open-type="contact" class="lists" wx:if="{{item.name=='Online Support'}}">
+        <view>
+          <image style="width:48rpx; height:48rpx; margin: 0 20rpx;" src="{{item.icon}}" mode="aspectFill" />
+          <span class="name">{{item.name}}</span>
+        </view>
+        <van-icon style="margin-right:20rpx;" color="#FF9228" size="34rpx" name="arrow" />
+      </button>
+    </view>
+  </view>
+  <van-popup show="{{ show }}" bind:close="onClose" round>
+    <view style="width: 620rpx;  border-radius: 30rpx;">
+      <view style="width: 500rpx;  border:2rpx solid #2623D1; border-radius: 30rpx; margin: 64rpx auto 0; display: flex; flex-direction: column; align-items: center;">
+        <!-- 皇冠 -->
+        <image style="width: 48rpx; height: 48rpx;margin: 28rpx 0;" src="/static/imgs/me/hg.jpg" mode="aspectFill" />
+        <!-- 价格 -->
+        <view style="font-size: 44rpx; color: #2623D1; font-weight: 700;font-family: D-DIN, D-DIN;">￥{{infos.Vip.membershipFee/100}}<span style="font-size: 34rpx; color: #AAA6B9;">/month</span></view>
+        <!-- 介绍 -->
+        <view style="width: 460rpx; border-top:  2rpx solid #E9EAEE; margin-top: 24rpx;">
+          <view style="display: flex;margin:36rpx 0">
+            <van-icon name="success" color="#2623D1" />
+            <span style="margin-left: 24rpx;font-weight: 400;font-size: 24rpx;color: #514B6B;">Job Refresh {{infos.Vip.jobRefreshQuotaPerDayAfter}} Times/Day</span>
+          </view>
+          <view style="display: flex; margin:36rpx 0">
+            <van-icon name="success" color="#2623D1" />
+            <span style="margin-left: 24rpx;font-weight: 400;font-size: 24rpx;color: #514B6B;">Job Postings {{infos.Vip.jobPostingQuotaAfter}}</span>
+          </view>
+
+          <view style="display: flex; margin:36rpx 0">
+            <van-icon name="success" color="#2623D1" />
+            <span style="margin-left: 24rpx;font-weight: 400;font-size: 24rpx;color: #514B6B;">Resume Views: {{infos.Vip.resumeViewingQuotaPerDayAfter}}/Day
+            </span>
+          </view>
+
+          <view style="display: flex; margin:36rpx 0">
+            <van-icon name="success" color="#2623D1" />
+            <span style="margin-left: 24rpx;font-weight: 400;font-size: 24rpx;color: #514B6B;">{{infos.Vip.content}}</span>
+          </view>
+        </view>
+
+      </view>
+      <view style="width: 500rpx; margin: 10rpx auto;font-size: 24rpx;font-weight: 250;">
+        For corporate bulk orders, please contact us
+      </view>
+      <!-- 按钮 -->
+      <view style="padding-bottom: 20rpx;">
+        <view bind:tap="paywx" class="save-btn">Purchase</view>
+        <view bind:tap="onClose" class="can-btn">Cancel</view>
+      </view>
+    </view>
+  </van-popup>
+</view>

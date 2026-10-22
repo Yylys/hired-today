@@ -1,0 +1,4 @@
+<wxs src="../../common/wxs/style.wxs" module="style" />
+<t-button theme="primary" loading="{{loading }}" disabled="{{disabled}}" block="{{block}}" shape="{{shape}}" hover-class="tapstate_mark" bindtap="tap" style="{{style(customStyle)}}">
+    <slot></slot>
+</t-button>

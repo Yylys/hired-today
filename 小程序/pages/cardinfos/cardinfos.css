@@ -1,0 +1,173 @@
+/* pages/cardinfo/cardinfo.wxss */
+.del_box {
+  background: #F9F9F9;
+  min-height: 90vh;
+}
+.del_box .nav {
+  width: 90rpx;
+  height: 90rpx;
+}
+.del_box .avator {
+  position: absolute;
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  background-color: white;
+  top: 110rpx;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.del_box .avator .ava {
+  border-radius: 50%;
+  width: 136rpx;
+  height: 136rpx;
+}
+.del_box .del_btm {
+  background-color: #FFFFFF;
+  border-radius: 60rpx 60rpx 0rpx 0rpx;
+  min-height: 80vh;
+  margin-top: 90rpx;
+}
+.del_box .del_btm .top {
+  padding-top: 90rpx;
+  text-align: center;
+}
+.del_box .del_btm .top .title {
+  font-family: PingFang SC, PingFang SC;
+  font-weight: 400;
+  font-size: 32rpx;
+  color: #150A33;
+  line-height: 32rpx;
+  font-style: normal;
+  text-transform: none;
+  margin-bottom: 8rpx;
+}
+.del_box .del_btm .top .address {
+  font-weight: 400;
+  font-size: 28rpx;
+  color: #524B6B;
+  line-height: 32rpx;
+  font-style: normal;
+  text-transform: none;
+}
+.del_box .del_btm .cen {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.del_box .del_btm .cen .card {
+  margin-top: 25rpx;
+  padding: 20rpx;
+  width: 25%;
+  border-radius: 16rpx;
+  border: 1px solid #D7D7E8;
+  display: flex;
+  align-items: center;
+  box-shadow: 0rpx 4rpx 8rpx 0rpx rgba(205, 205, 205, 0.3);
+}
+.del_box .del_btm .cen .card .img {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 16rpx;
+}
+.del_box .del_btm .cen .card .title {
+  font-family: PingFang SC, PingFang SC;
+  font-weight: 400;
+  font-size: 20rpx;
+  color: #76777C;
+  line-height: 24rpx;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+  margin-bottom: 12rpx;
+}
+.del_box .del_btm .cen .card .name {
+  font-family: PingFang SC, PingFang SC;
+  font-weight: 400;
+  font-size: 24rpx;
+  color: #2623D1;
+  line-height: 24rpx;
+  width: 100rpx;
+  font-style: normal;
+  text-transform: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.del_box .btm_btn {
+  position: fixed;
+  bottom: 0;
+  width: 750rpx;
+  height: 124rpx;
+  box-shadow: 0rpx 4rpx 30rpx 0rpx rgba(184, 184, 210, 0.52);
+  border-radius: 24rpx 24rpx 0rpx 0rpx;
+  background-color: #FFFFFF;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.del_box .btm_btn .custom-button {
+  font-size: 30rpx;
+  border-radius: 20rpx;
+}
+.del_box .btm_btns {
+  position: fixed;
+  bottom: 0;
+  width: 750rpx;
+  height: 124rpx;
+  box-shadow: 0rpx 4rpx 30rpx 0rpx rgba(184, 184, 210, 0.52);
+  border-radius: 24rpx 24rpx 0rpx 0rpx;
+  background-color: #FFFFFF;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.del_box .btm_btns .custom-button {
+  width: 90%;
+  font-size: 30rpx;
+  border-radius: 20rpx;
+}
+.list:last-child {
+  padding-bottom: 10vh;
+  /* 其他样式 */
+}
+.list {
+  border-bottom: 1px solid #F7F7F7;
+  padding-bottom: 30rpx;
+}
+.list .title {
+  font-family: PingFang SC, PingFang SC;
+  font-weight: 500;
+  font-size: 28rpx;
+  color: #150B3D;
+  line-height: 32rpx;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+  margin: 12rpx 0;
+}
+.list .card {
+  display: flex;
+  flex-wrap: wrap;
+}
+.list .cards {
+  font-size: 24rpx;
+  color: #514B6B;
+  white-space: pre-wrap;
+}
+.del {
+  width: 95%;
+  margin: 0 auto;
+}
+.tag {
+  background: #F5F4F6;
+  border-radius: 8rpx;
+  padding: 8rpx 30rpx;
+  margin: 10rpx 10rpx 10rpx 0;
+  font-size: 24rpx;
+  color: #514B6B;
+}

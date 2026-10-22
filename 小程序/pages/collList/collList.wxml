@@ -1,0 +1,7 @@
+<!--pages/collList/collList.wxml-->
+<scroll-view class="post_scroll-view" scroll-y="true">
+  <paging reqUrl="/v1/job/page" params='{{params}}' immediatecheck="{{false}}" filed="list">
+    <!--components/card/index.wxml-->
+    <jobcard list="{{list}}"></jobcard>
+  </paging>
+</scroll-view>

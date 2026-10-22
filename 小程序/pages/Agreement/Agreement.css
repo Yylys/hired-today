@@ -1,0 +1,13 @@
+/* pages/Agreement/Agreement.wxss */
+.text {
+  width: 90%;
+  margin: 20rpx auto;
+  font-family: DM Sans, DM Sans;
+  font-weight: 400;
+  font-size: 28rpx;
+  color: #524B6B;
+  line-height: 40rpx;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+}

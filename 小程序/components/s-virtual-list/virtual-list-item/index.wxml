@@ -1,0 +1,5 @@
+<view class="virtual-list-item" style="height:{{visibility?'auto':height+'px'}};width:{{width}};">
+    <block wx:if="{{visibility}}">
+        <slot />
+    </block>
+</view>

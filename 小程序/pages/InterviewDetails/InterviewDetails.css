@@ -1,0 +1,169 @@
+/* components/card/index.wxss */
+page {
+  display: flex;
+  flex-direction: column;
+}
+.boxs {
+  background: #FFFFFF;
+  width: 702rpx;
+  margin: 30rpx auto;
+  border-radius: 36rpx;
+  padding-bottom: 30rpx;
+}
+.box {
+  display: inline-block;
+  margin: 20rpx 40rpx;
+  box-shadow: 0rpx 4rpx 20rpx 0rpx rgba(153, 171, 198, 0.28);
+  border-radius: 36rpx 36rpx 36rpx 36rpx;
+}
+.box .card {
+  width: 622rpx;
+}
+.box .card .top {
+  padding: 24rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.box .card .cens {
+  margin: 0 16rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.box .card .cens .list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.box .card .btms {
+  margin: 0 32rpx;
+  font-size: 24rpx;
+}
+.box .card .btm {
+  margin: 0 32rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.box .card .btm .left {
+  position: relative;
+}
+.box .card .btm .left .avatar-stack {
+  width: 250rpx;
+  /* 根据需要调整宽度 */
+  height: 55rpx;
+  /* 根据需要调整高度 */
+}
+.box .card .btm .left .avatar {
+  width: 48rpx;
+  /* 根据需要调整头像宽度 */
+  height: 48rpx;
+  /* 根据需要调整头像高度 */
+  border-radius: 50%;
+  /* 圆形头像 */
+  position: absolute;
+}
+.box .card .btm .left .avatar:nth-child(1) {
+  z-index: 1;
+  /* 最上面的头像 */
+  left: 0;
+}
+.box .card .btm .left .avatar:nth-child(2) {
+  z-index: 2;
+  left: 20rpx;
+  /* 调整位置 */
+}
+.box .card .btm .left .avatar:nth-child(3) {
+  z-index: 3;
+  left: 40rpx;
+  /* 调整位置 */
+}
+.box .card .btm .left .avatar:nth-child(4) {
+  z-index: 3;
+  left: 60rpx;
+  /* 调整位置 */
+}
+.box .card .btm .left .avatar:nth-child(5) {
+  z-index: 5;
+  /* 最下面的头像 */
+  left: 80rpx;
+  /* 调整位置 */
+}
+.lists {
+  width: 50%;
+}
+.lists .title {
+  font-family: DM Sans, DM Sans;
+  font-weight: 600;
+  font-size: 28rpx;
+  color: #150A33;
+  line-height: 34rpx;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+}
+.lists .nth {
+  font-family: PingFang SC, PingFang SC;
+  font-weight: 400;
+  font-size: 24rpx;
+  color: #514B6B;
+  line-height: 32rpx;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+  margin: 20rpx 0;
+}
+.lists .bac1 {
+  margin: 12rpx 0;
+  font-family: PingFang SC, PingFang SC;
+  font-weight: 400;
+  font-size: 24rpx;
+  color: #514B6B;
+  line-height: 32rpx;
+  font-style: normal;
+  text-align: center;
+  text-transform: none;
+  width: 40%;
+  background-color: #F5F4F6;
+  padding: 12rpx;
+  border-radius: 8rpx;
+  border: 2rpx solid #F5F4F6;
+}
+.lists .bac2 {
+  border: 2rpx solid #2623D1;
+  margin: 12rpx 0;
+  font-family: PingFang SC, PingFang SC;
+  font-weight: 400;
+  font-size: 24rpx;
+  color: #514B6B;
+  line-height: 32rpx;
+  font-style: normal;
+  text-align: center;
+  text-transform: none;
+  width: 40%;
+  background-color: #F5F4F6;
+  padding: 12rpx;
+  border-radius: 8rpx;
+}
+.placeholder {
+  font-family: DM Sans, DM Sans;
+  font-weight: 400;
+  font-size: 28rpx;
+  color: #524B6B;
+  line-height: 24px;
+  /* 设置行高，使得文本不拥挤 */
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+}
+.placeholder-text {
+  position: absolute;
+  top: 0rpx;
+  /* 调整位置 */
+  left: 10rpx;
+  /* 调整位置 */
+  color: #999;
+  font-size: 30rpx;
+  line-height: 40rpx;
+  pointer-events: none;
+  /* 使其不影响 textarea 的输入 */
+}

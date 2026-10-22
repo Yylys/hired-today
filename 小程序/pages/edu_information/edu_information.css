@@ -1,0 +1,209 @@
+.box {
+  background-color: #F9F9F9;
+  width: 100%;
+  min-height: 100vh;
+  padding: 1rpx 0;
+}
+.box .contaners {
+  margin: 20rpx auto;
+  width: 694rpx;
+  border-radius: 20rpx 20rpx 20rpx 20rpx;
+}
+.box .contaners .form .weui-cell__bd {
+  padding: 1rpx;
+  font-size: 24rpx;
+  margin: 0rpx 24rpx;
+}
+.box .contaners .form .weui-cell__bd .weui-input {
+  width: 94%;
+  min-height: 72rpx;
+  background: #FFFFFF;
+  border-radius: 30rpx;
+  padding: 10rpx 20rpx;
+  font-family: PingFang SC, PingFang SC;
+  font-weight: 400;
+  font-size: 28rpx;
+  color: #9197AA;
+  line-height: 32rpx;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+}
+.box .contaners .form .weui-cell__bd .weui-input1 {
+  min-height: 72rpx;
+  background: #FFFFFF;
+  border-radius: 30rpx;
+  font-family: PingFang SC, PingFang SC;
+  font-weight: 400;
+  font-size: 28rpx;
+  color: #9197AA;
+  line-height: 32rpx;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+}
+.box .contaners .form .weui-cell__bd .weui-input1 button {
+  border-radius: 20rpx;
+  height: 80rpx;
+}
+.placeholder {
+  font-family: DM Sans, DM Sans;
+  font-weight: 400;
+  font-size: 24rpx;
+  color: #524B6B;
+  line-height: 34rpx;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+}
+.form-item {
+  margin-bottom: 20rpx;
+}
+.error-msg {
+  color: red;
+  font-size: 14px;
+}
+.bac {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.bac .bacs {
+  display: flex;
+  align-items: center;
+  padding: 5rpx 10rpx;
+  background: #FFFFFF;
+  border-radius: 25rpx;
+  width: 45%;
+  height: 80rpx;
+  /* 第一层圆环 */
+}
+.bac .bacs .act {
+  width: 3vw;
+  height: 3vw;
+  background-color: #FFB237;
+  border-radius: 50%;
+  margin: 10rpx 25rpx;
+  border: 2px solid white;
+  position: relative;
+  /* 设置为相对定位，以便子元素绝对定位 */
+  /* 第二层圆环 */
+}
+.bac .bacs .act::after {
+  content: "";
+  position: absolute;
+  width: 4vw;
+  height: 4vw;
+  border: 6rpx solid #FFB237;
+  /* 设置中间圆环的颜色和宽度 */
+  border-radius: 50%;
+  top: 50%;
+  /* 将元素的顶部定位在父元素的中间位置 */
+  left: 50%;
+  /* 将元素的左侧定位在父元素的中间位置 */
+  transform: translate(-50%, -50%);
+  /* 使用负的50%平移来使元素居中 */
+}
+.bac .bacs .noe {
+  width: 3vw;
+  height: 3vw;
+  border-radius: 50%;
+  margin: 10rpx 25rpx;
+  border: 2px solid #524B6B;
+  position: relative;
+}
+.head {
+  position: relative;
+  height: 170rpx;
+}
+.head .avatar_pick {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.head .avatar_wrapper {
+  padding: 0 !important;
+  width: 162rpx !important;
+  height: 162rpx !important;
+  border-radius: 50% !important;
+}
+.head .uploadIcon {
+  position: absolute;
+  right: 0;
+  bottom: 0rpx;
+  border-radius: 50%;
+  width: 162rpx !important;
+  height: 162rpx !important;
+}
+.hqyzm {
+  color: #ef6826;
+  font-size: 30rpx;
+}
+.get_phone {
+  color: #fff;
+  border-radius: 50rpx;
+  background: #0AA19A;
+}
+.imgwarp {
+  position: relative;
+}
+.imgwarp .xiangji {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 55rpx;
+  height: 55rpx;
+}
+.upload_s {
+  width: 142rpx;
+  height: 144rpx;
+}
+.getCallNumber {
+  font-size: 30rpx;
+  height: 62rpx;
+  line-height: 62rpx;
+  background: var(--themeColor);
+  border-radius: 55rpx;
+  color: #fff;
+}
+/* pages/advantage/advantage.wxss */
+.weui-input {
+  width: 94%;
+  min-height: 72rpx;
+  background: #FFFFFF;
+  border-radius: 8rpx 8rpx 8rpx 8rpx;
+  padding: 10rpx 20rpx;
+  font-family: PingFang SC, PingFang SC;
+  font-weight: 400;
+  font-size: 28rpx;
+  color: #9197AA;
+  line-height: 32rpx;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+}
+.title {
+  font-family: DM Sans, DM Sans;
+  font-weight: 500;
+  font-size: 30rpx;
+  color: #150B3D;
+  line-height: 44rpx;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+  margin: 30rpx 0;
+}
+.van-uploader__wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.van-uploader__preview-image {
+  width: 290rpx !important;
+  height: 204rpx !important;
+  border-radius: 11rpx;
+}
+.icon {
+  color: red;
+  margin-left: 5rpx;
+}

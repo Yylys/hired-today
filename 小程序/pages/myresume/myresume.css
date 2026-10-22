@@ -1,0 +1,213 @@
+/* pages/myresume/myresume.wxss */
+.box .container {
+  width: 670rpx;
+  margin: 0 auto;
+}
+.icon {
+  color: red;
+  margin-left: 5rpx;
+}
+.card {
+  background-color: #FFFFFF;
+  border-radius: 40rpx;
+  margin: 28rpx 0;
+  padding: 0 40rpx;
+}
+.card .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx 0;
+  border-bottom: 1px solid #DEE1E7;
+}
+.card .top .left {
+  display: flex;
+  align-items: center;
+}
+.card .top .right {
+  display: flex;
+  align-items: center;
+}
+.card .tops {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx 0 0;
+}
+.card .tops .left {
+  display: flex;
+  align-items: center;
+}
+.card .tops .right {
+  display: flex;
+  align-items: center;
+}
+image {
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 30rpx;
+}
+image:last-child {
+  margin: 0;
+}
+.title {
+  font-family: DM Sans, DM Sans;
+  font-weight: 600;
+  font-size: 28rpx;
+  color: #150B3D;
+  line-height: 40rpx;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+}
+.weui-cell__bd {
+  font-size: 24rpx;
+}
+.weui-cell__bd .title {
+  margin: 20rpx 10rpx;
+  font-family: DM Sans, DM Sans;
+  font-weight: 500;
+  font-size: 24rpx;
+  color: #150A33;
+  line-height: 34rpx;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+}
+.weui-cell__bd .weui-input {
+  width: 94%;
+  min-height: 72rpx;
+  background: #F5F4F6;
+  border-radius: 30rpx;
+  padding: 10rpx 20rpx;
+  font-family: PingFang SC, PingFang SC;
+  font-weight: 400;
+  font-size: 28rpx;
+  color: #9197AA;
+  line-height: 32rpx;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+}
+.bac {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  /* 第一层圆环 */
+}
+.bac .bacs {
+  display: flex;
+  align-items: center;
+  padding: 5rpx 10rpx;
+  background: #F5F4F6;
+  border-radius: 25rpx;
+  width: 45%;
+  height: 80rpx;
+}
+.bac .bacs2 {
+  display: flex;
+  align-items: center;
+  padding: 5rpx 10rpx;
+  margin: 14rpx 0;
+  background: #F5F4F6;
+  border-radius: 25rpx;
+  width: 100%;
+  height: 80rpx;
+}
+.bac .noe {
+  width: 3vw;
+  height: 3vw;
+  border-radius: 50%;
+  margin: 10rpx 25rpx;
+  border: 2px solid #524B6B;
+  position: relative;
+}
+.bac .act {
+  width: 3vw;
+  height: 3vw;
+  background-color: #FFB237;
+  border-radius: 50%;
+  margin: 10rpx 25rpx;
+  border: 2px solid white;
+  position: relative;
+  /* 设置为相对定位，以便子元素绝对定位 */
+  /* 第二层圆环 */
+}
+.bac .act::after {
+  content: "";
+  position: absolute;
+  width: 4vw;
+  height: 4vw;
+  border: 6rpx solid #FFB237;
+  /* 设置中间圆环的颜色和宽度 */
+  border-radius: 50%;
+  top: 50%;
+  /* 将元素的顶部定位在父元素的中间位置 */
+  left: 50%;
+  /* 将元素的左侧定位在父元素的中间位置 */
+  transform: translate(-50%, -50%);
+  /* 使用负的50%平移来使元素居中 */
+}
+.btm {
+  border-bottom: 2rpx solid #DEE1E7;
+  margin-bottom: 20rpx;
+}
+.btm:last-child {
+  border: none;
+}
+.more {
+  padding: 28rpx 0;
+  text-align: center;
+  font-family: DM Sans, DM Sans;
+  font-weight: 400;
+  font-size: 24rpx;
+  color: #7551FF;
+  line-height: 34rpx;
+  font-style: normal;
+  text-transform: none;
+}
+.card2 {
+  display: flex;
+  flex-direction: column;
+}
+.weui-inputs {
+  width: 65%;
+  min-height: 72rpx;
+  background: #FFFFFF;
+  border-radius: 10rpx;
+  padding: 10rpx 20rpx;
+  font-family: PingFang SC, PingFang SC;
+  font-weight: 400;
+  font-size: 28rpx;
+  color: #9197AA;
+  line-height: 32rpx;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+  box-shadow: 0rpx 4rpx 20rpx 0rpx rgba(153, 171, 198, 0.28);
+}
+.tit1 {
+  font-family: DM Sans, DM Sans;
+  font-weight: 700;
+  font-size: 28rpx;
+  color: #150B3D;
+  line-height: 40rpx;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+  margin: 16rpx 0;
+}
+.tit2 {
+  font-family: Poppins, Poppins;
+  font-weight: 400;
+  font-size: 24rpx;
+  color: #524B6B;
+  line-height: 34rpx;
+  margin: 16rpx 0;
+  font-style: normal;
+  text-transform: none;
+}
+.tit2:last-child {
+  padding-bottom: 20rpx;
+}

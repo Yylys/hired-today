@@ -1,0 +1,78 @@
+.box {
+  background-color: #F9F9F9;
+  width: 100%;
+  min-height: 100vh;
+  padding: 1rpx 0;
+}
+.box .contaners {
+  margin: 20rpx auto;
+  width: 694rpx;
+  border-radius: 20rpx 20rpx 20rpx 20rpx;
+}
+.box .contaners .form .weui-cell__bd {
+  padding: 1rpx;
+  font-size: 24rpx;
+}
+.box .contaners .form .weui-cell__bd .title {
+  margin: 20rpx 10rpx;
+  font-family: DM Sans, DM Sans;
+  font-weight: 500;
+  font-size: 24rpx;
+  color: #150A33;
+  line-height: 34rpx;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+}
+.box .contaners .form .weui-cell__bd .weui-input {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
+  min-height: 92rpx;
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  padding: 20rpx 20rpx;
+  font-family: PingFang SC, PingFang SC;
+  font-weight: 400;
+  font-size: 28rpx;
+  color: #9197AA;
+  line-height: 32rpx;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+}
+.placeholder {
+  font-family: DM Sans, DM Sans;
+  font-weight: 400;
+  font-size: 24rpx;
+  color: #524B6B;
+  line-height: 34rpx;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+}
+.form-item {
+  margin-bottom: 20rpx;
+}
+.error-msg {
+  color: red;
+  font-size: 14px;
+}
+.card {
+  width: 95%;
+  margin: 0 auto;
+}
+.card .weui-inputs {
+  min-height: 72rpx;
+  background: #F7F7F7;
+  border-radius: 30rpx;
+  padding: 10rpx 20rpx;
+  font-family: PingFang SC, PingFang SC;
+  font-weight: 400;
+  font-size: 28rpx;
+  color: #9197AA;
+  line-height: 32rpx;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+}

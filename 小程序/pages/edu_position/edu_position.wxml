@@ -1,0 +1,285 @@
+<view style="position: relative;">
+  <view>
+    <van-tabs sticky animated color='#2623D1' title-active-color='#2623D1' title-inactive-color='#150B3D' active="{{ active }}" bind:change="onChange">
+      <van-tab title="My Position">
+        <view class="cate_warp">
+          <scroll-view scroll-x="true" class="scroll-views" scroll-into-view="{{scrollIntoView}}" scroll-with-animation="true">
+            <view class="menu-item" wx:for="{{CateList}}" wx:key="index" id="item-{{index}}" data-index="{{index}}" data-sid="{{item.type}}" bindtap="onCateItem">
+              <view class="item11">
+                <view class="{{actives==index?'cate_name_active':'cate_name'}}">{{item.name}}</view>
+              </view>
+            </view>
+          </scroll-view>
+          <scroll-view style="height: {{contentHeight}}px;" scroll-y="true">
+            <paging reqUrl="/v1/job/page" params="{{params1}}" immediatecheck="{{false}}" pagingRefField="paging1">
+              <!--components/card/index.wxml-->
+              <view style=" margin:0 20rpx;">
+                <view wx:for="{{list}}" style="position: relative; margin: 20rpx 0;">
+                  <view class="box2"> {{ item.audit === 0 || item.audit === 2 ? 'Remove' : item.audit === 1 ? 'Close' : 'Remove' }}</view>
+                  <van-swipe-cell bind:click="{{ item.audit === 0 || item.audit === 2 ? 'dellist' : item.audit === 1 ? 'setJobstatus' : 'dellist' }}" data-path="/pages/New_Positions/New_Positions" right-width="{{80}}" data-sid="{{item.sid}}" bind:close="closebox" bind:open="openbox">
+                    <view class="boxs" style="border-radius: 30rpx; overflow: hidden;">
+                      <van-cell-group>
+                        <view class="cards1" id="card" data-status="{{item.status}}" data-vip="{{item.publish.vipState}}" catch:tap="goinfo" data-path="/pages/cardinfo/cardinfo" data-sid="{{item.sid}}">
+                          <view class="card">
+                            <view style="display: flex; justify-content: space-between;">
+                              <view class="tit">{{item.jobName}}</view>
+                              <view class="money">￥{{item.minSalary/1000}}K-￥{{item.maxSalary/1000}}K</view>
+                            </view>
+                            <view class="tit1">Recruiting {{item.recruitsCount}} people <span>· {{item.address}}</span></view>
+                            <view style="display: flex;  align-items: center; margin: 10rpx 0;">
+                              <view style="width: 70%;">
+                                <van-tag custom-class="tag" color="#F5F4F6" wx:for="{{item.showTag}}">{{item.memberName}}</van-tag>
+                              </view>
+                              <view >
+                                <view wx:if="{{item.audit==0}}" style="height: 40rpx;line-height: 40rpx; font-size: 24rpx;color: #FE4848; background-color: #FFEDED; padding:12rpx;white-space: nowrap; border-radius: 8rpx;">Review Rejected</view>
+                                <view wx:if="{{item.audit==2}}" style="height: 40rpx;line-height: 40rpx; font-size: 24rpx;color: #1EBF77; background-color: #E7F9F2; padding:12rpx;white-space: nowrap; border-radius: 8rpx;">Pending Review</view>
+                              </view>
+                            </view>
+                              <!-- 线条 -->
+                              <view style="background-color: #E4E7ED; height: 1rpx ;width: 100%; margin:0 auto;"></view>
+                              <view wx:if="{{item.audit==0}}" class="tit1 line_ellipsis">{{item.note}}</view>
+                              <view wx:if="{{item.audit!=0 && item.audit!=2}}" class="tit1 line_ellipsis">{{item.content}}</view>
+                            </view>
+                            <view wx:if="{{actives==0}}" style="display: flex; align-items: center; justify-content: space-between; margin:10rpx 0 ;">
+                              <view class="tit1" style="margin-left: 20rpx;">{{item.reviewTime}}</view>
+                              <view class="btn" style="margin-right: 40rpx;" data-path="/pages/New_Positions/New_Positions" catch:tap="goinfo" data-sid="{{item.sid}}">
+                                <van-icon style="width: 40rpx ; height: 40rpx;" name="edit" />
+                                Re-edit
+                              </view>
+                            </view>
+                            <view wx:if="{{actives==1}}" style="display: flex; align-items: center; justify-content: space-between; margin:10rpx 20rpx ;">
+                              <view class="btn" catch:tap="setJobstatus" data-sid="{{item.sid}}">
+                                <image style="width: 30rpx ; height: 30rpx; margin-right: 10rpx ;" src="/static/imgs/down.jpg" mode="aspectFill" />Closed
+                              </view>
+                              <view class="tit2" catch:tap="goinfo" data-path="/pages/edu_Received/edu_Received" data-sid="{{item.sid}}"><span>Received resume</span>
+                                <van-icon name="arrow" />
+                              </view>
+                            </view>
+                            <view wx:if="{{actives==2}}" style="display: flex; align-items: center; justify-content: space-between; margin:10rpx 0 ;">
+                              <view></view>
+                              <view class="btn" style="margin-right: 40rpx;" data-path="/pages/New_Positions/New_Positions" catch:tap="goinfo" data-sid="{{item.sid}}">
+                                <van-icon style="width: 40rpx ; height: 40rpx;" name="edit" />
+                                Re-edit
+                              </view>
+                            </view>
+                          </view>
+                      </van-cell-group>
+                    </view>
+                    <!-- <view slot="right" class="van-swipe-cell__right">删除</view> -->
+                  </van-swipe-cell>
+                </view>
+              </view>
+            </paging>
+          </scroll-view>
+        </view>
+      </van-tab>
+      <van-tab title="New positions">
+        <!-- <my-slider bind:submit="getAge" min="{{min}}"  max="{{max}}"></my-slider> -->
+        <view style="padding-bottom: 200rpx;">
+          <view class="weui-cell__bd">
+            <view class="title">Position Title<span class="icon">*</span></view>
+            <input class="weui-input" bindinput="handleInput" data-title="form.jobName" value="{{form.jobName}}" placeholder="Please Enter" />
+          </view>
+          <view class="weui-cell__bd">
+            <view class="title"> Salary<span class="icon">*</span></view>
+            <view style="display: flex; align-items: center; justify-content: space-between;">
+              ¥<input class="weui-input1" bindinput="onInputChange" data-title="form.minSalary" value="{{form.minSalary}}" placeholder="Min Salary" />
+              ¥-
+              <input class="weui-input1" bindinput="onInputChange" data-title="form.maxSalary" value="{{form.maxSalary}}" placeholder="Max Salary" />
+            </view>
+          </view>
+          <!-- <view class="weui-cell__bd">
+            <view class="title">max Salary</view>
+            <input class="weui-input" bindinput="handleInput" data-title="form.maxSalary" value="{{form.maxSalary}}" placeholder="Max Salary" />
+          </view> -->
+          <view class="weui-cell__bd" style="position: relative;">
+            <view class="title">Working address<span class="icon">*</span></view>
+            <input disabled class="weui-input" bindtap="setCity" data-title="form.address" value="{{form.address}}" placeholder="Please Enter" />
+            <van-icon style="width: 40rpx; height: 40rpx; position:absolute; bottom: 30rpx; right: 30rpx;" name="arrow-down" />
+          </view>
+
+          <view class="weui-cell__bd" style="position: relative;">
+            <view class="title">Academic requirements <span class="icon">*</span></view>
+            <input disabled bind:tap="showdeg" class="weui-input" name="degree" value="{{form.Degreename}}" type="text" placeholder="Please Choose" bindblur="onPhoneInput" />
+            <van-icon style="width: 40rpx; height: 40rpx; position:absolute; bottom: 30rpx; right: 30rpx;" name="arrow-down" />
+          </view>
+
+          <view class="weui-cell__bd">
+            <view class="title">Department<span class="icon">*</span></view>
+            <input class="weui-input" bindinput="handleInput" data-title="form.department" value="{{form.department}}" placeholder="Please Enter" />
+          </view>
+
+          <view class="weui-cell__bd" style="position: relative;">
+            <view class="title">Experience required<span class="icon">*</span></view>
+            <input disabled bind:tap="showExp"  class="weui-input" name="degree" value="{{form.Experiencename}}" type="text" placeholder="Please Choose" bindblur="onPhoneInput" />
+            <van-icon style="width: 40rpx; height: 40rpx; position:absolute; bottom: 30rpx; right: 30rpx;" name="arrow-down" />
+          </view>
+
+          <view class="weui-cell__bd" style="position: relative;">
+            <view class="title">Job Type<span class="icon">*</span></view>
+            <input disabled bind:tap="showWork" class="weui-input" name="degree" value="{{form.workname}}" type="text" placeholder="Please Choose" bindblur="onPhoneInput" />
+            <van-icon style="width: 40rpx; height: 40rpx; position:absolute; bottom: 30rpx; right: 30rpx;" name="arrow-down" />
+          </view>
+
+          <!-- <view class="weui-cell__bd">
+            <view class="title">Skill requirements</view>
+            <input class="weui-input" bindinput="handleInput" data-title="form.skill" value="{{form.skill}}" placeholder="Please Enter" />
+          </view> -->
+
+          <view class="weui-cell__bd">
+            <view class="title">Skill Requirements<span class="icon">*</span></view>
+            <view class="weui-input">
+              <view style=" min-height: 200rpx; position: relative; padding-bottom: 100rpx; ">
+                <view class="weui-cell__bd">
+                  <view style="display: flex; flex-wrap: wrap; align-items: center;">
+                    <view style="background: #F5F4F6; padding: 20rpx 30rpx; border-radius: 20rpx; margin:15rpx 5rpx" wx:for="{{form.skill}}">
+                      {{item}}
+                      <van-icon data-index="{{index}}" bind:tap="deltag" name="cross" />
+                    </view>
+                  </view>
+                </view>
+                <view style="display: flex; align-items: center; position: absolute;bottom: 20rpx; left: 50rpx;">
+                  <input style="box-shadow: 0px 2px 10px 0px rgba(153, 171, 198, 0.28); border-radius: 20rpx; padding:5rpx 15rpx ; width: 330rpx;" class="weui-inputs" name="tagName" value="{{lable}}" placeholder="Please Enter tag" maxlength="35" placeholder-class="placeholder" bindinput="handleInput" data-title="lable" />
+                  <van-button bind:tap="settag" data-data="{{lable}}" style="margin-left: 20rpx; " color="#2623D1" plain type="info">Confirm</van-button>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="weui-cell__bd">
+            <view class='title'>Recruitment Quantity<span class="icon">*</span></view>
+            <view class="titles">Please enter a specific number</view>
+            <input class="weui-input" bindinput="handleInput" data-title="form.recruitsCount" value="{{form.recruitsCount}}" placeholder="Please enter a specific number" />
+          </view>
+
+          <view class="weui-cell__bd">
+            <view class="title">Number of Interview Rounds<span class="icon">*</span></view>
+            <input class="weui-input" bindinput="handleInput" data-title="form.interviewCount" value="{{form.interviewCount}}" placeholder="Please enter a specific number" />
+          </view>
+
+          <view class="weui-cell__bd">
+            <view class="title">Job Description<span class="icon">*</span></view>
+            <!-- <textarea adjust-position="{{true}}" maxlength="-1" auto-height="{{true}}" value="{{form.content}}" class="weui-input" style="padding: 30rpx 20rpx;min-height: 200rpx; max-height: 800rpx; border-radius: 30rpx;" name="need" type="text" placeholder="Please Enter" bindinput="handleInput" data-title="form.content"></textarea> -->
+
+
+
+
+            <van-field cursor-spacing='200' hold-keyboard value="{{ form.content }}" input-class="weui-input2" name="need" type='textarea' bindinput="handleInput2" data-title="form.content" autosize="{{ { minHeight: 100} }}" placeholder="Please Enter" />
+          </view>
+
+          <view class="weui-cell__bd">
+            <view class="title">Is this recruitment urgent</view>
+            <switch checked="{{switch1Checked}}" bindchange="switch1Change" />
+          </view>
+
+          <view class="weui-cell__bd" style="position: relative;">
+            <view class="title">Accept Headhunter Recommendations</view>
+            <input disabled bind:tap="showre" class="weui-input" name="degree" value="{{recruitername}}" type="text" placeholder="Please Choose" />
+            <van-icon style="width: 40rpx; height: 40rpx; position:absolute; bottom: 30rpx; right: 30rpx;" name="arrow-down" />
+          </view>
+          <view class="weui-cell__bd" wx:if="{{form.recruiter==0}}">
+            <input class="weui-input" style="margin-top: 10rpx;" bindinput="onInputChange" data-title="form.recruiterPrice" value="{{form.recruiterPrice}}" placeholder="Enter the reward amount" />
+          </view>
+
+          <view style="position:absolute; bottom: 0; height: 150rpx; width: 100%; background: #FFFFFF;">
+            <view style="width: 90%; margin:30rpx auto;">
+              <van-button bind:tap="postdata" type="primary" color="#2623D1" block>POST A JOB</van-button>
+            </view>
+          </view>
+        </view>
+      </van-tab>
+      <van-tab title="Share Positions">
+        <view style="background-color: #fff; padding-bottom: 200rpx;">
+          <view class="weui-cell__bd">
+            <view class="title">Choose a Position </view>
+            <view class='card' style="padding:10rpx 0;margin:20rpx auto;">
+              <view class="box" wx:for="{{list2}}" bind:tap="toggleSelect" data-item="{{item}}" data-index="{{index}}">
+                <view class="cards">
+                  <view class="top">
+                    <view style="display: flex;">
+                      <image style="width: 70rpx; height: 70rpx; margin-right: 16rpx; border-radius: 20rpx;" src="{{imgurl + item.publish.avatar}}" mode="aspectFill" />
+                      <view>
+                        <view style="font-weight: 700;font-size:25rpx;margin-bottom:12rpx ;">{{item.jobName}}</view>
+                        <view style="font-weight: 400;font-size:21rpx">{{item.address}}</view>
+                      </view>
+                    </view>
+                    <!-- <view wx:if="{{item.recruiter==0}}" style="display: flex; align-items: center; margin-right: 20rpx;">
+                      <image style="width: 24rpx; height: 24rpx;" src="/static/imgs/money.jpg" mode="aspectFill" />
+                      <span style="color:#2623D1;font-size:28rpx">￥{{item.recruiterPrice}}</span>
+                    </view> -->
+
+                  </view>
+                  <view class="cens">
+                    <view class="list">
+                      <view wx:for="{{item.showTag}}" style="background: #F5F4F6;border-radius: 8rpx 8rpx 8rpx 8rpx; padding: 6rpx 8rpx; font-size: 21rpx;margin-right: 30rpx; margin-top: 10rpx ;">{{item.memberName}}</view>
+                    </view>
+                    <!-- <view wx:if="{{item.recruiter==0}}" style="display: flex; align-items: center; margin-right: 20rpx;">
+                            <image style="width: 24rpx; height: 24rpx;" src="/static/imgs/money.jpg" mode="aspectFill" />
+                            <span style="color:#2623D1;font-size:28rpx">￥128</span>
+                          </view> -->
+                  </view>
+                  <!-- 线条 -->
+                  <view style="width: 500rpx;height: 2rpx; background-color: #E4E7ED; margin: 20rpx;"></view>
+                  <view class="btm">
+                    <view class="left">
+                      <view class="avatar-stack" wx:if="{{item.userList.length>0}}">
+                        <image wx:for="{{item.userList}}" class="avatar" src="{{imgurl + item.avatar}}"></image>
+                      </view>
+                      <view style="font-size:21rpx ;color:#808289 ;margin: 16rpx 0;">{{item.cnt || 0}} Applicants</view>
+                    </view>
+                    <view class="right" style="margin-bottom: 10rpx;">
+                      <span style="font-size:23rpx;color:#2623d1;font-weight:600;white-space: nowrap;">￥{{item.minSalary/1000}}K-￥{{item.maxSalary/1000}}K</span>
+                      <span style="font-size:19rpx;color: #808289;font-weight:400">/Month</span>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <van-button bind:tap="goinfo" data-path="/pages/joblist/joblist" custom-class="btns" custom-style="border-color: #fff;" icon="add-o" plain color="#FF9228" block>Choose Positions</van-button>
+            </view>
+          </view>
+
+          <!-- <view class="weui-cell__bd" style="position: relative;">
+            <view class="title">Job Collection Classification</view>
+            <input disabled bind:tap="showjob" class="weui-input" style="background-color: #F4F5F8;" name="degree" value="{{jobname}}" type="text" placeholder="Please Choose" bindblur="onPhoneInput" />
+            <van-icon style="width: 40rpx; height: 40rpx; position:absolute; bottom: 30rpx; right: 30rpx;" name="arrow-down" />
+          </view> -->
+
+          <view class="weui-cell__bd">
+            <view class="title">Collection Title</view>
+            <textarea adjust-position="{{true}}" value="{{lists.collectionName}}" class="weui-inputs" name="need" type="text" placeholder="Give your collection an attractive title" bindinput="handleInput" data-title="lists.collectionName"></textarea>
+          </view>
+
+          <view class="weui-cell__bd">
+            <view class="titles">1、Creating a job collection can generate a recruitment poster, which can be shared anywhere to increase exposure.</view>
+            <view class="titles">2、A job collection can include multiple similar or different types of positions</view>
+          </view>
+
+          <view wx:if="{{active==2}}" style="position:absolute; bottom: 0; height: 150rpx; width: 100%; background: #FFFFFF;">
+            <view style="width: 90%; margin:30rpx auto;">
+              <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" style="background-color: #2623D1; color: #ffffff;" block>CREATE</button>
+            </view>
+            <!-- <button class="custom-button" open-type="getUserInfo" bindgetuserinfo="getUserInfo" style="color:#2623D1;border:1px solid #2623D1;" plain>Save poster</button> -->
+          </view>
+        </view>
+      </van-tab>
+    </van-tabs>
+  </view>
+
+  <van-popup show="{{ showExp}}" bind:close="onClose" position="bottom">
+    <van-picker confirm-button-text="confirm" cancel-button-text="cancel" columns="{{ columns1 }}" value-key="memberName" default-index="{{ item.sid }}" bind:cancel="onClose" bind:confirm="onConfirm1" show-toolbar title="" />
+  </van-popup>
+  <van-popup show="{{ showdeg }}" bind:close="onClose" position="bottom">
+    <van-picker confirm-button-text="confirm" cancel-button-text="cancel" columns="{{ columns2 }}" value-key="memberName" default-index="{{ item.sid }}" bind:cancel="onClose" bind:confirm="onConfirm2" show-toolbar title="" />
+  </van-popup>
+  <van-popup show="{{ showWork }}" bind:close="onClose" position="bottom">
+    <van-picker confirm-button-text="confirm" cancel-button-text="cancel" columns="{{ columns3 }}" value-key="memberName" default-index="{{ item.sid }}" bind:cancel="onClose" bind:confirm="onConfirm3" show-toolbar title="" />
+  </van-popup>
+  <van-popup show="{{ showre }}" bind:close="onClose" position="bottom">
+    <van-picker confirm-button-text="confirm" cancel-button-text="cancel" columns="{{ columns4 }}" value-key="name" default-index="{{ item.id }}" bind:cancel="onClose" bind:confirm="onConfirm4" show-toolbar title="" />
+  </van-popup>
+
+  <van-popup show="{{ showjob }}" bind:close="onClose" position="bottom">
+    <van-picker confirm-button-text="confirm" cancel-button-text="cancel" columns="{{ columns5 }}" value-key="memberName" default-index="{{ item.sid }}" bind:cancel="onClose" bind:confirm="onConfirm5" show-toolbar title="" />
+  </van-popup>
+
+  <share-box wx:if="{{isCanDraw}}" info="{{fxlist}}" isCanDraw="{{isCanDraw}}" bind:initData="createShareImage" bind:close="handleClose" />
+</view>

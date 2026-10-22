@@ -1,0 +1,23 @@
+<!--pages/jsCase/scList/index.wxml-->
+<view class="head">
+  <view class="title">Choose a country</view>
+  <view class="head_search flex-row">
+    <van-icon name="search" class="head_s_icon" />
+    <input placeholder="Enter the Country" placeholder-class="p_class" class="head_ipt"   bindinput="search"  />
+  </view>
+</view>
+
+<view class="con flex">
+<view style="width: 670rpx; margin:0 auto;">
+  <paging reqUrl="/v1/countries" params="{{params}}" immediatecheck="{{false}}" pagingRefField="paging">
+  <scroll-view scroll-y="false" class="c_left">
+    <block wx:for="{{list}}" wx:key="tab_list">
+      <view catchtap="choseTab" data-index="{{item.sid}}" data-item="{{item}}" class="flex-row tab_item {{chosed_tab==item.sid?'ative':''}}">
+        <image src="{{item.nationalFlagUrl}}" style="width: 60rpx; height: 60rpx;  margin:18rpx 30rpx;" mode="aspectFit" />
+        <span>{{item.countriesName}}</span>
+      </view>
+    </block>
+  </scroll-view>
+</paging>
+</view>
+</view>

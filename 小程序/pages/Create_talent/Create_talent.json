@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "Share/Promote Talent",
+  "usingComponents": {
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "my-slider": "/components/silder/silder",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-picker": "@vant/weapp/picker/index",
+    "van-button": "@vant/weapp/button/index",
+    "share-box": "../components/shareBox4/index"
+  }
+}

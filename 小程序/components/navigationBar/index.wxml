@@ -1,0 +1,10 @@
+<view class="navigationBar" style="height: {{height}}px;padding-bottom: {{paddingBottom}}px;background: {{background}};">
+    <view class="bgSlot">
+        <slot name="bg"></slot>
+    </view>
+    <view class="backButtonWrap" hover-class="tapstate_opacity" catchtap="onNavigateBack">
+        <t-icon wx:if="{{back}}" name="chevron-left" size="28px" color="{{textColor}}" />
+    </view>
+    <view class="text {{isIOS?'center':''}} {{back?'paddingRight':''}}" style="color:{{textColor}};" catchtap="onNavigateBack">{{text}}</view>
+</view>
+<view wx:if="{{placeholder}}" style="height: {{height}}px;background: {{background}};"></view>

@@ -1,0 +1,180 @@
+<!--pages/plazainfo/plazainfo.wxml-->
+<view>
+  <view style="width: 100%; height: 116rpx;background: #FFFFFF;">
+  </view>
+  <view class="info">
+    <image style="width: 168rpx;height: 168rpx; border-radius: 50%;" src="{{imgurl+info.avatar}}" mode="aspectFill" />
+    <view class="tt">
+      <span>{{info.fullName}} </span>
+      <image wx:if="{{info.sex==0}}" style="width: 26rpx;height: 26rpx;" src="/static/imgs/detail/man.jpg" mode="aspectFill" />
+      <image wx:if="{{info.sex==1}}" style="width: 26rpx;height: 26rpx;" src="/static/imgs/detail/woman.jpg" mode="aspectFill" />
+    </view>
+    <view class="card">
+      <span wx:if="{{info.age}}" class="tit">{{info.age}} years old · </span>
+      <span wx:if="{{info.countries}}" class="tit">{{info.countries.countriesName}} · </span>
+      <span wx:if="{{info.degree}}" class="tit">{{info.degree.memberName}}</span>
+    </view>
+  </view>
+  <!-- 下层 -->
+  <view style="background-color: #f9f9f9; padding-bottom: 180rpx;">
+    <view style="width: 658rpx; margin:220rpx auto 0;">
+      <van-tabs animated tab-class="tabb" line-height='0' custom-class="tabbs" title-active-color="#FFFFFF" title-inactive-color="#150B3D" color="#FCA34D" swipeable active="{{ active }}" bind:change="onChange">
+        <van-tab title="About Me">
+          <view style="width: 658rpx; margin:0rpx auto 0;">
+            <!-- 顶层介绍 -->
+            <view class="center">
+              <view class="card">
+                <view class="card1">Preferred City</view>
+                <view class="card2">{{userinfo.expectations.desiredCity}}</view>
+              </view>
+              <view class="card">
+                <view class="card1">Desired Position</view>
+                <view class="card2">{{userinfo.expectations.desiredIndustry}}</view>
+              </view>
+              <view class="card">
+                <view class="card1">Expected Salary</view>
+                <view class="card2" wx:if="{{userinfo.expectations.minSalary}}"><span style="color: #FF9228; font-weight:600;">￥{{userinfo.expectations.minSalary}}</span>/Month</view>
+              </view>
+              <view class="card">
+                <view class="card1">Job Status</view>
+                <view class="card2" wx:if="{{userinfo.jobStatus==0}}">Resignation - Arrive at any time</view>
+                <view class="card2" wx:if="{{userinfo.jobStatus==1}}">On the job - Arrive within the month</view>
+                <view class="card2" wx:if="{{userinfo.jobStatus==2}}">Employed - Consider Opportunities</view>
+                <view class="card2" wx:if="{{userinfo.jobStatus==4}}">Employed - not considered yet</view>
+              </view>
+              <view class="card">
+                <view class="card1">Email Address</view>
+                <view class="card2">{{info.email}} </view>
+              </view>
+              <view class="card">
+                <view class="card1">Phone Number</view>
+                <view class="card2">{{info.phone}} </view>
+              </view>
+              <view class="card">
+                <view class="card1">WeChat ID</view>
+                <view class="card2">{{info.weChat}} </view>
+              </view>
+              <view class="card">
+                <view class="card1">Desired Job Type</view>
+                <view class="card2">{{info.tagName}} </view>
+              </view>
+            </view>
+            <!-- 详情 -->
+            <view class="cards" wx:if="{{info.recruiter==0 && getUserInfo.roleKeySet[0]!='candidate'}}">
+              <view class="card1" >Headhunter Commission</view>
+              <view  style="display: flex; align-items: center; margin-right: 0rpx;">
+                <image style="width: 24rpx; height: 24rpx;" src="/static/imgs/money.jpg" mode="aspectFill" />
+                <span style="color:#2623D1;font-size:28rpx">￥{{info.recruiterPrice}}</span>
+              </view>
+              <view class="card2" >Note: This candidate is posted by a headhunter, and the contact information displayed belongs to the headhunter. A headhunting service fee will be required upon successful recruitment.</view>
+            </view>
+            <view class="cards">
+              <view class="card1">Personal Tags</view>
+              <view class="card2" style="margin-top: 20rpx;  display: flex; flex-wrap: wrap;">
+                <span class="card3" wx:for="{{userinfo.tag}}">{{item.memberName}}</span>
+              </view>
+            </view>
+            <!-- <view class="cards">
+              <view class="card1">Personal Advantage</view>
+              <view class="card2">{{userinfo.personalStrengths}} </view>
+            </view> -->
+            <view class="cards">
+              <view class="card1">Self-Evaluation</view>
+              <view class="card2">{{userinfo.content}} </view>
+            </view>
+            <!-- <view class="cards">
+              <view class="card1">Self-Evaluation</view>
+              <view class="card2">{{userinfo.content}} </view>
+            </view> -->
+            <view class="cards">
+              <view class="card1">Attachments</view>
+              <view class="btm">
+                <view style="display: flex; justify-content: space-between; padding:20rpx 0;">
+                  <image bindtap="previewImage" data-item='{{userinfo.images}}' wx:if="{{userinfo.images[0].cover}}" src="{{userinfo.images[0].cover}}" style="width: 47%; height: 204rpx;" mode="aspectFill" />
+                  <view bindtap="previewImage" wx:if="{{userinfo.images[1].cover}}" style="width: 47%; height: 204rpx;position: relative;">
+                    <image bindtap="previewImage" data-item='{{userinfo.images}}' src="{{userinfo.images[1].cover}}" style="width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.5); " mode="aspectFill" />
+                    <view wx:if="{{userinfo.images.length>2}}" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);font-weight: 700;font-size: 24rpx;color: #FFFFFF;">+{{userinfo.images.length-2}} pictures</view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </van-tab>
+        <van-tab title="Experience">
+          <!-- Work Experience -->
+          <view class="card6">
+            <view class="top">
+              <view class="left">
+                <image class="image" src="/static/imgs/me/Icon@2x.png" mode="aspectFill" />
+                <span class="title">Work Experience</span>
+              </view>
+            </view>
+            <view class="btm" wx:for="{{userinfo.work}}">
+              <view style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="tit1">{{item.companyName}}</span>
+                <view>
+                </view>
+              </view>
+              <view class="tit2">{{item.companyCountry}}</view>
+              <view class="tit2">{{item.industry}} · {{item.startDate}} —— {{item.endDate}}</view>
+              <view class="tit2">{{item.postsName}}</view>
+              <view class="tit2">{{item.department}}</view>
+              <view class="tit2">{{item.descriptionContent}}</view>
+            </view>
+          </view>
+          <!-- Project Experience -->
+          <view class="card6">
+            <view class="top">
+              <view class="left">
+                <image class="image" src="/static/imgs/me/Icon@2x.png" mode="aspectFill" />
+                <span class="title">Project Experience</span>
+              </view>
+            </view>
+            <view class="btm" wx:if="{{userinfo.project}}">
+              <view style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="tit1">{{userinfo.project.projectName}}</span>
+              </view>
+              <view class="tit2">{{userinfo.project.projectRole}}</view>
+              <view class="tit2">{{userinfo.project.startDate}} —— {{userinfo.project.endDate}}</view>
+              <view class="tit2">{{userinfo.project.descriptionContent}}</view>
+            </view>
+          </view>
+          <!--Education -->
+          <view class="card6">
+            <view class="top">
+              <view class="left">
+                <image class="image" src="/static/imgs/me/Icon Education@2x.png" mode="aspectFill" />
+                <span class="title">Education</span>
+              </view>
+            </view>
+
+            <view class="btm" wx:for="{{userinfo.school}}">
+              <view style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="tit1" wx:if="{{item.school}}">{{item.school}}</span>
+              </view>
+              <view class="tit2" wx:if="{{item.degree}}">{{item.degree.memberName}}</view>
+              <view class="tit2" wx:if="{{item.major}}">{{item.major}}</view>
+              <view class="tit2" wx:if="{{item.startDate}}">{{item.startDate}} —— {{item.endDate}}</view>
+              <view class="tit2" wx:if="{{item.content}}">{{item.content}}</view>
+
+            </view>
+          </view>
+        </van-tab>
+      </van-tabs>
+    </view>
+  </view>
+  <!-- 底部tabbar -->
+  <view class="tab" wx:if="{{!type && userKey!='candidate'}}">
+    <image class="image" style="margin-left: 50rpx;" bind:tap="save" data-data="{{userinfo}}" src="{{userinfo.isCollection==false ? '/static/imgs/detail/ax.jpg' : '/static/imgs/detail/ax1.jpg'}}" mode="aspectFill" />
+    <button wx:if="{{!info.isApplication && !info.promptMessage}}" class="btn" bind:tap="goyq">INVITE TO INTERVIEW </button>
+    <button disabled wx:if="{{info.isApplication || info.promptMessage}}" class="btn">INVITE FOR INTERVIEW</button>
+  </view>
+  <van-popup show="{{ show }}"  round bind:close="onClose">
+  <view style="width:620rpx;min-height: 800rpx; position: relative;padding-bottom: 130rpx;">
+    <view wx:if="{{infos.roleKey=='candidate'}}" style="text-align: center; background-color: #F3F3F3; padding: 30rpx;">Reason for application</view>
+  <view wx:else style="text-align: center; background-color: #F3F3F3; padding: 30rpx;">Headhunter's Recommendation Reason</view>
+  <view style="padding: 10rpx 20rpx;">{{infos.content}}</view>
+  <button style="width: 70%;margin: 0 auto; height: 80rpx; line-height: 80rpx;background-color: #2623D1; color:#FFFFFF; position: absolute; bottom: 30rpx; left: 15%; border-radius: 50rpx;" bind:tap="onClose">View resume</button>
+  </view>
+  </van-popup>
+</view>

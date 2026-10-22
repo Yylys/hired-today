@@ -1,0 +1,27 @@
+<!--components/card/index.wxml-->
+
+<view style="padding-bottom: 100rpx;">
+  <view class="box" wx:for="{{10}}" bind:tap="goinfo">
+    <!-- 头像 -->
+    <view style="width: 650rpx;margin:20rpx auto 0; display: flex; align-items: center; justify-content: space-between;">
+      <view style="display: flex; align-items: center;">
+        <image style="width: 84rpx; height: 84rpx; margin-right: 16rpx; border-radius: 50%;" src="/static/imgs/avator.jpg" mode="aspectFill" />
+        <view>
+          <view class="tit">UI Designer position in the ...</view>
+          <view class="nam">Created by Annika Brandow</view>
+        </view>
+      </view>
+      <!-- <view  style="font-size: 24rpx;color: #FE4848; background-color: #FFEDED; padding:12rpx;white-space: nowrap; border-radius: 8rpx;">Did not pass</view> -->
+      <!-- <view style="font-size: 24rpx;color: #FF9228; background-color: #FFF6ED; padding:12rpx;white-space: nowrap; border-radius: 8rpx;">Did not pass</view> -->
+      <view style="font-size: 24rpx;color: #1EBF77; background-color: #E7F9F2; padding:12rpx;white-space: nowrap; border-radius: 8rpx;">Passed</view>
+    </view>
+    <!-- 线条 -->
+    <view style="width: 650rpx;height: 2rpx; background-color: #E4E7ED; margin: 24rpx auto 0;"></view>
+    <view class="card" >
+      <!-- 线条 -->
+      <view class="btm">
+          <view style="font-size:24rpx ;color:#808289 ;margin: 16rpx 0 20rpx;">Culture shock when moving to a new job is normal. This is not something wrong and I personally experienced it, when I experienced this when I changed jobs in 2 days</view>
+      </view>
+    </view>
+  </view>
+</view>

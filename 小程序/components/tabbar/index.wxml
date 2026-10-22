@@ -1,0 +1,47 @@
+<t-tab-bar value="{{active}}" bindchange="onChange" theme="normal" split="{{false}}" style="z-index:99999;">
+    <t-tab-bar-item value="{{0}}" icon="/static/img/tabbar-home{{active===0?'-active' : ''}}.png">
+        首页
+    </t-tab-bar-item>
+    <!-- <t-tab-bar-item value="{{1}}" icon="/static/img/tabbar-rwzq{{active===1?'-active' : ''}}.png">
+        任务专区
+    </t-tab-bar-item> -->
+    <t-tab-bar-item>
+        <view class="saoma" catchtap="onSaoma">
+            <view class="iconWrap" hover-class="tapstate_mark">
+                <image class="icon-sm" src="/static/img/ScanCode.png" />
+            </view>
+            <view class="code-sys">扫一扫</view>
+        </view>
+    </t-tab-bar-item>
+    <!-- <t-tab-bar-item value="{{3}}" icon="/static/img/tabbar-jfsc{{active===3?'-active' : ''}}.png">
+        <view> 积分商城</view>
+    </t-tab-bar-item> -->
+    <t-tab-bar-item  value="{{4}}" icon="/static/img/tabbar-my{{active===4?'-active' : ''}}.png">
+        我的
+    </t-tab-bar-item>
+</t-tab-bar>
+<block wx:if="{{placeholder}}">
+    <view class="tabbar-brace"></view>
+    <view class="env"></view>
+</block>
+
+<!-- 扫码领取优惠券弹出层 -->
+<view class="couponPopupNamespace">
+    <t-popup visible="{{showReceiveSuccessPopup}}" bind:visible-change="closeReceiveSuccessPopup" placement="center">
+        <view class="couponPopup">
+            <view>
+                <view class="popupImg_warp">
+                    <image class="pop_img" src="/static/img/scanCode_lingqu.png" />
+                </view>
+                <view class="content">
+                    <view class="gxnhd">恭喜您获得</view>
+                    <view class="goodsName">{{receiveSuccessTitle}}</view>
+                    <view class="kxsx_btn" hover-class="tapstate_mark" bindtap="closeReceiveSuccessPopup">开心收下</view>
+                </view>
+            </view>
+            <view bindtap="closeReceiveSuccessPopup" hover-class="tapstate_opacity">
+                <image class="close_pop" src="/static/img/index_close.png" />
+            </view>
+        </view>
+    </t-popup>
+</view>

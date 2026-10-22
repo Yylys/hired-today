@@ -1,0 +1,228 @@
+/* pages/cs/cs.wxss *//* index.wxss */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px; /* 自定义导航栏的高度 */
+  background-color: rgba(255, 255, 255, 0); /* 初始背景透明 */
+  color: #ffffff; /* 文字颜色 */
+  z-index: 1000; /* 确保导航栏在页面元素的最上层 */
+  transition: background-color 0.3s ease; /* 添加过渡效果 */
+}
+
+.nav-title {
+  font-size: 18px;
+  line-height: 64px;
+  text-align: center;
+}
+
+.page-content {
+  margin-top: 64px; /* 页面内容顶部留出导航栏高度的空间 */
+  /* 其他页面内容样式 */
+}
+
+.post_img{
+  width: 100%;
+  height: 356rpx;
+  // background-color: white;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+.post_top{
+  width: 690rpx;
+  margin: 192rpx auto 0rpx;
+}
+.post_search{
+  background-color: red;
+  padding:0;
+}
+.post_btm{
+  margin: 0rpx auto;
+}
+.post_scroll-view {
+  // border: 1px solid #ccc; /* 可选：添加边框 */
+}
+
+/* components/card/index.wxss */
+.box {
+  border: 5rpx solid #ffffff;
+  margin: 20rpx;
+  display: flex;
+  flex-wrap: wrap;
+  background: #FFFFFF;
+  border-radius: 36rpx 36rpx 36rpx 36rpx;
+
+  .card {
+    width: 702rpx;
+    margin: 20rpx auto 0;
+
+    .top {
+      padding: 24rpx;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .cens{
+      margin: 0 16rpx;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      .list {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+
+    .btm {
+      margin: 0 16rpx;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .left {
+        .avatar-stack {
+          position: relative;
+          width: 300rpx;
+          /* 根据需要调整宽度 */
+          height: 55rpx;
+          /* 根据需要调整高度 */
+        }
+
+        .avatar {
+          width: 48rpx;
+          /* 根据需要调整头像宽度 */
+          height: 48rpx;
+          /* 根据需要调整头像高度 */
+          border-radius: 50%;
+          /* 圆形头像 */
+          position: absolute;
+        }
+
+        .avatar:nth-child(1) {
+          z-index: 1;
+          /* 最上面的头像 */
+          left: 0;
+        }
+
+        .avatar:nth-child(2) {
+          z-index: 2;
+          left: 20rpx;
+          /* 调整位置 */
+        }
+
+        .avatar:nth-child(3) {
+          z-index: 3;
+          left: 40rpx;
+          /* 调整位置 */
+        }
+
+        .avatar:nth-child(4) {
+          z-index: 3;
+          left: 60rpx;
+          /* 调整位置 */
+        }
+
+        .avatar:nth-child(5) {
+          z-index: 5;
+          /* 最下面的头像 */
+          left: 80rpx;
+          /* 调整位置 */
+        }
+      }
+
+      .right {}
+    }
+  }
+
+}
+.boxs {
+  border: 5rpx solid #2623D1;
+  margin: 20rpx;
+  display: flex;
+  flex-wrap: wrap;
+  background: #FFFFFF;
+  border-radius: 36rpx 36rpx 36rpx 36rpx;
+
+  .card {
+    width: 702rpx;
+    margin: 20rpx auto 0;
+
+    .top {
+      padding: 24rpx;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .cens{
+      margin: 0 16rpx;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      .list {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+
+    .btm {
+      margin: 0 16rpx;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .left {
+        .avatar-stack {
+          position: relative;
+          width: 300rpx;
+          /* 根据需要调整宽度 */
+          height: 55rpx;
+          /* 根据需要调整高度 */
+        }
+
+        .avatar {
+          width: 48rpx;
+          /* 根据需要调整头像宽度 */
+          height: 48rpx;
+          /* 根据需要调整头像高度 */
+          border-radius: 50%;
+          /* 圆形头像 */
+          position: absolute;
+        }
+
+        .avatar:nth-child(1) {
+          z-index: 1;
+          /* 最上面的头像 */
+          left: 0;
+        }
+
+        .avatar:nth-child(2) {
+          z-index: 2;
+          left: 20rpx;
+          /* 调整位置 */
+        }
+
+        .avatar:nth-child(3) {
+          z-index: 3;
+          left: 40rpx;
+          /* 调整位置 */
+        }
+
+        .avatar:nth-child(4) {
+          z-index: 3;
+          left: 60rpx;
+          /* 调整位置 */
+        }
+
+        .avatar:nth-child(5) {
+          z-index: 5;
+          /* 最下面的头像 */
+          left: 80rpx;
+          /* 调整位置 */
+        }
+      }
+
+      .right {}
+    }
+  }
+
+}

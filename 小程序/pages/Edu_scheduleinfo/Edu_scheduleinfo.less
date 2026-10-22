@@ -1,0 +1,206 @@
+/* components/card/index.wxss */
+.boxs {
+  background: #FFFFFF;
+  width: 702rpx;
+  margin: 10rpx auto;
+  border-radius: 36rpx;
+}
+
+.box {
+    background: #FFFFFF;
+  display: inline-block;
+  margin: 20rpx 20rpx;
+  box-shadow: 0rpx 4rpx 20rpx 0rpx rgba(153, 171, 198, 0.28);
+  border-radius: 36rpx 36rpx 36rpx 36rpx;
+
+  .card {
+    width: 622rpx;
+    margin: 0 auto;
+
+    // margin: 20rpx auto 0;
+    .top {
+      padding: 24rpx;
+      display: flex;
+      justify-content: space-between;
+    }
+    .tops {
+      padding: 24rpx 0rpx;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .cen {
+      margin: 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      .list {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+
+    .cens {
+      margin: 0 16rpx;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      .list {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+    .btms {
+      margin: 10rpx 20rpx;
+      font-size: 25rpx;
+    }
+    .btm {
+      margin: 10rpx 32rpx;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .left {
+        position: relative;
+        .avatar-stack {
+
+          width: 250rpx;
+          /* 根据需要调整宽度 */
+          height: 55rpx;
+          /* 根据需要调整高度 */
+        }
+
+        .avatar {
+          width: 48rpx;
+          /* 根据需要调整头像宽度 */
+          height: 48rpx;
+          /* 根据需要调整头像高度 */
+          border-radius: 50%;
+          /* 圆形头像 */
+          position: absolute;
+        }
+
+        .avatar:nth-child(1) {
+          z-index: 1;
+          /* 最上面的头像 */
+          left: 0;
+        }
+
+        .avatar:nth-child(2) {
+          z-index: 2;
+          left: 20rpx;
+          /* 调整位置 */
+        }
+
+        .avatar:nth-child(3) {
+          z-index: 3;
+          left: 40rpx;
+          /* 调整位置 */
+        }
+
+        .avatar:nth-child(4) {
+          z-index: 3;
+          left: 60rpx;
+          /* 调整位置 */
+        }
+
+        .avatar:nth-child(5) {
+          z-index: 5;
+          /* 最下面的头像 */
+          left: 80rpx;
+          /* 调整位置 */
+        }
+      }
+
+      .right {}
+    }
+  }
+}
+
+.lists {
+  width: 50%;
+
+  .title {
+    font-family: DM Sans, DM Sans;
+    font-weight: 600;
+    font-size: 28rpx;
+    color: #150A33;
+    line-height: 34rpx;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+    
+  }
+
+  .nth {
+    font-family: PingFang SC, PingFang SC;
+    font-weight: 400;
+    font-size: 24rpx;
+    color: #514B6B;
+    line-height: 32rpx;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+    margin: 20rpx 0;
+  }
+
+  .bac1 {
+    margin: 12rpx 0;
+    font-family: PingFang SC, PingFang SC;
+    font-weight: 400;
+    font-size: 24rpx;
+    color: #514B6B;
+    line-height: 32rpx;
+    font-style: normal;
+    text-align: center;
+    text-transform: none;
+    width: 40%;
+    background-color: #F5F4F6;
+    padding: 12rpx;
+    border-radius: 8rpx;
+    border: 2rpx solid #F5F4F6;
+  }
+  .bac2 {
+    border: 2rpx solid #2623D1;
+    margin: 12rpx 0;
+    font-family: PingFang SC, PingFang SC;
+    font-weight: 400;
+    font-size: 24rpx;
+    color: #514B6B;
+    line-height: 32rpx;
+    font-style: normal;
+    text-align: center;
+    text-transform: none;
+    width: 40%;
+    background-color: #F5F4F6;
+    padding: 12rpx;
+    border-radius: 8rpx;
+  }
+}
+
+.tab {
+  display: flex;
+  // position: fixed;
+  // bottom: 0;
+  width: 100%;
+  align-items: center;
+  border: 0;
+  background-color: #FFFFFF;
+  justify-content: space-around;
+  height: 152rpx;
+
+
+  .btn {
+    width: 90%;
+    margin: 0 auto;
+    padding: 0 20rpx;
+    height: 100rpx;
+    background-color: #2623D1;
+    color: #FFFFFF;
+    font-size: 32rpx;
+    line-height: 100rpx;
+  }
+}
+

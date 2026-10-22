@@ -1,0 +1,77 @@
+<!--pages/expectations/expectations.wxml-->
+<view class="box">
+  <view class="contaners">
+    <form catchsubmit="onFormSubmit" catchreset="formReset" class="form">
+      <!-- <view class="weui-cell__bd">
+        <view class="title">Preferred Work Location</view>
+        <input class="weui-input" name="desiredCity" value="{{expectations.desiredCity}}" placeholder="Please Enter" placeholder-class="placeholder" />
+      </view> -->
+      <!-- <view class="weui-cell__bd">
+        <view class="title">Desired Position</view>
+        <input class="weui-input" name="desiredIndustry" value="{{expectations.desiredIndustry}}" placeholder="Please Enter" placeholder-class="placeholder" />
+      </view>
+      <view class="weui-cell__bd">
+        <view class="title"> Expected Salary</view>
+        <view style="display: flex; align-items: center; justify-content: space-between;">
+          ￥<input bindblur="onInput" class="weui-input1" name="minSalary" value="{{expectations.minSalary}}" placeholder="Min Salary" placeholder-class="placeholder" />
+          -￥
+          <input bindblur="onInput" class="weui-input1" name="maxSalary" value="{{expectations.maxSalary}}" placeholder="Max Salary" placeholder-class="placeholder" />
+        </view>
+      </view> -->
+      <!-- <view class="weui-cell__bd">
+            <view class="title"> Salary</view>
+            <view style="display: flex; align-items: center; justify-content: space-between;">
+            <input class="weui-input1" bindinput="handleInput" data-title="form.minSalary" value="{{form.minSalary}}" placeholder="Min Salary" />
+            -
+            <input class="weui-input1" bindinput="handleInput" data-title="form.maxSalary" value="{{form.maxSalary}}" placeholder="Max Salary" />
+          </view>
+          </view> -->
+
+      <view class="weui-cell__bd" style="background-color: #fff; margin-top: 20rpx; border-radius: 20rpx;" wx:for="{{expectations.cardList}}">
+        <!-- 循环 -->
+        <view class="card">
+          <view class="title">Preferred City</view>
+          <input class="weui-inputs" bindinput="handleInputChange" data-index="{{index}}" value="{{item.desiredCity}}" placeholder="Please Enter" placeholder-class="placeholder" />
+        </view>
+        <view class="card">
+          <view class="title">Desired Position</view>
+          <input class="weui-inputs" bindinput="handleInputChange1" data-index="{{index}}" value="{{item.desiredIndustry}}" placeholder="Please Enter" placeholder-class="placeholder" />
+        </view>
+        <view class="card">
+          <view class="title"> Expected Salary
+            <view style="color: #9197AF;">(Please enter a whole number in CNY.)</view>
+          </view>
+
+          <view style="display: flex; align-items: center; justify-content: space-between; ">
+            ￥<input class="weui-inputs1" bindblur="onInput" bindinput="handleInputChange2" data-index="{{index}}" value="{{item.minSalary}}" placeholder="Min Salary" placeholder-class="placeholder" />
+            -￥
+            <input class="weui-inputs1" bindblur="onInput" bindinput="handleInputChange3" data-index="{{index}}" value="{{item.maxSalary}}" placeholder="Max Salary" placeholder-class="placeholder" />
+          </view>
+        </view>
+
+
+        <!-- <view class="card">
+          <view class="title">Expected MinSalary</view>
+          <input class="weui-inputs" bindblur="onInput" bindinput="handleInputChange2" data-index="{{index}}" value="{{item.minSalary}}" placeholder="Please Enter" placeholder-class="placeholder" />
+        </view>
+        <view class="card">
+          <view class="title">Expected MaxSalary</view>
+          <input class="weui-inputs" bindblur="onInput" bindinput="handleInputChange3" data-index="{{index}}" value="{{item.maxSalary}}" placeholder="Please Enter" placeholder-class="placeholder" />
+        </view> -->
+        <view class="card">
+          <view class="title">Desired Job Type</view>
+          <input disabled bind:tap="shows" data-index="{{index}}" class="weui-inputs" name="companyName" value="{{item.workTypeName}}" placeholder="Please Enter" placeholder-class="placeholder" />
+        </view>
+        <view style="width: 520rpx; margin:50rpx auto;">
+          <van-button wx:if="{{expectations.cardList.length-1==index}}" bind:tap="onAdd" custom-class="btn" custom-style="border-color: #fff;box-shadow: 0rpx 4rpx 20rpx 0rpx rgba(153,171,198,0.28);" icon="add-o" plain color="#FF9228" block>Add position</van-button>
+        </view>
+      </view>
+      <view style="margin: 78rpx auto; width: 60%; padding-bottom: 100rpx;">
+        <van-button formType="submit" type="primary" color="#2623D1" block>Submit</van-button>
+      </view>
+    </form>
+  </view>
+  <van-popup show="{{ show }}" bind:close="onClose" position="bottom">
+    <van-picker confirm-button-text="confirm" cancel-button-text="cancel" columns="{{ columns }}" default-index="{{ 1 }}" bind:cancel="onClose" bind:confirm="onConfirm" show-toolbar title="Desired Job Type" />
+  </van-popup>
+</view>

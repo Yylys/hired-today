@@ -1,0 +1,20 @@
+<!--pages/schedule/schedule.wxml-->
+<paging reqUrl="/v1/interview/page-candidate" params="{{params1}}" immediatecheck="{{false}}" pagingRefField="paging">
+  <view style="padding-bottom: 100rpx">
+    <view class="card" wx:for="{{list}}">
+      <view class="top">
+        <view class="title">{{item.title}}</view>
+        <view class="nth .line_ellipsis">{{item.detail}}</view>
+      </view>
+      <!-- 线条 -->
+      <view style="height: 2rpx; width: 95%; background-color: #E4E7ED;"></view>
+      <view class="btm">
+        <view class="left">{{item.time}}</view>
+        <view class="right" bind:tap="goinfo" data-sid="{{item.sid}}" data-path="/pages/scheduleinfo/scheduleinfo">
+          <span>Check the details</span>
+          <van-icon name="arrow" />
+        </view>
+      </view>
+    </view>
+  </view>
+</paging>

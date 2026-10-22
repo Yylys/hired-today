@@ -1,0 +1,5 @@
+<view class="page" style="width: 92vw; margin:0 auto; ">
+  <!-- <mp-html class="my-mp-html-class" wx:if="{{info}}" content="{{info.content}}" lazy-load="{{true}}" scroll-table="{{true}}"  /> -->
+  <rich-text nodes="{{info}}" class="my-mp-html-class"  wx:if="{{info}}"  />
+  <van-skeleton wx:else avatar row="30" />
+</view>

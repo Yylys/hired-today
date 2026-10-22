@@ -1,0 +1,11 @@
+{
+  "component": true,
+  "navigationBarTitleText": "页面标题",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black", 
+  "usingComponents": {
+    "custom-header": "/components/header-tab/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+    "card4": "/components/card4/index"
+  }
+}

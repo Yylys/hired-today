@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "Candidate’s information",
+  "navigationBarBackgroundColor":"#F7F7F7",
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+    "van-picker": "@vant/weapp/picker/index",
+    "van-icon": "@vant/weapp/icon/index"
+  }
+}

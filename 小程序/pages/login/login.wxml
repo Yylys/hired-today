@@ -1,0 +1,98 @@
+<!--pages/login/login.wxml-->
+<view class="bac" style=" background-image: url(/static/imgs/bac.jpg);">
+  <!-- 头部图片 -->
+  <view style="width: 100%;margin-top: 15vh;">
+    <image class="logo_icon" src='/static/imgs/log.jpg' mode="aspectFit"></image>
+  </view>
+  <!-- 登录 -->
+  <view class="login" wx:if="{{acc}}">
+    <form catchsubmit="onFormLogin" catchreset="formReset" class="form">
+      <view class="cen">
+        <view class="box">
+          <image class="img" src='/static/imgs/name.jpg' mode="aspectFit"></image>
+          <input class="ipt" name="userName" value="{{form.userName}}" placeholder-style='font-size:12px; font-weight: 300;' placeholder='Account'></input>
+        </view>
+        <view class="box">
+          <view class="icon">
+            <image class="img" src='/static/imgs/pass.jpg' mode="aspectFit"></image>
+          </view>
+          <input name="password" value="{{form.password}}" class="ipt" placeholder-style='font-size:12px; font-weight: 300;' placeholder='Password'></input>
+        </view>
+        <view class="box">
+          <van-button class="btn" formType="submit" type="primary" color="#2522D1" block round>Log In</van-button>
+        </view>
+        <view class="box">
+          <van-button class="btn"  type="primary" bindtap="goinfos" color="#D9D8FF" block round>
+          <span style="color: #2522D1;">Forgot Password</span>
+          </van-button>
+        </view>
+        <view>
+          <view style="text-align: center; font-size: 28rpx;">
+            Don’t have an account?
+            <span style="color:#2623D1" data-id="0" bindtap="clickTab"> Register </span>
+          </view>
+          <!-- <view style="text-align: center; font-size: 28rpx;">
+            <span style="color:#2623D1"  bindtap="goinfos"> forgot password </span>
+          </view> -->
+        </view>
+      </view>
+    </form>
+  </view>
+  <!-- 注册 -->
+  <view class="login" wx:else>
+    <view class="containers">
+      <radio-group bindchange="radioChange" class="radio-group">
+        <label class="radio-label">
+          <span>Job seeker</span>
+          <radio value="3-015a13c88c5911efb1ce0242a4151c0b " class="radio" color="#2522D1" />
+        </label>
+        <label class="radio-label">
+          <span>Employer</span>
+          <radio value="4-015a14418c5911efb1ce0242a4151c0b" class="radio" color="#2522D1" />
+        </label>
+        <label class="radio-label">
+          <span>Headhunter</span>
+          <radio value="5-015a14a78c5911efb1ce0242a4151c0b" class="radio" color="#2522D1" />
+        </label>
+      </radio-group>
+    </view>
+    <view class="cen">
+      <form catchsubmit="onFormSubmit" catchreset="formReset" class="form">
+        <!-- <view class="box">
+          <input name="nickName" value="{{form.nickName}}" class="ipts" placeholder-style='font-size:14px;' placeholder='Please Enter your name'></input>
+        </view> -->
+        <view class="box">
+          <input name="userName" value="{{form.userName}}" class="ipts" placeholder-style='font-size:12px; font-weight: 300;' placeholder='Account：Email/Phone number'></input>
+        </view>
+        <view class="box">
+          <input name="password" value="{{form.password}}" class="ipts" placeholder-style='font-size:12px; font-weight: 300;' placeholder='Set your password:8-20 characters'></input>
+        </view>
+
+        <view class="box">
+          <input name="checkpass" value="{{form.checkpass}}" class="ipts" placeholder-style='font-size:12px; font-weight: 300;' placeholder='Confirm password again'></input>
+        </view>
+
+        <view class="box">
+          <!-- <button class="btn"  bind:tap="login">register</button> -->
+          <van-button class="btn" formType="submit" type="primary" color="#2522D1" block round>Register</van-button>
+        </view>
+        <view>
+          <view style="font-size: 28rpx; text-align: center;">
+            Already have an account?
+            <span style="color:#2623D1" data-id="1" bindtap="clickTab">Return to log in </span>
+          </view>
+        </view>
+      </form>
+    </view>
+  </view>
+  <!-- 勾选条款 -->
+  <checkbox-group bindchange="checkboxChange" style="position: absolute; bottom: 82rpx; left: 86rpx; display: flex; align-items: center;">
+    <label class="checkbox-label">
+      <checkbox class="checkbox" value="{{agree}}" color="#2522D1" />
+    </label>
+    <view style="font-size: 24rpx; margin-bottom: 20rpx;">Agree to the
+        <span bind:tap="goinfo" data-type="1" class="text">User Agreement</span> and
+        <span bind:tap="goinfo" data-type="2" class="text">Privacy Policy</span>
+      </view>
+  </checkbox-group>
+</view>

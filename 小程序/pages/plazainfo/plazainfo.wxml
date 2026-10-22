@@ -1,0 +1,67 @@
+<!--pages/plazainfo/plazainfo.wxml-->
+<view>
+  <view style="width: 100%; height: 580rpx;">
+     <swiper style="height: 100%;" autoplay interval="5000" duration="{{500}}" circular="{{true}}" indicator-active-color="#fff">
+        <block wx:for="{{info.mimage}}" wx:key="*this">
+            <swiper-item style="width:100%;height: 100%">
+                <image src="{{imgurl+item.cover}}" style="width:100%;height: 100%" mode="aspectFill"></image>
+            </swiper-item>
+        </block>
+    </swiper>
+  </view>
+  <!-- 下层 -->
+  <view style="width: 658rpx; margin:0 auto;">
+    <!-- 顶层介绍 -->
+    <view class="top">
+      <view class="top1">
+        <view class="tt">{{info.title}}</view>
+        <view wx:if="{{info.activityStatus==1}}" class="tb">Upcoming</view>
+        <view wx:if="{{info.activityStatus==2}}" class="tb">Signing up</view>
+        <view wx:if="{{info.activityStatus==3}}" class="tb">In progress</view>
+        <view wx:if="{{info.activityStatus==4}}" class="tb">Closed</view>
+      </view>
+      <view class="top2">Registration Time: Ends on {{info.registrationEndTime}}</view>
+    </view>
+    <view class="center">
+      <view class="card">
+        <view class="card1">Event Status</view>
+        <view wx:if="{{info.activityStatus==1}}" class="card2">Upcoming</view>
+        <view wx:if="{{info.activityStatus==2}}" class="card2">Signing up</view>
+        <view wx:if="{{info.activityStatus==3}}" class="card2">In progress</view>
+        <view wx:if="{{info.activityStatus==4}}" class="card2 ">Closed</view>
+      </view>
+      <view class="card">
+        <view class="card1">Event Time</view>
+        <view class="card2">{{info.startTime}}</view>
+      </view>
+      <view class="card">
+        <view class="card1">Participation fee</view>
+        <view wx:if="{{info.fee!=0}}" class="card2"><span style="color: #FF9228; font-weight:600;">￥{{info.fee/100}}</span>/Per</view>
+        <view wx:else class="card2">Free</view>
+      </view>
+      <view class="card">
+        <view class="card1">Event Quota</view>
+        <view class="card2">{{info.quota}}/{{info.registrationCount}}</view>
+      </view>
+    </view>
+    <!-- 详情 -->
+    <view style="padding-bottom: 180rpx;">
+      <view class="card1">Event Introduction</view>
+      <!-- <view class="card2">{{info.content}}
+      </view> -->
+      <!-- 图文详情富文本 -->
+      <view  class="card2">
+        <mp-html content="{{info.content || '暂无内容'}}" lazy-load="{{true}}" scroll-table="{{true}}" />
+      </view>
+    </view>
+  </view>
+  <!-- 底部tabbar -->
+  <view class="tab">
+    <button style="width: 100rpx; margin:0; background-color: #FFF;" open-type="share" class="share-button">
+      <image style="position: absolute; top: 0; left:0rpx;" src="/static/imgs/detail/zf.jpg" mode="aspectFill" />
+    </button>
+    <button wx:if="{{!info.isApplication}}" class="btn" bind:tap="paywx">Register Now</button>
+    <button disabled wx:if="{{info.isApplication}}" class="btn">Registered</button>
+    <image bind:tap="save" data-data="{{info}}" src="{{info.isCollection==false ? '/static/imgs/detail/ax.jpg' : '/static/imgs/detail/ax1.jpg'}}" mode="aspectFill" />
+  </view>
+</view>

@@ -1,0 +1,16 @@
+<!--pages/dots/index2.wxml-->
+<!-- indicator-active-color="#81C5F3" indicator-color="#999999" 默认情况 -->
+<view style="width: 100vw; position: relative;">
+<swiper bindchange="monitorCurrent1" class="swiper-box" current="{{swiperCurrent}}" indicator-dots="{{true}}" autoplay="{{false}}" interval="{{5000}}" duration="{{1000}}" circular="false">
+  <swiper-item wx:for="{{imgList}}" wx:key="*this">
+    <image src="{{imgurl + item.images.cover}}" class="slide-image" mode="aspectFill"></image>
+  </swiper-item>
+</swiper>
+<view>
+  <view wx:if="{{current1!==imgList.length-1}}" style="position:absolute;top: 15%; right: 100rpx; color: #858597;" bind:tap="gologin" data-num="2">Skip</view>
+  <view wx:else style="position:absolute;bottom: 100rpx; width: 100vw; display: flex; margin: 0 auto;">
+    <button bind:tap="gologin" data-num="1" style="background-color: #2623D1; width: 300rpx;" type="primary">Sign up</button>
+    <button bind:tap="gologin" data-num="2" plain="true" style=" width: 300rpx;">Log in</button>
+  </view>
+</view>
+</view>

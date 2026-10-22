@@ -1,0 +1,3 @@
+<view class="s_mask" style="border-radius: {{radius}};">
+    <view class="title">{{title}}</view>
+</view>

@@ -1,0 +1,71 @@
+/* components/card/index.wxss */
+.boxs .card {
+  margin: 20rpx auto;
+  width: 670rpx;
+  height: 272rpx;
+  background: #FFFFFF;
+  border-radius: 28rpx 28rpx 28rpx 28rpx;
+}
+.boxs .card .img {
+  width: 234rpx;
+  height: 168rpx;
+  margin-right: 20rpx;
+  border-radius: 22rpx;
+}
+.text2 {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.line-clamp-2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  /*限制文本行数*/
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+  /* 追加这一行代码 */
+}
+.text {
+  width: 120rpx;
+  height: 28rpx;
+  font-weight: 400;
+  font-size: 24rpx;
+  color: #2623D1;
+  line-height: 28rpx;
+  text-align: right;
+  font-style: normal;
+  text-transform: none;
+  padding: 8rpx 10rpx;
+  border-radius: 8rpx;
+  background-color: #E3E3FF;
+}
+.time {
+  height: 28rpx;
+  font-family: DM Sans, DM Sans;
+  font-weight: 400;
+  font-size: 22rpx;
+  color: #AAA6B9;
+  line-height: 28rpx;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+}
+.money {
+  width: 100rpx;
+  height: 40rpx;
+  font-family: DM Sans, DM Sans;
+  font-weight: 600;
+  font-size: 28rpx;
+  color: #2623D1;
+  line-height: 40rpx;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+}

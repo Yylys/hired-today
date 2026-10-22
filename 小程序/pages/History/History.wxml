@@ -1,0 +1,31 @@
+<scroll-view class="post_scroll-view" scroll-y="true">
+  <paging reqUrl="/v1/feedback/me" params='{{params2}}' immediatecheck="{{true}}" pagingRefField="post" filed="list2">
+    <!--components/card/index.wxml-->
+    <view style="padding-bottom: 100rpx;">
+      <view wx:for="{{list2}}" style="padding-bottom: 20rpx;">
+        <view class="box" >
+          <view class="card">
+            <view class="top">
+              <view style="display: flex;">
+                <view style="font-weight: 800;font-size:28rpx">{{item.dictType.memberName}}</view>
+              </view>
+            </view>
+            <view style="width: 670rpx;height: 2rpx; background-color: #E4E7ED; margin: 20rpx;"></view>
+            <view class="cens">
+              <view style="font-weight: 400;font-size:28rpx">{{item.content}}</view>
+            </view>
+            <!-- 线条 -->
+            <view style="width: 670rpx;height: 2rpx; background-color: #E4E7ED; margin: 20rpx;"></view>
+            <view class="btm">
+              <view style="display: flex; justify-content: space-between; padding:20rpx 0; width: 100%; flex-wrap: wrap;">
+                <image wx:for="{{item.imgList}}" bindtap="previewImage" data-item='{{item}}' src="{{imgurl + item.cover}}" style="width: 47%; height: 204rpx; border-radius: 20rpx; margin-bottom: 20rpx;" mode="aspectFill" />
+              </view>
+            </view>
+          </view>
+        </view>
+        <view style="font-family: DM Sans;font-size: 14px;font-weight: normal;line-height: 14px;letter-spacing: 0px;color: #AAA6B9; text-align: right; margin-right: 4%;">{{item.created}}</view>
+      </view>
+    </view>
+  </paging>
+
+</scroll-view>

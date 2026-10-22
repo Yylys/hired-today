@@ -1,0 +1,39 @@
+<view>
+    <custom-header title="Plaza"></custom-header>
+  <view >
+    <van-tabs animated  color='#2623D1' title-active-color='#2623D1' title-inactive-color='#150B3D' active="{{ active }}" bind:change="onChange">
+      <van-tab title="Events">
+        <view class="cate_warp">
+          <scroll-view scroll-x="true" class="scroll-views" scroll-into-view="{{scrollIntoView}}" scroll-with-animation="true">
+            <view class="menu-item" wx:for="{{CateList}}" wx:key="index" id="item-{{index}}" data-index="{{index}}" data-acid="{{item.id}}" bindtap="onCateItem">
+              <view class="item11">
+                <view class="{{actives==index?'cate_name_active':'cate_name'}}">{{item.name}}</view>
+              </view>
+            </view>
+          </scroll-view>
+          <scroll-view class="scroll-view" scroll-y="true">
+            <paging reqUrl="user/hd/index" params='{{getParams1}}' immediatecheck="{{false}}">
+              <!-- <card2></card2> -->
+            </paging>
+          </scroll-view>
+        </view>
+      </van-tab>
+      <van-tab title="Job Collection">
+        <view class="cate_warp">
+          <scroll-view scroll-x="true" class="scroll-views" scroll-into-view="{{scrollIntoView}}" scroll-with-animation="true">
+            <view class="menu-item" wx:for="{{CateList}}" wx:key="index" id="item-{{index}}" data-index="{{index}}" data-acid="{{item.id}}" bindtap="onCateItem">
+              <view class="item11">
+                <view class="{{actives==index?'cate_name_active':'cate_name'}}">{{item.name}}</view>
+              </view>
+            </view>
+          </scroll-view>
+          <scroll-view class="scroll-view" scroll-y="true">
+            <paging reqUrl="user/hd/index" params='{{getParams1}}' immediatecheck="{{false}}">
+              <card3></card3>
+            </paging>
+          </scroll-view>
+        </view>
+      </van-tab>
+    </van-tabs>
+  </view>
+</view>

@@ -1,0 +1,321 @@
+/* pages/cs/cs.wxss */
+/* index.wxss */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  /* 自定义导航栏的高度 */
+  background-color: rgba(255, 255, 255, 0);
+  /* 初始背景透明 */
+  color: #ffffff;
+  /* 文字颜色 */
+  z-index: 1000;
+  /* 确保导航栏在页面元素的最上层 */
+  transition: background-color 0.3s ease;
+  /* 添加过渡效果 */
+}
+
+.nav-title {
+  font-size: 18px;
+  line-height: 64px;
+  text-align: center;
+}
+
+.page-content {
+  margin-top: 64px;
+  /* 页面内容顶部留出导航栏高度的空间 */
+  /* 其他页面内容样式 */
+}
+
+/* components/card/index.wxss */
+
+.imgs {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.weui-cell__bd {
+  padding: 1rpx;
+  font-size: 24rpx;
+  margin: 0rpx 24rpx;
+
+  .title {
+    margin: 20rpx 10rpx;
+    font-family: DM Sans, DM Sans;
+    // font-weight: 500;
+    font-size: 28rpx;
+    color: #323233;
+    line-height: 34rpx;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+  }
+
+  .weui-input {
+    width: 94%;
+    min-height: 72rpx;
+    background: #CBC9D4;
+    border-radius: 10rpx;
+    margin: 20rpx auto;
+    padding: 5rpx 20rpx;
+    font-family: PingFang SC, PingFang SC;
+    font-weight: 400;
+    font-size: 28rpx;
+    color: #9197AA;
+    line-height: 32rpx;
+    text-align: left;
+    font-style: normal;
+    text-transform: none;
+  }
+}
+
+.flex-container {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  // padding: 0 20rpx;
+  font-size: 28rpx;
+  /* 垂直居中对齐 */
+}
+
+.input {
+  .van-field__control {
+    background-color: #CBC9D4;
+    height: 80rpx;
+    padding: 0 20rpx;
+    border-radius: 20rpx;
+  }
+}
+
+.btn {
+  border-radius: 30rpx;
+  background-color: red;
+}
+
+/* pages/cs/cs.wxss */
+/* index.wxss */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  /* 自定义导航栏的高度 */
+  background-color: rgba(255, 255, 255, 0);
+  /* 初始背景透明 */
+  color: #ffffff;
+  /* 文字颜色 */
+  z-index: 1000;
+  /* 确保导航栏在页面元素的最上层 */
+  transition: background-color 0.3s ease;
+  /* 添加过渡效果 */
+}
+
+.nav-title {
+  font-size: 18px;
+  line-height: 64px;
+  text-align: center;
+}
+
+.page-content {
+  margin-top: 64px;
+  /* 页面内容顶部留出导航栏高度的空间 */
+  /* 其他页面内容样式 */
+}
+
+.post_img {
+  width: 100%;
+  height: 356rpx;
+  // background-color: white;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+
+.post_top {
+  width: 690rpx;
+  margin: 192rpx auto 0rpx;
+}
+
+.post_search {
+  background-color: #FFFFFF;
+  padding: 0 20rpx;
+  border-radius: 10rpx;
+}
+
+.post_btm {
+  // margin: 11vh auto;
+  // position: relative; /* 或者 absolute, 视情况而定 */
+  // height: 10vh; /* 设置固定高度 */
+  // overflow: hidden; /* 如果内容超出，可以隐藏 */
+}
+
+.post_scroll-view {
+  // height: 75vh;
+  /* 设置 scroll-view 的高度 */
+  // border: 1px solid #ccc; /* 可选：添加边框 */
+  margin-bottom: 7vh;
+}
+
+
+/* components/card/index.wxss */
+.box {
+  // margin: 0rpx;
+  // display: flex;
+  // flex-wrap: wrap;
+  background: #FFFFFF;
+  border-radius: 36rpx 36rpx 36rpx 36rpx;
+
+  .card {
+    width: 702rpx;
+    // margin: 20rpx auto 0;
+
+    .top {
+      padding: 24rpx;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .cens {
+      margin: 0 16rpx;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      .list {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+
+    .btm {
+      margin: 0 16rpx;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .left {
+        .avatar-stack {
+          position: relative;
+          width: 170rpx;
+          /* 根据需要调整宽度 */
+          height: 55rpx;
+          /* 根据需要调整高度 */
+        }
+
+        .avatar {
+          width: 48rpx;
+          /* 根据需要调整头像宽度 */
+          height: 48rpx;
+          /* 根据需要调整头像高度 */
+          border-radius: 50%;
+          /* 圆形头像 */
+          position: absolute;
+        }
+
+        .avatar:nth-child(1) {
+          z-index: 1;
+          /* 最上面的头像 */
+          left: 0;
+        }
+
+        .avatar:nth-child(2) {
+          z-index: 2;
+          left: 20rpx;
+          /* 调整位置 */
+        }
+
+        .avatar:nth-child(3) {
+          z-index: 3;
+          left: 40rpx;
+          /* 调整位置 */
+        }
+
+        .avatar:nth-child(4) {
+          z-index: 3;
+          left: 60rpx;
+          /* 调整位置 */
+        }
+
+        .avatar:nth-child(5) {
+          z-index: 5;
+          /* 最下面的头像 */
+          left: 80rpx;
+          /* 调整位置 */
+        }
+      }
+
+      .right {}
+    }
+  }
+}
+
+.scroll-views1 {}
+
+.collapse {
+  .van-cell__title{
+    font-family: DM Sans;
+font-size: 28rpx;
+font-weight: bold;
+line-height: 20px;
+letter-spacing: 0px;
+
+font-variation-settings: "opsz" auto;
+color: #150B3D;
+  }
+}
+
+.box2{
+  // z-index:3;
+  display: flex;
+  align-items: center; /* 垂直居中 */
+  justify-content: flex-end; /* 水平居中（可选） */
+  padding-right: 40rpx ;
+  color: #FFFFFF;
+  position: absolute;
+  text-align: right;
+  font-size: 24rpx;
+  right: 0rpx;
+  top: 0rpx;
+  // z-index: 0;
+  width: 300rpx;
+  height: 100%-1rpx;
+  background-color:#150A33;
+  border-radius: 0rpx 36rpx 36rpx 0rpx;
+}
+
+.van-swipe-cell__right {
+  display: flex;
+  align-items: center;
+  /* 垂直居中 */
+  justify-content: center;
+  /* 水平居中 */
+  height: 100%;
+  /* 确保高度一致 */
+  border-radius: 0 60rpx 60rpx 0 ;
+  // background-color: orange;
+  width: 180rpx;
+  // position: absolute;
+  // right: 0;
+}
+
+.box2{
+  display: flex;
+  align-items: center; /* 垂直居中 */
+  justify-content: flex-end; /* 水平居中（可选） */
+  padding-right: 40rpx ;
+  color: #FFFFFF;
+  position: absolute;
+  text-align: right;
+  font-size: 24rpx;
+  right: 0rpx;
+  top: 0rpx;
+  // z-index: 9999;
+  width: 300rpx;
+  height: 100%-1rpx;
+  background-color:#150A33;
+  border-radius: 40rpx;
+}
+

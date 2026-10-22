@@ -1,0 +1,90 @@
+<view>
+  <custom-header title="Plaza"></custom-header>
+  <view>
+    <van-tabs animated color='#2623D1' title-active-color='#2623D1' title-inactive-color='#150B3D' active="{{ active }}" bind:change="onChange">
+      <van-tab title="Events">
+        <view class="cate_warp">
+          <scroll-view scroll-x="true" class="scroll-views" scroll-into-view="{{scrollIntoView}}" scroll-with-animation="true">
+            <view class="menu-item" wx:for="{{CateList}}" wx:key="index" id="item-{{index}}" data-index="{{index}}" data-acid="{{item.id}}" bindtap="onCateItem">
+              <view class="item11">
+                <view class="{{actives==index?'cate_name_active':'cate_name'}}">{{item.name}}</view>
+              </view>
+            </view>
+          </scroll-view>
+          <!-- <scroll-view class="scroll-view" scroll-y="true"> -->
+            <paging reqUrl="/v1/activity" params="{{params1}}" filed="list2" immediatecheck="{{false}}" pagingRefField="paging2">
+              <!--components/card/index.wxml-->
+              <view class="boxs">
+                <view class="card" wx:for="{{list}}" bind:tap="goinfo">
+                  <!-- 上层 -->
+                  <view style="display: flex; padding: 20rpx;">
+                    <!-- 左册 -->
+                    <view>
+                      <image class="img" src="/static/imgs/bac1.jpg" alt="" />
+                    </view>
+                    <!-- 右侧 -->
+                    <view>
+                      <view style="display: flex;">
+                        <view class="text2" style="width: 238rpx;height: 80rpx; margin-right: 5rpx; font-weight: 700;">
+                          <span class="line-clamp-2" style="font-size: 28rpx;"> Special recruitm ent activities...</span>
+                        </view>
+                        <view class="text">Signing up</view>
+                      </view>
+                      <view style="width: 354rpx; font-size: 24rpx;margin-top: 12rpx;" class="text2">Douyin Mall's Romantic Chinese Valentine's Day event is ...</view>
+                    </view>
+                  </view>
+                  <!-- 下层 -->
+                  <view style="display: flex; justify-content: space-between; align-items: center; padding: 0 40rpx 0 20rpx">
+                    <view class="time">Ends on 2024-12-22</view>
+                    <view class='money'>$15K<span style="color:#AAA6B9">/Pe</span></view>
+                  </view>
+                </view>
+              </view>
+            </paging>
+          <!-- </scroll-view> -->
+        </view>
+      </van-tab>
+      <van-tab title="Job Collection">
+        <view class="cate_warp">
+          <scroll-view scroll-x="true" class="scroll-views" scroll-into-view="{{scrollIntoView}}" scroll-with-animation="true">
+            <view class="menu-item" wx:for="{{CateList}}" wx:key="index" id="item-{{index}}" data-index="{{index}}" data-acid="{{item.id}}" bindtap="onCateItem">
+              <view class="item11">
+                <view class="{{actives==index?'cate_name_active':'cate_name'}}">{{item.name}}</view>
+              </view>
+            </view>
+          </scroll-view>
+          <scroll-view class="scroll-view" scroll-y="true">
+            <paging reqUrl="/v1/activity" params="{{params1}}" immediatecheck="{{true}}">
+              <view class="boxs">
+                <view class="card" wx:for="{{list}}" bind:tap="goinfo">
+                  <!-- 上层 -->
+                  <view style="display: flex; padding: 20rpx;">
+                    <!-- 左册 -->
+                    <view>
+                      <image class="img" src="/static/imgs/bac1.jpg" alt="" />
+                    </view>
+                    <!-- 右侧 -->
+                    <view>
+                      <view style="display: flex;">
+                        <view class="text2" style="width: 238rpx;height: 80rpx; margin-right: 5rpx; font-weight: 700;">
+                          <span class="line-clamp-2" style="font-size: 28rpx;"> Special recruitm ent activities...</span>
+                        </view>
+                        <view class="text">Signing up</view>
+                      </view>
+                      <view style="width: 354rpx; font-size: 24rpx;margin-top: 12rpx;" class="text2">Douyin Mall's Romantic Chinese Valentine's Day event is ...</view>
+                    </view>
+                  </view>
+                  <!-- 下层 -->
+                  <view style="display: flex; justify-content: space-between; align-items: center; padding: 0 40rpx 0 20rpx">
+                    <view class="time">Ends on 2024-12-22</view>
+                    <view class='money'>$15K<span style="color:#AAA6B9">/Pe</span></view>
+                  </view>
+                </view>
+              </view>
+  </paging>
+          </scroll-view>
+        </view>
+      </van-tab>
+    </van-tabs>
+  </view>
+</view>

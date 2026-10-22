@@ -1,0 +1,14 @@
+<view class="load_status_c">
+    <view wx:if="{{ !finished && (loading||!empty) }}" class="loading">
+        <t-loading theme="circular" size="40rpx" loading />
+    </view>
+    <view wx:if="{{ !loading && empty }}">
+        <image src="{{ image }}" class="empty_img" mode="widthFix" />
+        <view class="des">{{emptyTip}}</view>
+    </view>
+    <view wx:if="{{ !loading && finished && !empty && showNoMoreTip}}" class="no_more">
+        <view class="line left"></view>
+        <view class="text">{{noMoreTip}}</view>
+        <view class="line right"></view>
+    </view>
+</view>

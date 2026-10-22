@@ -1,0 +1,8 @@
+<view class="page">
+  <view class="content">
+    <!-- 页面内容 -->
+ 22222222222222222222222222
+  </view>
+  <!-- 自定义 TabBar -->
+  <custom-tab-bar showTabBar="{{true}}" currentTab="{{currentTab}}" bind:switchTab="handleTabChange" />
+</view>

@@ -1,0 +1,51 @@
+<!--pages/schedule/schedule.wxml-->
+<paging reqUrl="/v1/interview/page-candidate" params="{{params1}}" immediatecheck="{{false}}" pagingRefField="paging">
+  <view style="padding-bottom: 100rpx">
+    <view>
+      <view class="box" wx:for="{{list}}"  wx:if="{{item.jobInfo || 'none'}}">
+        <view style="padding-top: 20rpx; margin: 0 auto; width: 650rpx; color:#808289; font-size: 28rpx;"> {{item.updated}}</view>
+        <view style="width: 650rpx;height: 2rpx; background-color: #E4E7ED; margin: 10rpx auto 0;"></view>
+        <view class="card" bind:tap="goinfo" data-sid="{{item.sid}}" data-path="/pages/scheduleinfo/scheduleinfo">
+          <view class="top">
+          <view style="display: flex;">
+            <view style="width: 84rpx; height: 84rpx; margin-right: 16rpx">
+              <image style="width: 84rpx; height: 84rpx; border-radius: 20rpx;" src="{{imgurl + item.jobInfo.publish.avatar}}" mode="aspectFill" />
+            </view>
+            <view>
+              <view class="text_ellipsis" style="font-weight: 700;font-size:28rpx;margin-bottom:12rpx ; width: 300rpx;">{{item.jobInfo.jobName}}</view>
+              <view style="font-weight: 400;font-size:24rpx">{{item.jobInfo.address}}</view>
+            </view>
+          </view>
+          <view wx:if="{{item.state==3}}" style="height: 40rpx;line-height: 40rpx; font-size: 24rpx;color: #1EBF77; background-color: #E7F9F2; padding:12rpx;white-space: nowrap; border-radius: 8rpx;">Passed</view>
+        <view wx:if="{{item.state==4}}" style="height: 40rpx;line-height: 40rpx; font-size: 24rpx;color: #FF9228; background-color: #f1edeb; padding:12rpx;white-space: nowrap; border-radius: 8rpx;">Pending Interview</view>
+        <view wx:if="{{item.state==6 || item.state==1 }}" style="height: 40rpx;line-height: 40rpx; font-size: 24rpx;color: #FE4848; background-color: #f1edeb; padding:12rpx;white-space: nowrap; border-radius: 8rpx;">Candidate Unfit</view>
+        </view>
+        <view class="cens">
+          <view class="list">
+            <view wx:for="{{item.jobInfo.showTag}}" style="background: #F5F4F6;border-radius: 8rpx 8rpx 8rpx 8rpx; padding: 10rpx 12rpx; font-size: 24rpx;margin-right: 30rpx; margin-top: 10rpx ;">{{item.memberName}}</view>
+          </view>
+          {{user.roleKeySet[0]}}
+          <view wx:if="{{item.jobInfo.recruiter==0 && userKey!='candidate'}}" style="display: flex; align-items: center; margin-right: 20rpx;">
+            <image style="width: 24rpx; height: 24rpx;" src="/static/imgs/money.jpg" mode="aspectFill" />
+            <span style="color:#2623D1;font-size:28rpx">￥{{item.jobInfo.recruiterPrice}}</span>
+          </view>
+        </view>
+        <!-- 线条 -->
+        <view style="width: 670rpx;height: 2rpx; background-color: #E4E7ED; margin: 20rpx;"></view>
+        <view class="btm">
+          <view class="left">
+            <view class="avatar-stack" wx:if="{{item.jobInfo.userList.length>0}}">
+              <image wx:for="{{item.jobInfo.userList}}" class="avatar" src="{{imgurl + item.avatar}}"></image>
+            </view>
+            <view style="font-size:24rpx ;color:#808289 ;margin: 16rpx 0;">{{item.jobInfo.cnt || 0}} Applicants</view>
+          </view>
+          <view class="right" style="margin-bottom: 10rpx;">
+            <span style="font-size:36rpx;color:#2623d1;font-weight:600">￥{{item.jobInfo.minSalary/1000}}K-￥{{item.jobInfo.maxSalary/1000}}K</span>
+            <span style="font-size:24rpx;color: #808289;font-weight:400">/Month</span>
+          </view>
+        </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</paging>

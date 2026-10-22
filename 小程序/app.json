@@ -1,0 +1,113 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/cs/cs",
+    "pages/Enterprise/Enterprise",
+    "pages/login/login",
+    "pages/loginReaste/loginReaste",
+    "pages/res_login/res_login",
+    "pages/historySearch/index",
+    "pages/cardinfo/cardinfo",
+    "pages/cardinfos/cardinfos",
+    "pages/cardinfo1/cardinfo1",
+    "pages/ceshi/index",
+    "pages/plazainfo/plazainfo",
+    "pages/information/information",
+    "pages/myresume/myresume",
+    "pages/advantage/advantage",
+    "pages/expectations/expectations",
+    "pages/experience/experience",
+    "pages/location/location",
+    "pages/project/project",
+    "pages/Educational/Educational",
+    "pages/InterviewDetails/InterviewDetails",
+    "pages/Jobrecord/Jobrecord",
+    "pages/Jobrecordinfo/Jobrecordinfo",
+    "pages/schedule/schedule",
+    "pages/Edu_schedule/Edu_schedule",
+    "pages/scheduleinfo/scheduleinfo",
+    "pages/Agreement/Agreement",
+    "pages/Favoriteevents/Favoriteevents",
+    "pages/Attachments/Attachments",
+    "pages/qz_index/plaza/index",
+    "pages/TalentDetails/TalentDetails",
+    "pages/interview/interview",
+    "pages/user_xy/user_xy",
+    "pages/Feedback/Feedback",
+    "pages/collList/collList",
+    "pages/TalentInfo/TalentInfo",
+    "pages/edu_information/edu_information",
+    "pages/rec_information/rec_information",
+    "pages/Recruiter/Recruiter",
+    "pages/edu_position/edu_position",
+    "pages/edu_Received/edu_Received",
+    "pages/joblist/joblist",
+    "pages/talentlist/talentlist",
+    "pages/edu_Jobrecord/edu_Jobrecord",
+    "pages/Edu_recordinfo/Edu_recordinfo",
+    "pages/Edu_scheduleinfo/Edu_scheduleinfo",
+    "pages/recruiter_tab/recruiter_tab",
+    "pages/Interview_Feedback/Interview_Feedback",
+    "pages/My_Resources/My_Resources",
+    "pages/rec_informations/rec_informations",
+    "pages/rec_myresume/rec_myresume",
+    "pages/New_Positions/New_Positions",
+    "pages/My_Delivery/My_Delivery",
+    "pages/Create_collection/Create_collection",
+    "pages/Create_talent/Create_talent",
+    "pages/Messagedetail/Messagedetail",
+    "pages/TalentcollectionLists/TalentcollectionLists",
+    "pages/JobcollectionLists/JobcollectionLists",
+    "pages/TalentPool/TalentPool",
+    "pages/History/History",
+    "pages/Favorites/Favorites"
+
+  ],
+  "permission": {
+    "scope.userFuzzyLocation": {
+			"desc": "你的位置信息将用于小程序位置接口的效果展示"
+		}
+  },
+  "requiredPrivateInfos": ["chooseLocation", "getFuzzyLocation"],
+
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#ffffff"
+  },
+  "plugins": {
+    "citySelector": {
+      "version": "1.0.2",
+      "provider": "wx63ffb7b7894e99ae"
+  }
+},
+  "tabBar": {
+    "custom": true,
+    "color": "#676767",
+    "selectedColor": "#DE7B2C",
+    "borderStyle": "white",
+    "list": [{
+        "pagePath": "pages/Enterprise/Enterprise",
+        "text": "企业"
+      },
+      {
+        "pagePath": "pages/cs/cs",
+        "text": "求职者"
+      },
+      {
+        "pagePath": "pages/recruiter_tab/recruiter_tab",
+        "text": "猎头"
+      }
+    ]
+  },
+
+  "componentFramework": "glass-easel",
+  
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "usingComponents": {
+    "paging": "/components/paging/index",
+    "t-textarea": "/miniprogram_npm/tdesign-miniprogram/textarea/textarea",
+    "van-field": "/miniprogram_npm/@vant/weapp/field/index"
+  }
+}

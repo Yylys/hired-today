@@ -1,0 +1,7 @@
+<scroll-view scroll-x="{{ true }}" scroll-left="{{ scrollLeft }}" catchtap="onBarItemChange" bindscrolltolower="scrolltolower" enhanced="{{ true }}" show-scrollbar="{{ false }}" scroll-with-animation>
+    <view class="scroll_content">
+        <view wx:for="{{ data }}" wx:key="{{ key }}" mark:index="{{ index }}" class="default_item">
+            <item data="{{item}}" isActive="{{active===index}}" isFirst="{{index===0}}"></item>
+        </view>
+    </view>
+</scroll-view>
